@@ -6,6 +6,8 @@
 #include <string.h>
 #include <math.h>
 
+#include <cstdint>
+
 namespace util {
 	// simple class for holding 2D monochrome data.
 	class pattern2 {
@@ -47,22 +49,15 @@ namespace util {
 		const vecd2 vecpick2[4] = {vecd2(1, 1), vecd2(1, -1), vecd2(-1, 1), vecd2(-1, -1)};
 		const vecd3 vecpick3[12];
 		
-		// Buffers
-		int buf1l;
-		double* buf1;
-		int buf2w;
-		int buf2h;
-		double* buf2;
-		
 		procedural();
 		
 		// FNV_32 hash function
-		unsigned int FNV_32(unsigned int seed);
-		unsigned int FNV_32(unsigned long seed);
-		unsigned int FNV_32(const char* seed);
+		uint32_t FNV_32(uint32_t seed);
+		uint32_t FNV_32(uint64_t seed);
+		uint32_t FNV_32(const char* seed);
 		
 		// RNG initialization
-		void init(unsigned int sd = 0);
+		void init(uint32_t sd = 0);
 		
 		// RNG functions
 		int random_int();
@@ -99,8 +94,6 @@ namespace util {
 		
 		// Rounds the values of all pixels towards the nearest multiple of "inc".
 		pattern2& band(pattern2& p, double inc);
-		
-		~procedural();
 	};
 }
 

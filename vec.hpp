@@ -33,7 +33,7 @@ namespace util {
 		vecd2 operator/(const vecd2& a) const;
 		vecd2 operator*(double a) const;
 		vecd2 operator/(double a) const;
-		vecd2 operator-();
+		vecd2 operator-() const;
 		
 		bool operator==(vecd2 a);
 		
@@ -67,7 +67,7 @@ namespace util {
 		veci2 operator/(const veci2& a) const;
 		veci2 operator*(int a) const;
 		veci2 operator/(int a) const;
-		veci2 operator-();
+		veci2 operator-() const;
 		
 		bool operator==(veci2 a);
 		
@@ -96,7 +96,7 @@ namespace util {
 		vecd3 operator/(const vecd3& a) const;
 		vecd3 operator*(double a) const;
 		vecd3 operator/(double a) const;
-		vecd3 operator-();
+		vecd3 operator-() const;
 		
 		bool operator==(vecd3 a);
 		
@@ -128,7 +128,7 @@ namespace util {
 		veci3 operator/(const veci3& a) const;
 		veci3 operator*(int a) const;
 		veci3 operator/(int a) const;
-		veci3 operator-();
+		veci3 operator-() const;
 		
 		bool operator==(veci3 a);
 		
@@ -158,7 +158,7 @@ namespace util {
 		vecd4 operator/(const vecd4& a) const;
 		vecd4 operator*(double a) const;
 		vecd4 operator/(double a) const;
-		vecd4 operator-();
+		vecd4 operator-() const;
 		
 		bool operator==(vecd4 a);
 		
@@ -190,7 +190,7 @@ namespace util {
 		veci4 operator/(const veci4& a) const;
 		veci4 operator*(int a) const;
 		veci4 operator/(int a) const;
-		veci4 operator-();
+		veci4 operator-() const;
 		
 		bool operator==(veci4 a);
 		
@@ -200,50 +200,61 @@ namespace util {
 		static int dot(veci4 a, veci4 b);
 	};
 	
+	class complex : public vecd2 {
+	public:
+		complex();
+		complex(double r, double i);
+		complex(double theta);
+		
+		complex(const vecd2&);
+	};
+	
 	class quaternion : public vecd4 {
 	public:
 		quaternion();
 		quaternion(double w, double x, double y, double z);
 		quaternion(vecd3 axis, double theta);
 		
-		quaternion operator+(const quaternion& a) const;
-		quaternion operator-(const quaternion& a) const;
-		quaternion operator*(const quaternion& a) const;
-		quaternion operator/(const quaternion& a) const;
-		quaternion operator*(double a) const;
-		quaternion operator/(double a) const;
-		quaternion operator-() const;
+		quaternion(const vecd4& a);
 		
 		quaternion operator=(vecd4) const;
+		
+		quaternion operator*(const quaternion& a) const;
+		quaternion operator*(double a) const;
 		
 		bool operator==(veci4 a);
 		
 		quaternion operator!() const;
-		
-		// Normalize identical to the vecd4 normalize. This version exists so that quaternion::normalize() will return a quaternion.
-		quaternion normalize();
-		quaternion normalize(double t);
 		
 		static quaternion hamilton(const quaternion& a, const quaternion& b);
 		static vecd3 vhamilton(const quaternion& a, const quaternion& b);
 		
 		quaternion& mhamilton(quaternion& a, const quaternion& b);
 		
+		// Normalize identical to the vecd4 normalize. This version exists so that quaternion::normalize() will return a quaternion.
+		quaternion normalize();
+		quaternion normalize(double t);
+		
+		// Rotates the passed vector according to the current quaternion about the origin.
 		vecd3 apply(const vecd3& in) const;
 		
+		// Rotate the given vector theta radians around the given axis or by applying the given quaternion.
+		// Use offset to specify a point through which the axis of rotation passes.
 		static vecd3 rotate(vecd3 in, vecd3 axis_offset, vecd3 axis_dir, double theta);
 		static vecd3 rotate(vecd3 in, vecd3 axis_offset, quaternion r);
 		
+		// Interpolate between two quaternions in such a way as to produce smooth rotations.
 		static quaternion slerp(const quaternion& a, const quaternion& b, double t); 
 	};
 
 	const vecd3 forward(1, 0, 0);
-	const vecd3 backword(-1, 0, 0);
+	const vecd3 backward(-1, 0, 0);
 	const vecd3 right(0, 1, 0);
 	const vecd3 left(0, -1, 0);
 	const vecd3 up(0, 0, 1);
 	const vecd3 down(0, 0, -1);
-
+	
+	const complex cid(1, 0);
 	const quaternion qid(1, 0, 0, 0);
 }
 

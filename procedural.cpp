@@ -122,10 +122,10 @@ namespace util {
 		}
 	}
 	
-	procedural::procedural() : buf1l(0), buf1(NULL), buf2w(0), buf2h(0), buf2(NULL) {}
+	procedural::procedural() {}
 	
-	unsigned int procedural::FNV_32(unsigned int seed) {
-		unsigned int hash = 2166136261;
+	uint32_t procedural::FNV_32(uint32_t seed) {
+		uint32_t hash = 2166136261;
 		for (int i = 0; i < 4; i++) {
 			hash *= 16777619;
 			hash ^= (unsigned char) (seed >> (i*8));
@@ -133,8 +133,8 @@ namespace util {
 		return hash;
 	}
 	
-	unsigned int procedural::FNV_32(unsigned long seed) {
-		unsigned int hash = 2166136261;
+	uint32_t procedural::FNV_32(uint64_t seed) {
+		uint32_t hash = 2166136261;
 		for (int i = 0; i < 8; i++) {
 			hash *= 16777619;
 			hash ^= (unsigned char) (seed >> (i*8));
@@ -143,8 +143,8 @@ namespace util {
 	}
 	
 	// Expects null-terminated string.
-	unsigned int procedural::FNV_32(const char* seed) {
-		unsigned int hash = 2166136261;
+	uint32_t procedural::FNV_32(const char* seed) {
+		uint32_t hash = 2166136261;
 		for (int i = 0; seed[i] != '\0'; i++) {
 			hash *= 16777619;
 			hash ^= seed[i];
@@ -381,8 +381,8 @@ namespace util {
 		
 //		printf("Allocating for %d columns in range %.2f - %.2f\n", num_cols, minX, maxX);
 		
-		unsigned long col_seed;
-		unsigned long pix_seed;
+		unsigned long long col_seed;
+		unsigned long long pix_seed;
 		int I;
 		int min_y;
 		int max_y;
@@ -607,7 +607,7 @@ namespace util {
 		vecd2* pb = new vecd2[ vec_w*vec_h ];
 		vecd2* pbr;
 		
-		unsigned long row_seed;
+		uint64_t row_seed;
 		int ix; int iy;
 		for (int y = (int) minX; y < My; y++) {
 			row_seed = y ^ sd;
@@ -689,15 +689,6 @@ namespace util {
 		}
 		
 		return p;
-	}
-	
-	procedural::~procedural() {
-		if (buf1 != NULL) {
-			delete[] buf1;
-		}
-		if (buf2 != NULL) {
-			delete[] buf2;
-		}
 	}
 }
 

@@ -29,7 +29,7 @@ namespace util {
 	vecd2 vecd2::operator/(double a) const {
 		return vecd2(x/a, y/a);
 	}
-	vecd2 vecd2::operator-() {
+	vecd2 vecd2::operator-() const {
 		return vecd2(-x, -y);
 	}
 	
@@ -84,7 +84,7 @@ namespace util {
 	veci2 veci2::operator/(int a) const {
 		return veci2(x/a, y/a);
 	}
-	veci2 veci2::operator-() {
+	veci2 veci2::operator-() const {
 		return veci2(-x, -y);
 	}
 	
@@ -135,7 +135,7 @@ namespace util {
 	vecd3 vecd3::operator/(double a) const {
 		return vecd3(x/a, y/a, z/a);
 	}
-	vecd3 vecd3::operator-() {
+	vecd3 vecd3::operator-() const {
 		return vecd3(-x, -y, -z);
 	}
 	
@@ -194,7 +194,7 @@ namespace util {
 	veci3 veci3::operator/(int a) const {
 		return veci3(x/a, y/a, z/a);
 	}
-	veci3 veci3::operator-() {
+	veci3 veci3::operator-() const {
 		return veci3(-x, -y, -z);
 	}
 	
@@ -249,7 +249,7 @@ namespace util {
 	vecd4 vecd4::operator/(double a) const {
 		return vecd4(w/a, x/a, y/a, z/a);
 	}
-	vecd4 vecd4::operator-() {
+	vecd4 vecd4::operator-() const {
 		return vecd4(-w, -x, -y, -z);
 	}
 	
@@ -304,7 +304,7 @@ namespace util {
 	veci4 veci4::operator/(int a) const {
 		return veci4(w/a, x/a, y/a, z/a);
 	}
-	veci4 veci4::operator-() {
+	veci4 veci4::operator-() const {
 		return veci4(-w, -x, -y, -z);
 	}
 	
@@ -325,6 +325,13 @@ namespace util {
 		return a.w*b.w + a.x*b.x + a.y*b.y + a.z*b.z;
 	}
 	
+	/* complex */
+	complex::complex() : vecd2() {}
+	complex::complex(double r, double i) : vecd2(r, i) {}
+	complex::complex(double theta) : vecd2(cos(theta), sin(theta)) {}
+	
+	complex::complex(const vecd2& a) : vecd2(a) {}
+	
 	/* quaternion */
 	quaternion::quaternion() : vecd4() {}
 	quaternion::quaternion(double w, double x, double y, double z) : vecd4(w, x, y, z) {}
@@ -338,26 +345,14 @@ namespace util {
 		z = axis.z * s;
 	}
 	
-	quaternion quaternion::operator+(const quaternion& a) const {
-		return quaternion(w+a.w, x+a.x, y+a.y, z+a.z);
-	}
-	quaternion quaternion::operator-(const quaternion& a) const {
-		return quaternion(w-a.w, x-a.x, y-a.y, z-a.z);
-	}
+	quaternion::quaternion(const vecd4& a) : vecd4(a) {}
+	
 	quaternion quaternion::operator*(const quaternion& a) const {
-		return quaternion(w*a.w, x*a.x, y*a.y, z*a.z);
+		return quaternion(w*a.w - x*a.x - y*a.y - z*a.z, w*a.x + x*a.w + y*a.z - z*a.y, w*a.y - x*a.z + y*a.w + z*a.x, w*a.z + x*a.y - y*a.x + z*a.w);
 	}
-	quaternion quaternion::operator/(const quaternion& a) const {
-		return quaternion(w/a.w, x/a.x, y/a.y, z/a.z);
-	}
+	
 	quaternion quaternion::operator*(double a) const {
 		return quaternion(w*a, x*a, y*a, z*a);
-	}
-	quaternion quaternion::operator/(double a) const {
-		return quaternion(w/a, x/a, y/a, z/a);
-	}
-	quaternion quaternion::operator-() const {
-		return quaternion(-w, -x, -y, -z);
 	}
 	
 	quaternion quaternion::operator=(vecd4 a) const {
@@ -436,23 +431,3 @@ namespace util {
 		return (a*s0) + (b*s1);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
