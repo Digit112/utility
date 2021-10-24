@@ -11,6 +11,10 @@ namespace util {
 		return x*x + y*y;
 	}
 	
+	double vecd2::arg() {
+		return atan2(y, x);
+	}
+	
 	vecd2 vecd2::operator+(const vecd2& a) const {
 		return vecd2(x+a.x, y+a.y);
 	}
@@ -64,6 +68,10 @@ namespace util {
 	
 	int veci2::sqr_mag() {
 		return x*x + y*y;
+	}
+	
+	double veci2::arg() {
+		return atan2(y, x);
 	}
 	
 	veci2 veci2::operator+(const veci2& a) const {
@@ -332,6 +340,22 @@ namespace util {
 	
 	complex::complex(const vecd2& a) : vecd2(a) {}
 	
+	complex complex::operator*(const complex& a) const {
+		return complex(x*a.x - y*a.y, x * a.y + y * a.x);
+	}
+	
+	complex complex::operator*(double a) const {
+		return complex(x*a, y*a);
+	}
+	
+	complex complex::scale(const complex& a, const complex& b) {
+		return complex(a.x*b.x, a.y*b.y);
+	}
+	
+	complex complex::operator~() const {
+		return complex(x, -y);
+	}
+	
 	/* quaternion */
 	quaternion::quaternion() : vecd4() {}
 	quaternion::quaternion(double w, double x, double y, double z) : vecd4(w, x, y, z) {}
@@ -355,11 +379,15 @@ namespace util {
 		return quaternion(w*a, x*a, y*a, z*a);
 	}
 	
+	quaternion quaternion::scale(const quaternion& a, const quaternion& b) {
+		return quaternion(a.w*b.w, a.x*b.x, a.y*b.y, a.z*b.z);
+	}
+	
 	quaternion quaternion::operator=(vecd4 a) const {
 		return quaternion(a.w, a.x, a.y, a.z);
 	}
 	
-	quaternion quaternion::operator!() const {
+	quaternion quaternion::operator~() const {
 		return quaternion(w, -x, -y, -z);
 	}
 	

@@ -27,6 +27,9 @@ namespace util {
 		// Returns the squared magnitude of this vector
 		double sqr_mag();
 		
+		// Returns the argument of the vector.
+		double arg();
+		
 		vecd2 operator+(const vecd2& a) const;
 		vecd2 operator-(const vecd2& a) const;
 		vecd2 operator*(const vecd2& a) const;
@@ -60,6 +63,9 @@ namespace util {
 		double mag();
 		// Returns the square magnitude of this vector
 		int sqr_mag();
+		
+		// Returns the argument of the vector.
+		double arg();
 		
 		veci2 operator+(const veci2& a) const;
 		veci2 operator-(const veci2& a) const;
@@ -207,6 +213,13 @@ namespace util {
 		complex(double theta);
 		
 		complex(const vecd2&);
+		
+		complex operator*(const complex& a) const;
+		complex operator*(double a) const;
+		
+		static complex scale(const complex& a, const complex& b);
+		
+		complex operator~() const;
 	};
 	
 	class quaternion : public vecd4 {
@@ -222,9 +235,11 @@ namespace util {
 		quaternion operator*(const quaternion& a) const;
 		quaternion operator*(double a) const;
 		
+		static quaternion scale(const quaternion& a, const quaternion& b);
+		
 		bool operator==(veci4 a);
 		
-		quaternion operator!() const;
+		quaternion operator~() const;
 		
 		static quaternion hamilton(const quaternion& a, const quaternion& b);
 		static vecd3 vhamilton(const quaternion& a, const quaternion& b);
