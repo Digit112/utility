@@ -381,8 +381,8 @@ namespace util {
 		
 //		printf("Allocating for %d columns in range %.2f - %.2f\n", num_cols, minX, maxX);
 		
-		unsigned long long col_seed;
-		unsigned long long pix_seed;
+		uint64_t col_seed;
+		uint64_t pix_seed;
 		int I;
 		int min_y;
 		int max_y;
