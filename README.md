@@ -23,3 +23,7 @@ Includes geometric functions. Currently only implements ray-triangle collision. 
 
 ### darray
 Dynamic array implementation. Darrays do not automatically perform re-allocation or bound checking. They are focused on performance. Darrays can be initialized with a given max size and can be resized at any time. Appending and removing elements is supported. Inserting is not but will be as soon as I need to insert something into a darray.
+
+### expression
+Binary expression tree implementation. Includes the expr class which represents a single node in the tree. Leaf nodes hold values (of type T) and the remainder hold operations. The evaluate function on a node allows you to get the value of a node from all its children. This class is also not totally complete. It was originally designed for use with the Voxel game engine but has since been removed.
+

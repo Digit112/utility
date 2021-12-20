@@ -2,3 +2,4 @@
 #include "procedural.hpp"
 #include "geometry.hpp"
 #include "darray.hpp"
+#include "expression.hpp"
