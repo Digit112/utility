@@ -219,6 +219,7 @@ namespace util {
 		
 		static complex scale(const complex& a, const complex& b);
 		
+		// Complex conjugation
 		complex operator~() const;
 	};
 	
@@ -239,6 +240,7 @@ namespace util {
 		
 		bool operator==(veci4 a);
 		
+		// Complex conjugation
 		quaternion operator~() const;
 		
 		static quaternion hamilton(const quaternion& a, const quaternion& b);

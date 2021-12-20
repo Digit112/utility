@@ -20,45 +20,47 @@
 #include <stdlib.h>
 #include <string.h>
 
-template<class T>
-class darray {
-public:
-	T* data   // Pointer to the first element of the array.
-	int cap;  // Maximum size that can be used without reallocation.
-	int size; // Current logical size of the array. Must be <= cap.
-	
-	// Constructors
-	darray<T>();
-	darray<T>(int s);
-	darray<T>(int s, int c);
-	
-	// For copying darrays. Either will perform a deep copy so if a shallow copy is sufficient, use pointers or references.
-	darray<T>(const darray<T>&);
-	void operator=(const darray<T>&);
-	
-	// Access element at index. Supports negative indices to index from back and bound checking.
-	T& operator()(int i);
-	// Access element at index. Performs no bound checking and does not support negative indices.
-	inline T& operator[](int i);
-	// Access element at index. Performs no bound checking and does not support negative indices.
-	inline T operator[](int i) const;
-	
-	// Set all values in the darray to "def"
-	void initialize(T def);
-	
-	// Change the size or the maximum size. If one is set below the other, the other will be reduced as well.
-	void set_size(int s);
-	void set_cap(int c);
-	
-	// Add an object to an array
-	void append(T);
-	
-	// Removes the first found instance of this element and memmove's the remaining elements to fill the gap,
-	// reduces the size of the array by 1 returns the index of the element removed or -1 if no element was found.
-	int remove(T);
-	
-	~darray();
-};
+namespace util {
+	template<class T>
+	class darray {
+	public:
+		T* data;  // Pointer to the first element of the array.
+		int cap;  // Maximum size that can be used without reallocation.
+		int size; // Current logical size of the array. Must be <= cap.
+		
+		// Constructors
+		darray<T>();
+		darray<T>(int s);
+		darray<T>(int s, int c);
+		
+		// For copying darrays. Either will perform a deep copy so if a shallow copy is sufficient, use pointers or references.
+		darray<T>(const darray<T>&);
+		void operator=(const darray<T>&);
+		
+		// Access element at index. Supports negative indices to index from back and bound checking.
+		T& operator()(int i);
+		// Access element at index. Performs no bound checking and does not support negative indices.
+		inline T& operator[](int i);
+		// Access element at index. Performs no bound checking and does not support negative indices.
+		inline T operator[](int i) const;
+		
+		// Set all values in the darray to "def"
+		void initialize(T def);
+		
+		// Change the size or the maximum size. If one is set below the other, the other will be reduced as well.
+		void set_size(int s);
+		void set_cap(int c);
+		
+		// Add an object to an array
+		void append(T);
+		
+		// Removes the first found instance of this element and memmove's the remaining elements to fill the gap,
+		// reduces the size of the array by 1 returns the index of the element removed or -1 if no element was found.
+		int remove(T);
+		
+		~darray();
+	};
+}
 
 #include "darray.cpp"
 
