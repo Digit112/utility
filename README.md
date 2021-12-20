@@ -17,3 +17,9 @@ The library also contains "complex" and "quaternion" classes, deriving directly 
 
 ### procedural
 Includes class specifically designed for the storage and manipulation of 2D matrices of double-precision floating point values, instances of which are used to hold the results of various utility functions capable of generating everything from simple checkerboard and sine wave patterns to simplex and worley noise. The library is still very limited, but will eventually contain many PRNG and hash functions as well as many random-number generating utilities (Random vector on unit circle, random sample from normal distribution, etc.) As of right now, only the xoshiro PRNG and FNV_32 hash function are available in those categories.
+
+### geometry
+Includes geometric functions. Currently only implements ray-triangle collision. Functions will be added to this library on an ad-lib basis.
+
+### darray
+Dynamic array implementation. Darrays do not automatically perform re-allocation or bound checking. They are focused on performance. Darrays can be initialized with a given max size and can be resized at any time. Appending and removing elements is supported. Inserting is not but will be as soon as I need to insert something into a darray.
