@@ -233,7 +233,7 @@ namespace util {
 		
 		quaternion operator=(vecd4) const;
 		
-		quaternion operator*(const quaternion& a) const;
+		quaternion operator*(const quaternion& a) const; // Hamilton product
 		quaternion operator*(double a) const;
 		
 		static quaternion scale(const quaternion& a, const quaternion& b);
