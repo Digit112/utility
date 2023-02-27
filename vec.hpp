@@ -106,7 +106,7 @@ namespace util {
 		
 		bool operator==(vecd3 a);
 		
-		// Returns whether this vector is nan. Only returns true if all elements are nan
+		// Returns whether this vector is nan. Only returns true if all elements are nan.
 		bool is_nan();
 		
 		vecd3 normalize();
@@ -114,6 +114,12 @@ namespace util {
 		
 		static double dot(vecd3 a, vecd3 b);
 		static vecd3 cross(vecd3 a, vecd3 b);
+		
+		// Reflect the vector "a" across "b".
+		// rev_reflect does the same, but also reverses the direction of the reflected vector.
+		// Thus, rev_reflect returns the direction vector "a" is traveling after reflecting off of a surface with normal "b".
+		static vecd3 reflect(vecd3 a, vecd3 b);
+		static vecd3 rev_reflect(vecd3 a, vecd3 b);
 	};
 	
 	class veci3 {

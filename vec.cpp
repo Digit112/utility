@@ -1,5 +1,6 @@
 namespace util {
-	/* vecd2 */
+	/* ---- vecd2 ---- */
+	
 	vecd2::vecd2() : x(0), y(0) {}
 	vecd2::vecd2(double x, double y) : x(x), y(y) {}
 	
@@ -58,7 +59,8 @@ namespace util {
 		return a.x*b.x + a.y*b.y;
 	}
 	
-	/* veci2 */
+	/* ---- veci2 ---- */
+	
 	veci2::veci2() : x(0), y(0) {}
 	veci2::veci2(int x, int y) : x(x), y(y) {}
 	
@@ -113,7 +115,8 @@ namespace util {
 		return a.x*b.x + a.y*b.y;
 	}
 	
-	/* vecd3 */
+	/* ---- vecd3 ---- */
+	
 	vecd3::vecd3() : x(0), y(0), z(0) {}
 	vecd3::vecd3(double x, double y, double z) : x(x), y(y), z(z) {}
 	
@@ -172,7 +175,16 @@ namespace util {
 		return vecd3(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x);
 	}
 	
-	/* veci3 */
+	vecd3 vecd3::reflect(vecd3 a, vecd3 b) {
+		return b * vecd3::dot(a, b) * 2 - a;
+	}
+	
+	vecd3 vecd3::rev_reflect(vecd3 a, vecd3 b) {
+		return a - b * vecd3::dot(a, b) * 2;
+	}
+	
+	/* ---- veci3 ---- */
+	
 	veci3::veci3() : x(0), y(0), z(0) {}
 	veci3::veci3(int x, int y, int z) : x(x), y(y), z(z) {}
 	
@@ -227,7 +239,8 @@ namespace util {
 		return veci3(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x);
 	}
 	
-	/* vecd4 */
+	/* ---- vecd4 ---- */
+	
 	vecd4::vecd4() : w(0), x(0), y(0), z(0) {}
 	vecd4::vecd4(double w, double x, double y, double z) : w(w), x(x), y(y), z(z) {}
 	
@@ -282,7 +295,7 @@ namespace util {
 		return a.w*b.w + a.x*b.x + a.y*b.y + a.z*b.z;
 	}
 	
-	/* veci4 */
+	/* ---- veci4 ---- */
 	veci4::veci4() : w(0), x(0), y(0), z(0) {}
 	veci4::veci4(int w, int x, int y, int z) : w(w), x(x), y(y), z(z) {}
 	
@@ -333,7 +346,8 @@ namespace util {
 		return a.w*b.w + a.x*b.x + a.y*b.y + a.z*b.z;
 	}
 	
-	/* complex */
+	/* ---- complex ---- */
+	
 	complex::complex() : vecd2() {}
 	complex::complex(double r, double i) : vecd2(r, i) {}
 	complex::complex(double theta) : vecd2(cos(theta), sin(theta)) {}
@@ -356,7 +370,8 @@ namespace util {
 		return complex(x, -y);
 	}
 	
-	/* quaternion */
+	/* ---- quaternion ---- */
+	
 	quaternion::quaternion() : vecd4() {}
 	quaternion::quaternion(double w, double x, double y, double z) : vecd4(w, x, y, z) {}
 
