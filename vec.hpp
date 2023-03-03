@@ -23,9 +23,9 @@ namespace util {
 		vecd2(double x, double y);
 		
 		// Returns the magnitude of this vector
-		double mag();
+		double mag() const;
 		// Returns the squared magnitude of this vector
-		double sqr_mag();
+		double sqr_mag() const;
 		
 		// Returns the argument of the vector.
 		double arg();
@@ -60,9 +60,9 @@ namespace util {
 		veci2(int x, int y);
 		
 		// Returns the magnitude of this vector
-		double mag();
+		double mag() const;
 		// Returns the square magnitude of this vector
-		int sqr_mag();
+		int sqr_mag() const;
 		
 		// Returns the argument of the vector.
 		double arg();
@@ -93,8 +93,8 @@ namespace util {
 		vecd3();
 		vecd3(double x, double y, double z);
 		
-		double mag();
-		double sqr_mag();
+		double mag() const;
+		double sqr_mag() const;
 		
 		vecd3 operator+(const vecd3& a) const;
 		vecd3 operator-(const vecd3& a) const;
@@ -131,8 +131,8 @@ namespace util {
 		veci3();
 		veci3(int x, int y, int z);
 		
-		double mag();
-		int sqr_mag();
+		double mag() const;
+		int sqr_mag() const;
 		
 		veci3 operator+(const veci3& a) const;
 		veci3 operator-(const veci3& a) const;
@@ -161,8 +161,8 @@ namespace util {
 		vecd4();
 		vecd4(double w, double x, double y, double z);
 		
-		double mag();
-		double sqr_mag();
+		double mag() const;
+		double sqr_mag() const;
 		
 		vecd4 operator+(const vecd4& a) const;
 		vecd4 operator-(const vecd4& a) const;
@@ -193,8 +193,8 @@ namespace util {
 		veci4();
 		veci4(int w, int x, int y, int z);
 		
-		double mag();
-		int sqr_mag();
+		double mag() const;
+		int sqr_mag() const;
 		
 		veci4 operator+(const veci4& a) const;
 		veci4 operator-(const veci4& a) const;

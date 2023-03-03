@@ -4,11 +4,11 @@ namespace util {
 	vecd2::vecd2() : x(0), y(0) {}
 	vecd2::vecd2(double x, double y) : x(x), y(y) {}
 	
-	double vecd2::mag() {
+	double vecd2::mag() const {
 		return sqrt(x*x + y*y);
 	}
 	
-	double vecd2::sqr_mag() {
+	double vecd2::sqr_mag() const {
 		return x*x + y*y;
 	}
 	
@@ -64,11 +64,11 @@ namespace util {
 	veci2::veci2() : x(0), y(0) {}
 	veci2::veci2(int x, int y) : x(x), y(y) {}
 	
-	double veci2::mag() {
+	double veci2::mag() const {
 		return sqrt(x*x + y*y);
 	}
 	
-	int veci2::sqr_mag() {
+	int veci2::sqr_mag() const {
 		return x*x + y*y;
 	}
 	
@@ -120,11 +120,11 @@ namespace util {
 	vecd3::vecd3() : x(0), y(0), z(0) {}
 	vecd3::vecd3(double x, double y, double z) : x(x), y(y), z(z) {}
 	
-	double vecd3::mag() {
+	double vecd3::mag() const {
 		return sqrt(x*x + y*y + z*z);
 	}
 	
-	double vecd3::sqr_mag() {
+	double vecd3::sqr_mag() const {
 		return x*x + y*y + z*z;
 	}
 	
@@ -188,11 +188,11 @@ namespace util {
 	veci3::veci3() : x(0), y(0), z(0) {}
 	veci3::veci3(int x, int y, int z) : x(x), y(y), z(z) {}
 	
-	double veci3::mag() {
+	double veci3::mag() const {
 		return sqrt(x*x + y*y + z*z);
 	}
 	
-	int veci3::sqr_mag() {
+	int veci3::sqr_mag() const {
 		return x*x + y*y + z*z;
 	}
 	
@@ -244,11 +244,11 @@ namespace util {
 	vecd4::vecd4() : w(0), x(0), y(0), z(0) {}
 	vecd4::vecd4(double w, double x, double y, double z) : w(w), x(x), y(y), z(z) {}
 	
-	double vecd4::mag() {
+	double vecd4::mag() const {
 		return sqrt(w*w + x*x + y*y + z*z);
 	}
 	
-	double vecd4::sqr_mag() {
+	double vecd4::sqr_mag() const {
 		return w*w + x*x + y*y + z*z;
 	}
 	
@@ -299,11 +299,11 @@ namespace util {
 	veci4::veci4() : w(0), x(0), y(0), z(0) {}
 	veci4::veci4(int w, int x, int y, int z) : w(w), x(x), y(y), z(z) {}
 	
-	double veci4::mag() {
+	double veci4::mag() const {
 		return sqrt(w*w + x*x + y*y + z*z);
 	}
 	
-	int veci4::sqr_mag() {
+	int veci4::sqr_mag() const {
 		return w*w + x*x + y*y + z*z;
 	}
 	
