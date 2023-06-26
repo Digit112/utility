@@ -167,6 +167,14 @@ namespace util {
 		return vecd3(x/m, y/m, z/m);
 	}
 	
+	double vecd3::distance(const vecd3& a, const vecd3& b) {
+		double dx = a.x - b.x;
+		double dy = a.y - b.y;
+		double dz = a.z - b.z;
+		
+		return sqrt(dx*dx + dy*dy + dz*dz);
+	}
+	
 	double vecd3::dot(vecd3 a, vecd3 b) {
 		return a.x*b.x + a.y*b.y + a.z*b.z;
 	}

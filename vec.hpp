@@ -112,6 +112,8 @@ namespace util {
 		vecd3 normalize();
 		vecd3 normalize(double t);
 		
+		static double distance(const vecd3& a, const vecd3& b);
+		
 		static double dot(vecd3 a, vecd3 b);
 		static vecd3 cross(vecd3 a, vecd3 b);
 		
