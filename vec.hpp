@@ -23,9 +23,9 @@ namespace util {
 		vecd2(double x, double y);
 		
 		// Returns the magnitude of this vector
-		double mag();
+		double mag() const;
 		// Returns the squared magnitude of this vector
-		double sqr_mag();
+		double sqr_mag() const;
 		
 		// Returns the argument of the vector.
 		double arg();
@@ -60,9 +60,9 @@ namespace util {
 		veci2(int x, int y);
 		
 		// Returns the magnitude of this vector
-		double mag();
+		double mag() const;
 		// Returns the square magnitude of this vector
-		int sqr_mag();
+		int sqr_mag() const;
 		
 		// Returns the argument of the vector.
 		double arg();
@@ -93,8 +93,8 @@ namespace util {
 		vecd3();
 		vecd3(double x, double y, double z);
 		
-		double mag();
-		double sqr_mag();
+		double mag() const;
+		double sqr_mag() const;
 		
 		vecd3 operator+(const vecd3& a) const;
 		vecd3 operator-(const vecd3& a) const;
@@ -106,14 +106,22 @@ namespace util {
 		
 		bool operator==(vecd3 a);
 		
-		// Returns whether this vector is nan. Only returns true if all elements are nan
+		// Returns whether this vector is nan. Only returns true if all elements are nan.
 		bool is_nan();
 		
 		vecd3 normalize();
 		vecd3 normalize(double t);
 		
+		static double distance(const vecd3& a, const vecd3& b);
+		
 		static double dot(vecd3 a, vecd3 b);
 		static vecd3 cross(vecd3 a, vecd3 b);
+		
+		// Reflect the vector "a" across "b".
+		// rev_reflect does the same, but also reverses the direction of the reflected vector.
+		// Thus, rev_reflect returns the direction vector "a" is traveling after reflecting off of a surface with normal "b".
+		static vecd3 reflect(vecd3 a, vecd3 b);
+		static vecd3 rev_reflect(vecd3 a, vecd3 b);
 	};
 	
 	class veci3 {
@@ -125,8 +133,8 @@ namespace util {
 		veci3();
 		veci3(int x, int y, int z);
 		
-		double mag();
-		int sqr_mag();
+		double mag() const;
+		int sqr_mag() const;
 		
 		veci3 operator+(const veci3& a) const;
 		veci3 operator-(const veci3& a) const;
@@ -155,8 +163,8 @@ namespace util {
 		vecd4();
 		vecd4(double w, double x, double y, double z);
 		
-		double mag();
-		double sqr_mag();
+		double mag() const;
+		double sqr_mag() const;
 		
 		vecd4 operator+(const vecd4& a) const;
 		vecd4 operator-(const vecd4& a) const;
@@ -187,8 +195,8 @@ namespace util {
 		veci4();
 		veci4(int w, int x, int y, int z);
 		
-		double mag();
-		int sqr_mag();
+		double mag() const;
+		int sqr_mag() const;
 		
 		veci4 operator+(const veci4& a) const;
 		veci4 operator-(const veci4& a) const;
@@ -233,7 +241,7 @@ namespace util {
 		
 		quaternion operator=(vecd4) const;
 		
-		quaternion operator*(const quaternion& a) const;
+		quaternion operator*(const quaternion& a) const; // Hamilton product
 		quaternion operator*(double a) const;
 		
 		static quaternion scale(const quaternion& a, const quaternion& b);
