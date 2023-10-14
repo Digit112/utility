@@ -7,7 +7,7 @@ namespace util {
 	// The expr ("expression") class is a binary expression tree node. By combining them, an expression tree can be created.
 	// The evaluate function can be used to get a result.
 	// If this is a leaf node, value is of type T. Otherwise, it is an operation represented by a function pointer.
-	// Many default functions are defined for conveniance below.
+	// Many default functions are defined for convenience below.
 	template<class T>
 	class expr {
 	private:
@@ -39,7 +39,7 @@ namespace util {
 		// Evaluate the expression tree below this node.
 		T evaluate();
 		
-		// Default functions for the purpose of conveniance.
+		// Default functions for the purpose of convenience.
 		// Arithmetic
 		static T ADD(T a, T b) {return a + b;}
 		static T SUB(T a, T b) {return a - b;}

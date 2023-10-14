@@ -15,27 +15,44 @@ namespace util {
 		int width;
 		int height;
 		
-		double* data;
+		float* data;
 		
 		pattern2();
 		pattern2(const pattern2&);
 		pattern2(int width, int height);
-		pattern2(int width, int height, double fill);
+		pattern2(int width, int height, float fill);
 		
+		// Assignment opertor deep copies.
 		void operator=(const pattern2&);
 		
 		void saveppm(const char* fn);
 		
-		void fill(double val);
+		void fill(float val);
+		
+		// Add all values in the pattern by a number.
+		void add(float val);
+		
+		// Multiply all values in the pattern by a number.
+		void scale(float val);
 		
 		// Copy the supplied pattern over this pattern, aligning the upper left corner to x and y and with the given opacity ranging from 0 to 1.
 		void paint(pattern2 p, float opacity = 1, int x = 0, int y = 0);
+		
+		// Same as paint(), but add the values instead of averaging them.
+		void add(pattern2 p, int x = 0, int y = 0);
 		
 		// Same as paint() but multiply values instead of averaging them.
 		void scale(pattern2 p, int x = 0, int y = 0);
 		
 		// Scale all the values in this pattern such that the lowest becomes 0 and the highest becomes 1
 		void fit_values();
+		
+		// Set all values below min to min, and all values above max to max.
+		void clamp(float min = 0, float max = 1);
+		
+		// Set each value in this pattern to the max or min between itself and another pattern.
+		void max(pattern2 p);
+		void min(pattern2 p);
 		
 		~pattern2();
 	};
@@ -61,12 +78,12 @@ namespace util {
 		
 		// RNG functions
 		int random_int();
-		double random_val();
+		float random_val();
 		
 		/* Simple patterns. All coordinates and distances are given in pixels. */
 		
-		// Generate a sin wave emanating from a point.
-		pattern2& sin_wave(pattern2& p, int x, int y, int wavelength, float offset = 0);
+		// Generate a sine wave emanating from a point.
+		pattern2& sin_circle(pattern2& p, int x, int y, int wavelength, float offset = 0);
 		
 		// Generate a circle around a point where the brightness of each pixel falls off with the common log
 		pattern2& log_circle(pattern2& p, int x, int y, int r);
@@ -78,22 +95,28 @@ namespace util {
 		pattern2& lin_circle(pattern2& p, int x, int y, int r);
 		
 		// Creates a circle where brightness falls off according to a logistic curve.
-		// This circle never technically ends, but by the time it reaches r pixels it will be pretty dark.
-		// Adjust the r as necessary.
-		pattern2& logistic_circle(pattern2& p, int x, int y, int r);
+		// This circle technically  continues forever, and will be at 0.5 brightness at radius r.
+		// "s" controls the steepness of the falloff, S=0 will have no falloff and will paint everything 0.5. Negative steepness inverts the circle!
+		pattern2& logistic_circle(pattern2& p, int x, int y, int r, float s);
+		
+		// Generate a sine wave with the given wavelength and offset propagating in the direction (dx, dy)
+		pattern2& sin_wave(pattern2& p, float dx, float dy, int wavelength, float offset=0);
+		
+		// Generate a gradient between the two given values.
+		pattern2& lin_gradient(pattern2& p, float dx, float dy, float start=0, float end=1);
 		
 		/* Random Noise */
 		
 		// 2D Simplex Noise
-		pattern2& simplex(pattern2& p, double maxX, double maxY, double minX = 0, double minY = 0);
+		pattern2& simplex(pattern2& p, float maxX, float maxY, float minX = 0, float minY = 0);
 		
 		// 2D Worley Noise
-		pattern2& worley(pattern2& p, double maxX, double maxY, double minX = 0, double minY = 0);
+		pattern2& worley(pattern2& p, float maxX, float maxY, float minX = 0, float minY = 0);
 		
 		/* Operations */ 
 		
 		// Rounds the values of all pixels towards the nearest multiple of "inc".
-		pattern2& band(pattern2& p, double inc);
+		pattern2& band(pattern2& p, float inc);
 	};
 }
 
