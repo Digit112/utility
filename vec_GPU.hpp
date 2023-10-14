@@ -112,6 +112,8 @@ namespace util {
 		__device__ __host__ vecd3 normalize();
 		__device__ __host__ vecd3 normalize(double t);
 		
+		__device__ __host__ static double distance(const vecd3& a, const vecd3& b);
+		
 		__device__ __host__ static double dot(vecd3 a, vecd3 b);
 		__device__ __host__ static vecd3 cross(vecd3 a, vecd3 b);
 		
