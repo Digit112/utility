@@ -4,3 +4,4 @@
 #include "darray.hpp"
 #include "expression.hpp"
 #include "color.hpp"
+#include "graph.hpp"
