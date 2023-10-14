@@ -235,7 +235,7 @@ namespace util {
 	public:
 		quaternion();
 		quaternion(double w, double x, double y, double z);
-		quaternion(vecd3 axis, double theta);
+		quaternion(vecd3 axis, double theta); // The constructor normalizes the axis for you.
 		
 		quaternion(const vecd4& a);
 		

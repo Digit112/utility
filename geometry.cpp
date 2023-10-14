@@ -25,6 +25,7 @@ namespace util {
 		}
 	}
 	
+	// AB must be the longest line in the triangle
 	vecd3 coll_ray_tri(vecd3 p, vecd3 d, vecd3 a, vecd3 b, vecd3 c) {
 //		printf("(%.2lf, %.2lf, %.2lf), (%.2lf, %.2lf, %.2lf), (%.2lf, %.2lf, %.2lf)\n", a.x, a.y, a.z, b.x, b.y, b.z, c.x, c.y, c.z);
 
@@ -55,15 +56,16 @@ namespace util {
 		
 		vecd3 p_hit = p + d*t;
 		
+		// Axes defining a space in the triangle's plane.
+		// eu & ev are certain to form a right angle
 		vecd3 eu = (b-a).normalize();
-		
 		vecd3 ev = ((c-a) - eu * vecd3::dot(eu, c-a)).normalize();
 		
 		// Calculate the plane coordinates of the points of the triangle.
 		// a is (0, 0)
 		// b is (w, 0)
 		// c is (g, h)
-		// and w >= g (Line AB is the longest in the triangle)
+		// and w >= g
 		double w = vecd3::dot(eu, (b - a));
 		double g = vecd3::dot(eu, (c - a));
 		double h = vecd3::dot(ev, (c - a));

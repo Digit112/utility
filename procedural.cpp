@@ -2,18 +2,18 @@ namespace util {
 	pattern2::pattern2() : width(0), height(0), data(NULL) {}
 	
 	pattern2::pattern2(const pattern2& c) : width(c.width), height(c.height) {
-		data = new double[width*height];
+		data = new float[width*height];
 		for (int i = 0; i < width*height; i++) {
 			data[i] = c.data[i];
 		}
 	}
 	
 	pattern2::pattern2(int width, int height) : width(width), height(height) {
-		data = new double[width*height];
+		data = new float[width*height];
 	}
 	
-	pattern2::pattern2(int width, int height, double fill) : width(width), height(height) {
-		data = new double[width*height];
+	pattern2::pattern2(int width, int height, float fill) : width(width), height(height) {
+		data = new float[width*height];
 		for (int i = 0; i < width*height; i++) {
 			data[i] = fill;
 		}
@@ -26,7 +26,7 @@ namespace util {
 		
 		width = c.width;
 		height = c.height;
-		data = new double[width*height];
+		data = new float[width*height];
 		for (int i = 0; i < width*height; i++) {
 			data[i] = c.data[i];
 		}
@@ -53,9 +53,21 @@ namespace util {
 		fclose(fp);
 	}
 	
-	void pattern2::fill(double val) {
+	void pattern2::fill(float val) {
 		for (int i = 0; i < width*height; i++) {
 			data[i] = val;
+		}
+	}
+	
+	void pattern2::add(float val) {
+		for (int i = 0; i < width*height; i++) {
+			data[i] += val;
+		}
+	}
+	
+	void pattern2::scale(float val) {
+		for (int i = 0; i < width*height; i++) {
+			data[i] *= val;
 		}
 	}
 	
@@ -74,6 +86,25 @@ namespace util {
 			
 			for (x0 = 0, x1 = x; x1 < Mx; x1++) {
 				data[rowc1+x1] = myop*data[rowc1+x1] + opacity*p.data[rowc0+x0];
+				x0++;
+			}
+			y0++;
+		}
+	}
+	
+	void pattern2::add(pattern2 p, int x, int y) {
+		int Mx = x + p.width;
+		if (width < Mx) Mx = width;
+		int My = y + p.height;
+		if (height < My) My = height;
+		
+		int x0; int x1; int y0; int y1; int rowc0; int rowc1;
+		for (y0 = 0, y1 = y; y1 < My; y1++) {
+			rowc0 = p.width*y0;
+			rowc1 = width*y1;
+			
+			for (x0 = 0, x1 = x; x1 < Mx; x1++) {
+				data[rowc1+x1] = data[rowc1+x1] + p.data[rowc0+x0];
 				x0++;
 			}
 			y0++;
@@ -100,21 +131,47 @@ namespace util {
 	}
 	
 	void pattern2::fit_values() {
-		double min = 1;
-		double max = 0;
+		float min = 1;
+		float max = 0;
 		
 		for (int i = 0; i < width*height; i++) {
 			min = fmin(data[i], min);
 			max = fmax(data[i], max);
 		}
 		
-		
-		double scale = 1/(max-min);
-		printf("Max: %.2f, Min: %.2f, Scale: %.2f\n", max, min, scale);
+		float scale = 1/(max-min);
+//		printf("Max: %.2f, Min: %.2f, Scale: %.2f\n", max, min, scale);
 		for (int i = 0; i < width*height; i++) {
 			data[i] = (data[i] - min) * scale;
 		}
-	}	
+	}
+	
+	void pattern2::clamp(float min, float max) {
+		for (int i = 0; i < width*height; i++) {
+			if (data[i] < min) {
+				data[i] = min;
+			}
+			else if (data[i] > max) {
+				data[i] = max;
+			}
+		}
+	}
+	
+	void pattern2::max(pattern2 p) {
+		for (int i = 0; i < width*height; i++) {
+			if (data[i] < p.data[i]) {
+				data[i] = p.data[i];
+			}
+		}
+	}
+	
+	void pattern2::min(pattern2 p) {
+		for (int i = 0; i < width*height; i++) {
+			if (data[i] > p.data[i]) {
+				data[i] = p.data[i];
+			}
+		}
+	}
 	
 	pattern2::~pattern2() {
 		if (data != NULL) {
@@ -186,11 +243,11 @@ namespace util {
 		return (int) result;
 	}
 	
-	double procedural::random_val() {
-		return (double) random_int() / 0xFFFFFFFF + 0.5;
+	float procedural::random_val() {
+		return (float) random_int() / 0xFFFFFFFF + 0.5;
 	}
 	
-	pattern2& procedural::sin_wave(pattern2& p, int x, int y, int wavelength, float offset) {
+	pattern2& procedural::sin_circle(pattern2& p, int x, int y, int wavelength, float offset) {
 		float xd; float yd; float dis;
 		int rowc;
 		for (int py = 0; py < p.height; py++) {
@@ -270,7 +327,7 @@ namespace util {
 		return p;		
 	}
 	
-	pattern2& procedural::logistic_circle(pattern2& p, int x, int y, int r) {
+	pattern2& procedural::logistic_circle(pattern2& p, int x, int y, int r, float s = 5) {
 		float xd; float yd; float dis;
 		int rowc;
 		for (int py = 0; py < p.height; py++) {
@@ -283,17 +340,53 @@ namespace util {
 				xd *= xd;
 				
 				dis = sqrt(xd + yd);
-				p.data[px+rowc] = -2 / (1 + pow(2.718282, -dis * 5 / r)) + 2;
+				p.data[px+rowc] = -1 / (1 + pow(2.718282, -s * (dis - r) / r)) + 1;
 			}
 		}
 				
 		return p;		
 	}
 	
-	pattern2& procedural::simplex(pattern2& p, double maxX, double maxY, double minX, double minY) {
+	pattern2& procedural::sin_wave(pattern2& p, float dx, float dy, int wavelength, float offset) {
+		float m = sqrt(dx*dx + dy*dy);
+		dx /= m;
+		dy /= m;
+		
+		int rowc;
+		
+		for (int py = 0; py < p.height; py++) {
+			rowc = py * p.width;
+			for (int px = 0; px < p.width; px++) {
+				p.data[rowc + px] = sin(2*3.14159*((dx*px + dy*py) / wavelength + offset)) / 2 + 0.5;
+			}
+		}
+		
+		return p;
+	}
+	
+	pattern2& procedural::lin_gradient(pattern2& p, float dx, float dy, float start, float end) {
+		float m = sqrt(dx*dx + dy*dy);
+		dx /= m;
+		dy /= m;
+		
+		float max_dis = sqrt(p.width*p.width + p.height*p.height);
+		
+		int rowc;
+		
+		for (int py = 0; py < p.height; py++) {
+			rowc = py * p.width;
+			for (int px = 0; px < p.width; px++) {
+				p.data[rowc + px] = (dx*px + dy*py) / max_dis;
+			}
+		}
+		
+		return p;
+	}
+	
+	pattern2& procedural::simplex(pattern2& p, float maxX, float maxY, float minX, float minY) {
 		// Working variables
-		double s;
-		double z;
+		float s;
+		float z;
 		
 		unsigned int sd = (unsigned int) random_int();
 		
@@ -310,10 +403,10 @@ namespace util {
 		}
 		
 		// Variables to store the original specified region.
-		double mx = minX;
-		double Mx = maxX;
-		double my = minY;
-		double My = maxY;
+		float mx = minX;
+		float Mx = maxX;
+		float my = minY;
+		float My = maxY;
 		
 		// Expand the region provided by the player to include all corners which have any influence over any point in the original region.
 		minX--;
@@ -325,11 +418,11 @@ namespace util {
 		
 		// Perform the inverse equalateralization transform to the upper left and lower right corners of the supplied region.
 		s = 0.366025404 * (minX + maxY);
-		double high_left_x = minX + s;
-		double high_left_y = maxY + s;
+		float high_left_x = minX + s;
+		float high_left_y = maxY + s;
 		s = 0.366025404 * (maxX + minY);
-		double low_right_x = maxX + s;
-		double low_right_y = minY + s;
+		float low_right_x = maxX + s;
+		float low_right_y = minY + s;
 		
 		// Perform the transform on the remaining corners as well, although they don't need new variables.
 		s = 0.366025404 * (minX + minY);
@@ -349,8 +442,8 @@ namespace util {
 		
 		// In cases where the sampled region has a low enough aspect ratio, the high_left_x might be farther right than the low_right_x value.
 		// In this case we must ensure the regions are re-ordered correctly.
-		double first_switch;
-		double last_switch;
+		float first_switch;
+		float last_switch;
 		if (high_left_x < low_right_x) {
 			first_switch = high_left_x;
 			last_switch = low_right_x;
@@ -458,15 +551,15 @@ namespace util {
 		vecd2 vx; vecd2 vy; vecd2 vz;
 		
 		// Ugh
-		double left; double low; double right; double high;
-		double u; double v; double w; double m;
-		double X; double Y; double Px; double Py;
+		float left; float low; float right; float high;
+		float u; float v; float w; float m;
+		float X; float Y; float Px; float Py;
 		vecd2 Uvec; vecd2 Vvec; vecd2 Wvec;
 		for (int x = 0; x < p.width; x++) {
 			for (int y = 0; y < p.height; y++) {
 				// Get input point coordinates
-				Px = ((double) x / p.width) * (Mx - mx) + mx;
-				Py = ((double) y / p.height) * (My - my) + my;
+				Px = ((float) x / p.width) * (Mx - mx) + mx;
+				Py = ((float) y / p.height) * (My - my) + my;
 				
 				// Apply the equalateralization transform to the input point
 				s = 0.3660254037f * (Px + Py);
@@ -506,15 +599,15 @@ namespace util {
 				// Get the random vectors stored in buffer2
 				// Convert (x, y) coords of each point to (u, v) buffer2 coordinates.
 				u = px.x - intMinX;
-				v = px.y - (double) buffer1[(int) u];
+				v = px.y - (float) buffer1[(int) u];
 //				printf("px -> uv: (%.2f, %.2f), (%.2f, %.2f)\n", px.x, px.y, u, v);
 				vx = vecpick2[buffer2[(int) u][(int) v]];
 				u = py.x - intMinX;
-				v = py.y - (double) buffer1[(int) u];
+				v = py.y - (float) buffer1[(int) u];
 //				printf("py -> uv: (%.2f, %.2f), (%.2f, %.2f)\n", py.x, py.y, u, v);
 				vy = vecpick2[buffer2[(int) u][(int) v]];
 				u = pz.x - intMinX;
-				v = pz.y - (double) buffer1[(int) u];
+				v = pz.y - (float) buffer1[(int) u];
 //				printf("pz -> uv: (%.2f, %.2f), (%.2f, %.2f)\n", pz.x, pz.y, u, v);
 				vz = vecpick2[buffer2[(int) u][(int) v]];
 				
@@ -573,11 +666,11 @@ namespace util {
 		return p;
 	}
 	
-	pattern2& procedural::worley(pattern2& p, double maxX, double maxY, double minX, double minY) {
+	pattern2& procedural::worley(pattern2& p, float maxX, float maxY, float minX, float minY) {
 		unsigned int sd = random_int();
 		
 		// Ensure the min/max values are in the right order
-		double s;
+		float s;
 		if (minX > maxX) {
 			s = minX;
 			minX = maxX;
@@ -590,10 +683,10 @@ namespace util {
 		}
 
 		// Store original specified region
-		double mx = minX;
-		double Mx = maxX;
-		double my = minY;
-		double My = maxY;
+		float mx = minX;
+		float Mx = maxX;
+		float my = minY;
+		float My = maxY;
 
 		// Adjust region outward
 		minX = floor(minX) - 1;
@@ -623,22 +716,22 @@ namespace util {
 				
 				pbr[ix] = vecd2(random_val(), random_val());
 				
-				printf("Assigned (%.2f, %.2f) to (%d, %d)\n", pbr[ix].x, pbr[ix].y, x, y);
+//				printf("Assigned (%.2f, %.2f) to (%d, %d)\n", pbr[ix].x, pbr[ix].y, x, y);
 			}	
 		}
 		
-		double X; double Y;
-		double A; double B;
-		double m;
-		double searchMinX; double searchMinY; double searchMaxX; double searchMaxY;
+		float X; float Y;
+		float A; float B;
+		float m;
+		float searchMinX; float searchMinY; float searchMaxX; float searchMaxY;
 		
-		double tempVecX; double tempVecY;
+		float tempVecX; float tempVecY;
 		
 		for (int y = 0; y < p.height; y++) {
 			for (int x = 0; x < p.width; x++) {
 				// Calculate position of this point in worley-space
-				X = (double) x / p.width  * (Mx - mx) + mx;
-				Y = (double) y / p.height * (My - my) + my;
+				X = (float) x / p.width  * (Mx - mx) + mx;
+				Y = (float) y / p.height * (My - my) + my;
 				
 //				printf("(%d, %d) -> (%.2f, %.2f) -> ", x, y, X, Y);
 				
@@ -683,7 +776,7 @@ namespace util {
 		return p;
 	}
 	
-	pattern2& procedural::band(pattern2& p, double inc) {
+	pattern2& procedural::band(pattern2& p, float inc) {
 		for (int i = 0; i < p.width*p.height; i++) {
 			p.data[i] = round(p.data[i] / inc) * inc;
 		}
