@@ -50,6 +50,7 @@ namespace util {
 		double m = mag();
 		return vecd2(x/m, y/m);
 	}
+	
 	vecd2 vecd2::normalize(double t) {
 		double m = mag() / t;
 		return vecd2(x/m, y/m);
