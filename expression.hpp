@@ -1,5 +1,5 @@
-#ifndef sgl_expr
-#define sgl_expr
+#ifndef UTIL_EXPRESSION
+#define UTIL_EXPRESSION
 
 #include <math.h>
 

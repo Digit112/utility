@@ -1,5 +1,5 @@
-#ifndef util_procedural
-#define util_procedural
+#ifndef UTIL_PROCEDURAL
+#define UTIL_PROCEDURAL
 
 #include <stdio.h>
 #include <stdlib.h>

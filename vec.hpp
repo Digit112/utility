@@ -1,5 +1,5 @@
-#ifndef util_vec
-#define util_vec
+#ifndef UTIL_VECTOR
+#define UTIL_VECTOR
 
 #include <math.h>
 #include <stdio.h>

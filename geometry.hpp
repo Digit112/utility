@@ -1,5 +1,5 @@
-#ifndef util_geometry
-#define util_geometry
+#ifndef UTIL_GEOMETRY
+#define UTIL_GEOMETRY
 
 #include "vec.hpp"
 
