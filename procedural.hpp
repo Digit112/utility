@@ -9,6 +9,9 @@
 #include <cstdint>
 
 namespace util {
+	class pattern2;
+	class procedural;
+	
 	// simple class for holding 2D monochrome data.
 	class pattern2 {
 	public:
@@ -63,8 +66,8 @@ namespace util {
 		unsigned int seed[4] = {0, 0, 0, 0};
 		
 		// Preset vector choices for simplex noise generation
-		const vecd2 vecpick2[4] = {vecd2(1, 1), vecd2(1, -1), vecd2(-1, 1), vecd2(-1, -1)};
-		const vecd3 vecpick3[12];
+		const vec2<float> vecpick2[4] = {vec2<float>(1, 1), vec2<float>(1, -1), vec2<float>(-1, 1), vec2<float>(-1, -1)};
+		//const vecd3 vecpick3[12];
 		
 		procedural();
 		

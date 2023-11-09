@@ -47,7 +47,7 @@ namespace util {
 		mat[j] = temp;
 	}
 	
-	bool cubic_interpolator::interpolate(const int num_points, vecd2* p) {
+	bool cubic_interpolator::interpolate(const int num_points, vec2<float>* p) {
 		int N = 4*num_points - 4;
 		
 		// mat[row][column], column = N indexes the RHS.

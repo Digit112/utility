@@ -1,174 +1,118 @@
 namespace util {
-	/* ---- vecd2 ---- */
+	/* ---- vec2 ---- */
 	
-	vecd2::vecd2() : x(0), y(0) {}
-	vecd2::vecd2(double x, double y) : x(x), y(y) {}
+	template<class T> vec2<T>::vec2() : x(0), y(0) {}
+	template<class T> vec2<T>::vec2(T x, T y) : x(x), y(y) {}
 	
-	double vecd2::mag() const {
+	template<class T> double vec2<T>::mag() const {
 		return sqrt(x*x + y*y);
 	}
 	
-	double vecd2::sqr_mag() const {
+	template<class T> double vec2<T>::sqr_mag() const {
 		return x*x + y*y;
 	}
 	
-	double vecd2::arg() {
+	template<class T> double vec2<T>::arg() {
 		return atan2(y, x);
 	}
 	
-	vecd2 vecd2::operator+(const vecd2& a) const {
-		return vecd2(x+a.x, y+a.y);
+	template<class T> vec2<T> vec2<T>::operator+(const vec2<T>& a) const {
+		return vec2(x+a.x, y+a.y);
 	}
-	vecd2 vecd2::operator-(const vecd2& a) const {
-		return vecd2(x-a.x, y-a.y);
+	template<class T> vec2<T> vec2<T>::operator-(const vec2<T>& a) const {
+		return vec2(x-a.x, y-a.y);
 	}
-	vecd2 vecd2::operator*(const vecd2& a) const {
-		return vecd2(x*a.x, y*a.y);
+	template<class T> vec2<T> vec2<T>::operator*(const vec2<T>& a) const {
+		return vec2(x*a.x, y*a.y);
 	}
-	vecd2 vecd2::operator/(const vecd2& a) const {
-		return vecd2(x/a.x, y/a.y);
+	template<class T> vec2<T> vec2<T>::operator/(const vec2<T>& a) const {
+		return vec2(x/a.x, y/a.y);
 	}
-	vecd2 vecd2::operator*(double a) const {
-		return vecd2(x*a, y*a);
+	template<class T> vec2<T> vec2<T>::operator*(double a) const {
+		return vec2(x*a, y*a);
 	}
-	vecd2 vecd2::operator/(double a) const {
-		return vecd2(x/a, y/a);
+	template<class T> vec2<T> vec2<T>::operator/(double a) const {
+		return vec2(x/a, y/a);
 	}
-	vecd2 vecd2::operator-() const {
-		return vecd2(-x, -y);
+	template<class T> vec2<T> vec2<T>::operator-() const {
+		return vec2(-x, -y);
 	}
 	
-	bool vecd2::operator==(vecd2 a) {
+	template<class T> bool vec2<T>::operator==(const vec2<T>& a) const {
 		return x == a.x && y == a.y;
 	}
 	
-	bool vecd2::is_nan() {
+	template<class T> bool vec2<T>::is_nan() const {
 		return isnan(x) && isnan(y);
 	}
 	
-	vecd2 vecd2::normalize() {
+	template<class T> vec2<T> vec2<T>::normalize() {
 		double m = mag();
-		return vecd2(x/m, y/m);
+		return vec2(x/m, y/m);
 	}
 	
-	vecd2 vecd2::normalize(double t) {
+	template<class T> vec2<T> vec2<T>::normalize(double t) {
 		double m = mag() / t;
-		return vecd2(x/m, y/m);
+		return vec2(x/m, y/m);
 	}
 	
-	double vecd2::dot(vecd2 a, vecd2 b) {
+	template<class T> double vec2<T>::dot(const vec2<T>& a, const vec2<T>& b) {
 		return a.x*b.x + a.y*b.y;
 	}
 	
-	/* ---- veci2 ---- */
+	/* ---- vec3 ---- */
 	
-	veci2::veci2() : x(0), y(0) {}
-	veci2::veci2(int x, int y) : x(x), y(y) {}
+	template<class T> vec3<T>::vec3() : x(0), y(0), z(0) {}
+	template<class T> vec3<T>::vec3(double x, double y, double z) : x(x), y(y), z(z) {}
 	
-	double veci2::mag() const {
-		return sqrt(x*x + y*y);
-	}
-	
-	int veci2::sqr_mag() const {
-		return x*x + y*y;
-	}
-	
-	double veci2::arg() {
-		return atan2(y, x);
-	}
-	
-	veci2 veci2::operator+(const veci2& a) const {
-		return veci2(x+a.x, y+a.y);
-	}
-	veci2 veci2::operator-(const veci2& a) const {
-		return veci2(x-a.x, y-a.y);
-	}
-	veci2 veci2::operator*(const veci2& a) const {
-		return veci2(x*a.x, y*a.y);
-	}
-	veci2 veci2::operator/(const veci2& a) const {
-		return veci2(x/a.x, y/a.y);
-	}
-	veci2 veci2::operator*(int a) const {
-		return veci2(x*a, y*a);
-	}
-	veci2 veci2::operator/(int a) const {
-		return veci2(x/a, y/a);
-	}
-	veci2 veci2::operator-() const {
-		return veci2(-x, -y);
-	}
-	
-	bool veci2::operator==(veci2 a) {
-		return x == a.x && y == a.y;
-	}
-	
-	vecd2 veci2::normalize() {
-		double m = mag();
-		return vecd2(x/m, y/m);
-	}
-	vecd2 veci2::normalize(double t) {
-		double m = mag() / t;
-		return vecd2(x/m, y/m);
-	}
-	
-	int veci2::dot(vecd2 a, vecd2 b) {
-		return a.x*b.x + a.y*b.y;
-	}
-	
-	/* ---- vecd3 ---- */
-	
-	vecd3::vecd3() : x(0), y(0), z(0) {}
-	vecd3::vecd3(double x, double y, double z) : x(x), y(y), z(z) {}
-	
-	double vecd3::mag() const {
+	template<class T> double vec3<T>::mag() const {
 		return sqrt(x*x + y*y + z*z);
 	}
 	
-	double vecd3::sqr_mag() const {
+	template<class T> double vec3<T>::sqr_mag() const {
 		return x*x + y*y + z*z;
 	}
 	
-	vecd3 vecd3::operator+(const vecd3& a) const {
-		return vecd3(x+a.x, y+a.y, z+a.z);
+	template<class T> vec3<T> vec3<T>::operator+(const vec3<T>& a) const {
+		return vec3<T>(x+a.x, y+a.y, z+a.z);
 	}
-	vecd3 vecd3::operator-(const vecd3& a) const {
-		return vecd3(x-a.x, y-a.y, z-a.z);
+	template<class T> vec3<T> vec3<T>::operator-(const vec3<T>& a) const {
+		return vec3<T>(x-a.x, y-a.y, z-a.z);
 	}
-	vecd3 vecd3::operator*(const vecd3& a) const {
-		return vecd3(x*a.x, y*a.y, z*a.z);
+	template<class T> vec3<T> vec3<T>::operator*(const vec3<T>& a) const {
+		return vec3<T>(x*a.x, y*a.y, z*a.z);
 	}
-	vecd3 vecd3::operator/(const vecd3& a) const {
-		return vecd3(x/a.x, y/a.y, z/a.z);
+	template<class T> vec3<T> vec3<T>::operator/(const vec3<T>& a) const {
+		return vec3<T>(x/a.x, y/a.y, z/a.z);
 	}
-	vecd3 vecd3::operator*(double a) const {
-		return vecd3(x*a, y*a, z*a);
+	template<class T> vec3<T> vec3<T>::operator*(double a) const {
+		return vec3<T>(x*a, y*a, z*a);
 	}
-	vecd3 vecd3::operator/(double a) const {
-		return vecd3(x/a, y/a, z/a);
+	template<class T> vec3<T> vec3<T>::operator/(double a) const {
+		return vec3<T>(x/a, y/a, z/a);
 	}
-	vecd3 vecd3::operator-() const {
-		return vecd3(-x, -y, -z);
+	template<class T> vec3<T> vec3<T>::operator-() const {
+		return vec3<T>(-x, -y, -z);
 	}
 	
-	bool vecd3::operator==(vecd3 a) {
+	template<class T> bool vec3<T>::operator==(const vec3<T>& a) {
 		return x == a.x && y == a.y && z == a.z;
 	}
 	
-	bool vecd3::is_nan() {
+	template<class T> bool vec3<T>::is_nan() {
 		return isnan(x) && isnan(y) && isnan(z);
 	}
 	
-	vecd3 vecd3::normalize() {
+	template<class T> vec3<T> vec3<T>::normalize() {
 		double m = mag();
-		return vecd3(x/m, y/m, z/m);
+		return vec3<T>(x/m, y/m, z/m);
 	}
-	vecd3 vecd3::normalize(double t) {
+	template<class T> vec3<T> vec3<T>::normalize(double t) {
 		double m = mag() / t;
-		return vecd3(x/m, y/m, z/m);
+		return vec3<T>(x/m, y/m, z/m);
 	}
 	
-	double vecd3::distance(const vecd3& a, const vecd3& b) {
+	template<class T> double vec3<T>::distance(const vec3<T>& a, const vec3<T>& b) {
 		double dx = a.x - b.x;
 		double dy = a.y - b.y;
 		double dz = a.z - b.z;
@@ -176,264 +120,171 @@ namespace util {
 		return sqrt(dx*dx + dy*dy + dz*dz);
 	}
 	
-	double vecd3::dot(vecd3 a, vecd3 b) {
+	template<class T> double vec3<T>::dot(const vec3<T>& a, const vec3<T>& b) {
 		return a.x*b.x + a.y*b.y + a.z*b.z;
 	}
 	
-	vecd3 vecd3::cross(vecd3 a, vecd3 b) {
-		return vecd3(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x);
+	template<class T> vec3<T> vec3<T>::cross(const vec3<T>& a, const vec3<T>& b) {
+		return vec3<T>(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x);
 	}
 	
-	vecd3 vecd3::reflect(vecd3 a, vecd3 b) {
-		return b * vecd3::dot(a, b) * 2 - a;
+	template<class T> vec3<T> vec3<T>::reflect(const vec3<T>& a, const vec3<T>& b) {
+		return b * vec3<T>::dot(a, b) * 2 - a;
 	}
 	
-	vecd3 vecd3::rev_reflect(vecd3 a, vecd3 b) {
-		return a - b * vecd3::dot(a, b) * 2;
-	}
-	
-	/* ---- veci3 ---- */
-	
-	veci3::veci3() : x(0), y(0), z(0) {}
-	veci3::veci3(int x, int y, int z) : x(x), y(y), z(z) {}
-	
-	double veci3::mag() const {
-		return sqrt(x*x + y*y + z*z);
-	}
-	
-	int veci3::sqr_mag() const {
-		return x*x + y*y + z*z;
-	}
-	
-	veci3 veci3::operator+(const veci3& a) const {
-		return veci3(x+a.x, y+a.y, z+a.z);
-	}
-	veci3 veci3::operator-(const veci3& a) const {
-		return veci3(x-a.x, y-a.y, z-a.z);
-	}
-	veci3 veci3::operator*(const veci3& a) const {
-		return veci3(x*a.x, y*a.y, z*a.z);
-	}
-	veci3 veci3::operator/(const veci3& a) const {
-		return veci3(x/a.x, y/a.y, z/a.z);
-	}
-	veci3 veci3::operator*(int a) const {
-		return veci3(x*a, y*a, z*a);
-	}
-	veci3 veci3::operator/(int a) const {
-		return veci3(x/a, y/a, z/a);
-	}
-	veci3 veci3::operator-() const {
-		return veci3(-x, -y, -z);
-	}
-	
-	bool veci3::operator==(veci3 a) {
-		return x == a.x && y == a.y && z == a.z;
-	}
-	
-	vecd3 veci3::normalize() {
-		double m = mag();
-		return vecd3(x/m, y/m, z/m);
-	}
-	vecd3 veci3::normalize(double t) {
-		double m = mag() / t;
-		return vecd3(x/m, y/m, z/m);
-	}
-	
-	int veci3::dot(veci3 a, veci3 b) {
-		return a.x*b.x + a.y*b.y + a.z*b.z;
-	}
-	
-	veci3 veci3::cross(veci3 a, veci3 b) {
-		return veci3(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x);
+	template<class T> vec3<T> vec3<T>::rev_reflect(const vec3<T>& a, const vec3<T>& b) {
+		return a - b * vec3<T>::dot(a, b) * 2;
 	}
 	
 	/* ---- vecd4 ---- */
 	
-	vecd4::vecd4() : w(0), x(0), y(0), z(0) {}
-	vecd4::vecd4(double w, double x, double y, double z) : w(w), x(x), y(y), z(z) {}
+	template<class T> vec4<T>::vec4() : w(0), x(0), y(0), z(0) {}
+	template<class T> vec4<T>::vec4(T w, T x, T y, T z) : w(w), x(x), y(y), z(z) {}
 	
-	double vecd4::mag() const {
+	template<class T> double vec4<T>::mag() const {
 		return sqrt(w*w + x*x + y*y + z*z);
 	}
 	
-	double vecd4::sqr_mag() const {
+	template<class T> double vec4<T>::sqr_mag() const {
 		return w*w + x*x + y*y + z*z;
 	}
 	
-	vecd4 vecd4::operator+(const vecd4& a) const {
-		return vecd4(w+a.w, x+a.x, y+a.y, z+a.z);
+	template<class T> vec4<T> vec4<T>::operator+(const vec4<T>& a) const {
+		return vec4<T>(w+a.w, x+a.x, y+a.y, z+a.z);
 	}
-	vecd4 vecd4::operator-(const vecd4& a) const {
-		return vecd4(w-a.w, x-a.x, y-a.y, z-a.z);
+	template<class T> vec4<T> vec4<T>::operator-(const vec4<T>& a) const {
+		return vec4<T>(w-a.w, x-a.x, y-a.y, z-a.z);
 	}
-	vecd4 vecd4::operator*(const vecd4& a) const {
-		return vecd4(w*a.w, x*a.x, y*a.y, z*a.z);
+	template<class T> vec4<T> vec4<T>::operator*(const vec4<T>& a) const {
+		return vec4<T>(w*a.w, x*a.x, y*a.y, z*a.z);
 	}
-	vecd4 vecd4::operator/(const vecd4& a) const {
-		return vecd4(w/a.w, x/a.x, y/a.y, z/a.z);
+	template<class T> vec4<T> vec4<T>::operator/(const vec4<T>& a) const {
+		return vec4<T>(w/a.w, x/a.x, y/a.y, z/a.z);
 	}
-	vecd4 vecd4::operator*(double a) const {
-		return vecd4(w*a, x*a, y*a, z*a);
+	template<class T> vec4<T> vec4<T>::operator*(double a) const {
+		return vec4<T>(w*a, x*a, y*a, z*a);
 	}
-	vecd4 vecd4::operator/(double a) const {
-		return vecd4(w/a, x/a, y/a, z/a);
+	template<class T> vec4<T> vec4<T>::operator/(double a) const {
+		return vec4<T>(w/a, x/a, y/a, z/a);
 	}
-	vecd4 vecd4::operator-() const {
-		return vecd4(-w, -x, -y, -z);
+	template<class T> vec4<T> vec4<T>::operator-() const {
+		return vec4<T>(-w, -x, -y, -z);
 	}
 	
-	bool vecd4::operator==(vecd4 a) {
+	template<class T> bool vec4<T>::operator==(vec4<T> a) {
 		return w == a.w && x == a.x && y == a.y && z == a.z;
 	}
 	
-	bool vecd4::is_nan() {
+	template<class T> bool vec4<T>::is_nan() {
 		return isnan(w) && isnan(x) && isnan(y) && isnan(z);
 	}
 	
-	vecd4 vecd4::normalize() {
+	template<class T> vec4<T> vec4<T>::normalize() {
 		double m = mag();
-		return vecd4(w/m, x/m, y/m, z/m);
+		return vec4<T>(w/m, x/m, y/m, z/m);
 	}
-	vecd4 vecd4::normalize(double t) {
+	template<class T> vec4<T> vec4<T>::normalize(double t) {
 		double m = mag() / t;
-		return vecd4(w/m, x/m, y/m, z/m);
+		return vec4<T>(w/m, x/m, y/m, z/m);
 	}
 	
-	double vecd4::dot(vecd4 a, vecd4 b) {
-		return a.w*b.w + a.x*b.x + a.y*b.y + a.z*b.z;
-	}
-	
-	/* ---- veci4 ---- */
-	veci4::veci4() : w(0), x(0), y(0), z(0) {}
-	veci4::veci4(int w, int x, int y, int z) : w(w), x(x), y(y), z(z) {}
-	
-	double veci4::mag() const {
-		return sqrt(w*w + x*x + y*y + z*z);
-	}
-	
-	int veci4::sqr_mag() const {
-		return w*w + x*x + y*y + z*z;
-	}
-	
-	veci4 veci4::operator+(const veci4& a) const {
-		return veci4(w+a.w, x+a.x, y+a.y, z+a.z);
-	}
-	veci4 veci4::operator-(const veci4& a) const {
-		return veci4(w-a.w, x-a.x, y-a.y, z-a.z);
-	}
-	veci4 veci4::operator*(const veci4& a) const {
-		return veci4(w*a.w, x*a.x, y*a.y, z*a.z);
-	}
-	veci4 veci4::operator/(const veci4& a) const {
-		return veci4(w/a.w, x/a.x, y/a.y, z/a.z);
-	}
-	veci4 veci4::operator*(int a) const {
-		return veci4(w*a, x*a, y*a, z*a);
-	}
-	veci4 veci4::operator/(int a) const {
-		return veci4(w/a, x/a, y/a, z/a);
-	}
-	veci4 veci4::operator-() const {
-		return veci4(-w, -x, -y, -z);
-	}
-	
-	bool veci4::operator==(veci4 a) {
-		return w == a.w && x == a.x && y == a.y && z == a.z;
-	}
-	
-	vecd4 veci4::normalize() {
-		double m = mag();
-		return vecd4(w / m, x / m, y / m, z / m);
-	}
-	vecd4 veci4::normalize(double t) {
-		double m = mag() / t;
-		return vecd4(w/m, x/m, y/m, z/m);
-	}
-	
-	int veci4::dot(veci4 a, veci4 b) {
+	template<class T> double vec4<T>::dot(const vec4<T>& a, const vec4<T>& b) {
 		return a.w*b.w + a.x*b.x + a.y*b.y + a.z*b.z;
 	}
 	
 	/* ---- complex ---- */
 	
-	complex::complex() : vecd2() {}
-	complex::complex(double r, double i) : vecd2(r, i) {}
-	complex::complex(double theta) : vecd2(cos(theta), sin(theta)) {}
+	template<class T> complex<T>::complex() : vec2<T>() {}
+	template<class T> complex<T>::complex(T r, T i) : vec2<T>(r, i) {}
+	template<class T> complex<T>::complex(double theta) : vec2<T>(cos(theta), sin(theta)) {}
 	
-	complex::complex(const vecd2& a) : vecd2(a) {}
+	template<class T> complex<T>::complex(const vec2<T>& a) : vec2<T>(a) {}
 	
-	complex complex::operator*(const complex& a) const {
-		return complex(x*a.x - y*a.y, x * a.y + y * a.x);
+	template<class T> complex<T> complex<T>::operator*(const complex<T>& a) const {
+		return complex<T>(this->x*a.x - this->y*a.y, this->x*a.y + this->y*a.x);
 	}
 	
-	complex complex::operator*(double a) const {
-		return complex(x*a, y*a);
+	template<class T> complex<T> complex<T>::operator*(double a) const {
+		return complex<T>(this->x*a, this->y*a);
 	}
 	
-	complex complex::scale(const complex& a, const complex& b) {
-		return complex(a.x*b.x, a.y*b.y);
+	template<class T> complex<T> complex<T>::scale(const complex<T>& a, const complex<T>& b) {
+		return complex<T>(a.x*b.x, a.y*b.y);
 	}
 	
-	complex complex::operator~() const {
-		return complex(x, -y);
+	template<class T> complex<T> complex<T>::operator~() const {
+		return complex<T>(this->x, -this->y);
 	}
 	
 	/* ---- quaternion ---- */
 	
-	quaternion::quaternion() : vecd4() {}
-	quaternion::quaternion(double w, double x, double y, double z) : vecd4(w, x, y, z) {}
+	template<class T> quaternion<T>::quaternion() : vec4<T>() {}
+	template<class T> quaternion<T>::quaternion(T w, T x, T y, T z) : vec4<T>(w, x, y, z) {}
 
-	quaternion::quaternion(vecd3 axis, double theta) {
+	template<class T> quaternion<T>::quaternion(const vec3<T>& axis, double theta) {
 		axis = axis.normalize();
 		double s = sin(theta/2);
-		w = cos(theta/2);
-		x = axis.x * s;
-		y = axis.y * s;
-		z = axis.z * s;
+		this->w = cos(theta/2);
+		this->x = axis.x * s;
+		this->y = axis.y * s;
+		this->z = axis.z * s;
 	}
 	
-	quaternion::quaternion(const vecd4& a) : vecd4(a) {}
+	template<class T> quaternion<T>::quaternion(const vec4<T>& a) : vec4<T>(a) {}
 	
-	quaternion quaternion::operator*(const quaternion& a) const {
-		return quaternion(w*a.w - x*a.x - y*a.y - z*a.z, w*a.x + x*a.w + y*a.z - z*a.y, w*a.y - x*a.z + y*a.w + z*a.x, w*a.z + x*a.y - y*a.x + z*a.w);
+	template<class T> quaternion<T> quaternion<T>::operator*(const quaternion<T>& a) const {
+		return quaternion<T>(
+			this->w*a.w - this->x*a.x - this->y*a.y - this->z*a.z,
+			this->w*a.x + this->x*a.w + this->y*a.z - this->z*a.y,
+			this->w*a.y - this->x*a.z + this->y*a.w + this->z*a.x,
+			this->w*a.z + this->x*a.y - this->y*a.x + this->z*a.w
+		);
 	}
 	
-	quaternion quaternion::operator*(double a) const {
-		return quaternion(w*a, x*a, y*a, z*a);
+	template<class T> quaternion<T> quaternion<T>::operator*(double a) const {
+		return quaternion(this->w*a, this->x*a, this->y*a, this->z*a);
 	}
 	
-	quaternion quaternion::scale(const quaternion& a, const quaternion& b) {
-		return quaternion(a.w*b.w, a.x*b.x, a.y*b.y, a.z*b.z);
+	template<class T> quaternion<T> quaternion<T>::scale(const quaternion<T>& a, const quaternion<T>& b) {
+		return quaternion<T>(a.w*b.w, a.x*b.x, a.y*b.y, a.z*b.z);
 	}
 	
-	quaternion quaternion::operator=(vecd4 a) const {
-		return quaternion(a.w, a.x, a.y, a.z);
+	template<class T> quaternion<T> quaternion<T>::operator=(const vec4<T>& a) const {
+		return quaternion<T>(a.w, a.x, a.y, a.z);
 	}
 	
-	quaternion quaternion::operator~() const {
-		return quaternion(w, -x, -y, -z);
+	template<class T> quaternion<T> quaternion<T>::operator~() const {
+		return quaternion<T>(this->w, -this->x, -this->y, -this->z);
 	}
 	
-	quaternion quaternion::normalize() {
-		double m = mag();
-		return quaternion(w/m, x/m, y/m, z/m);
+	template<class T> quaternion<T> quaternion<T>::normalize() {
+		double m = this->mag();
+		return quaternion<T>(this->w/m, this->x/m, this->y/m, this->z/m);
 	}
 	
-	quaternion quaternion::normalize(double t) {
-		double m = mag() / t;
-		return quaternion(w/m, x/m, y/m, z/m);
+	template<class T> quaternion<T> quaternion<T>::normalize(double t) {
+		double m = this->mag() / t;
+		return quaternion<T>(this->w/m, this->x/m, this->y/m, this->z/m);
 	}
 	
-	quaternion quaternion::hamilton(const quaternion& a, const quaternion& b) {
-		return quaternion(a.w*b.w - a.x*b.x - a.y*b.y - a.z*b.z, a.w*b.x + a.x*b.w + a.y*b.z - a.z*b.y, a.w*b.y - a.x*b.z + a.y*b.w + a.z*b.x, a.w*b.z + a.x*b.y - a.y*b.x + a.z*b.w);
+	template<class T> quaternion<T> quaternion<T>::hamilton(const quaternion<T>& a, const quaternion<T>& b) {
+		return quaternion<T>(
+			a.w*b.w - a.x*b.x - a.y*b.y - a.z*b.z,
+			a.w*b.x + a.x*b.w + a.y*b.z - a.z*b.y,
+			a.w*b.y - a.x*b.z + a.y*b.w + a.z*b.x,
+			a.w*b.z + a.x*b.y - a.y*b.x + a.z*b.w
+		);
 	}
 	
-	vecd3 quaternion::vhamilton(const quaternion& a, const quaternion& b) {
-		return vecd3(a.w*b.x + a.x*b.w + a.y*b.z - a.z*b.y, a.w*b.y - a.x*b.z + a.y*b.w + a.z*b.x, a.w*b.z + a.x*b.y - a.y*b.x + a.z*b.w);
+	template<class T> vec3<T> quaternion<T>::vhamilton(const quaternion<T>& a, const quaternion<T>& b) {
+		return vecd3(
+			a.w*b.x + a.x*b.w + a.y*b.z - a.z*b.y,
+			a.w*b.y - a.x*b.z + a.y*b.w + a.z*b.x,
+			a.w*b.z + a.x*b.y - a.y*b.x + a.z*b.w
+		);
 	}
 	
-	quaternion& quaternion::mhamilton(quaternion& a, const quaternion& b) {
+	template<class T> quaternion<T>& quaternion<T>::mhamilton(quaternion<T>& a, const quaternion<T>& b) {
 		a.w = a.w*b.w - a.x*b.x - a.y*b.y - a.z*b.z;
 		a.x = a.w*b.x + a.x*b.w + a.y*b.z - a.z*b.y;
 		a.y = a.w*b.y - a.x*b.z + a.y*b.w + a.z*b.x;
@@ -441,24 +292,30 @@ namespace util {
 		return a;
 	}
 	
-	vecd3 quaternion::apply(const vecd3& in) const {
-		return vhamilton(hamilton(*this, quaternion(0, in.x, in.y, in.z)), quaternion(this->w, -this->x, -this->y, -this->z));
+	template<class T> vec3<T> quaternion<T>::apply(const vec3<T>& in) const {
+		return vhamilton(
+			hamilton(
+				*this,
+				quaternion<T>(0, in.x, in.y, in.z)
+			),
+			quaternion<T>(this->w, -this->x, -this->y, -this->z)
+		);
 	}
 	
-	vecd3 quaternion::rotate(vecd3 in, vecd3 axis_offset, vecd3 axis_dir, double theta) {
+	template<class T> vec3<T> quaternion<T>::rotate(const vec3<T>& in, const vec3<T>& axis_offset, const vec3<T>& axis_dir, double theta) {
 		in = in - axis_offset;
-		in = quaternion(axis_dir, theta).apply(in);
+		in = quaternion<T>(axis_dir, theta).apply(in);
 		return in + axis_offset;
 	}
 	
-	vecd3 quaternion::rotate(vecd3 in, vecd3 axis_offset, quaternion r) {
+	template<class T> vec3<T> quaternion<T>::rotate(const vec3<T>& in, const vec3<T>& axis_offset, const quaternion<T>& r) {
 		in = in - axis_offset;
 		in = r.apply(in);
 		return in + axis_offset;
 	}
 	
-	quaternion quaternion::slerp(const quaternion& a, const quaternion& b, double t) {
-		double dot = quaternion::dot(a, b);
+	template<class T> quaternion<T> quaternion<T>::slerp(const quaternion<T>& a, const quaternion<T>& b, double t) {
+		double dot = quaternion<T>::dot(a, b);
 		if (dot < 0) {
 			a = -a;
 			dot = -dot;
@@ -466,7 +323,7 @@ namespace util {
 		
 		const double DOT_THRESHOLD = 0.995;
 		if (dot > DOT_THRESHOLD) {
-			quaternion out = a + (b-a)*t;
+			quaternion<T> out = a + (b-a)*t;
 			out = out.normalize();
 			return out;
 		}

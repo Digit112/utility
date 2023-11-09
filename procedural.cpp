@@ -1,4 +1,6 @@
 namespace util {
+	/* ---- pattern2 ---- */
+	
 	pattern2::pattern2() : width(0), height(0), data(NULL) {}
 	
 	pattern2::pattern2(const pattern2& c) : width(c.width), height(c.height) {
@@ -36,14 +38,14 @@ namespace util {
 		FILE* fp = fopen(fn, "wb+");
 		
 		char* buff = new char[256];
-		sprintf(buff, "P5\n%d %d\n65535\n", width, height);
+		sprintf(buff, "P5\n%d %d\n255\n", width, height);
 		fwrite(buff, 1, strlen(buff), fp);
 		delete[] buff;
 		
 		unsigned short* out = new unsigned short[width*height];
 		unsigned short temp;
 		for (int i = 0; i < width*height; i++) {
-			temp = floor(data[i] * 65535.9);
+			temp = floor(data[i] * 255.9);
 			// Reverse endianness
 			out[i] = (temp << 8) | (temp >> 8);
 		}
@@ -178,6 +180,8 @@ namespace util {
 			delete[] data;
 		}
 	}
+	
+	/* ---- procedural ---- */
 	
 	procedural::procedural() {}
 	
@@ -547,14 +551,14 @@ namespace util {
 		// Now buffer2 contains a random vector for every relevant lattice point.
 		// Now we iterate over every point in the supplied region to calculate the simplex noise at each point.
 		// Store the 3corners of the simplex that contains point p and their values.
-		vecd2 px; vecd2 py; vecd2 pz;
-		vecd2 vx; vecd2 vy; vecd2 vz;
+		vec2<float> px; vec2<float> py; vec2<float> pz;
+		vec2<float> vx; vec2<float> vy; vec2<float> vz;
 		
 		// Ugh
 		float left; float low; float right; float high;
 		float u; float v; float w; float m;
 		float X; float Y; float Px; float Py;
-		vecd2 Uvec; vecd2 Vvec; vecd2 Wvec;
+		vec2<float> Uvec; vec2<float> Vvec; vec2<float> Wvec;
 		for (int x = 0; x < p.width; x++) {
 			for (int y = 0; y < p.height; y++) {
 				// Get input point coordinates
@@ -585,13 +589,13 @@ namespace util {
 				}
 				
 				// Get the two corners that the point must belong to.
-				px = vecd2(left, low);
-				py = vecd2(right, high);
+				px = vec2<float>(left, low);
+				py = vec2<float>(right, high);
 				// Get the last corner.
 				if (fmodf(X, 1) > fmodf(Y, 1)) {
-					pz = vecd2(right, low);
+					pz = vec2<float>(right, low);
 				} else {
-					pz = vecd2(left, high);
+					pz = vec2<float>(left, high);
 				}
 				
 //				printf("Bounding half-square is: (%.2f, %.2f), (%.2f, %.2f), (%.2f, %.2f)\n", px.x, px.y, py.x, py.y, pz.x, pz.y);
@@ -613,19 +617,19 @@ namespace util {
 				
 				// Skew the corners of this simplex into a simplex grid.
 				s = 0.2113248654f * (px.x + px.y);
-				px = vecd2(px.x - s, px.y - s);
+				px = vec2<float>(px.x - s, px.y - s);
 				
 				s = 0.2113248654f * (py.x + py.y);
-				py = vecd2(py.x - s, py.y - s);
+				py = vec2<float>(py.x - s, py.y - s);
 				
 				s = 0.2113248654f * (pz.x + pz.y);
-				pz = vecd2(pz.x - s, pz.y - s);
+				pz = vec2<float>(pz.x - s, pz.y - s);
 				
 //				printf("Bounding simplex is: (%.2f, %.2f), (%.2f, %.2f), (%.2f, %.2f)\n", px.x, px.y, py.x, py.y, pz.x, pz.y);
 				
-				Uvec = vecd2(Px - px.x, Py - px.y);
-				Vvec = vecd2(Px - py.x, Py - py.y);
-				Wvec = vecd2(Px - pz.x, Py - pz.y);
+				Uvec = vec2<float>(Px - px.x, Py - px.y);
+				Vvec = vec2<float>(Px - py.x, Py - py.y);
+				Wvec = vec2<float>(Px - pz.x, Py - pz.y);
 				
 				// Calculate influence of each corner to the given point by distance.
 				u = 2 * fmin(Uvec.sqr_mag(), 0.5);
@@ -647,9 +651,9 @@ namespace util {
 //				printf("Randomly Assigned vectors are (%.2f, %.2f), (%.2f, %.2f), (%.2f, %.2f)\n", vx.x, vx.y, vy.x, vy.y, vz.x, vz.y);
 				
 				// Get the dot product of the vector pointing from each corner toward the point, and the corner's randomly assigned vector. Then multiply that contribution by this point's influence.
-				u *= vecd2::dot(Uvec, vx);
-				v *= vecd2::dot(Vvec, vy);
-				w *= vecd2::dot(Wvec, vz);
+				u *= vec2<float>::dot(Uvec, vx);
+				v *= vec2<float>::dot(Vvec, vy);
+				w *= vec2<float>::dot(Wvec, vz);
 				
 				p.data[x + y*p.width] = (u + v + w + 1) / 2;
 				
@@ -697,8 +701,8 @@ namespace util {
 		// Populate a 2D buffer with a random Vector between (0, 0) and (1, 1) for each square in the region.
 		int vec_w = (int) (maxX - minX);
 		int vec_h = (int) (maxY - minY);
-		vecd2* pb = new vecd2[ vec_w*vec_h ];
-		vecd2* pbr;
+		vec2<float>* pb = new vec2<float>[ vec_w*vec_h ];
+		vec2<float>* pbr;
 		
 		uint64_t row_seed;
 		int ix; int iy;
@@ -714,7 +718,7 @@ namespace util {
 				
 				ix = (int) (x - minX);
 				
-				pbr[ix] = vecd2(random_val(), random_val());
+				pbr[ix] = vec2<float>(random_val(), random_val());
 				
 //				printf("Assigned (%.2f, %.2f) to (%d, %d)\n", pbr[ix].x, pbr[ix].y, x, y);
 			}	

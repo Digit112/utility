@@ -89,7 +89,7 @@ namespace util {
 		
 		cubic_interpolator() : num_segments(0), segments(nullptr) {}
 		
-		bool interpolate(int num_points, vecd2* points);
+		bool interpolate(int num_points, vec2<float>* points);
 		
 		~cubic_interpolator();
 	};
