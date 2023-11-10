@@ -72,6 +72,13 @@ namespace util {
 		return vec2(x/m, y/m);
 	}
 	
+	template<class T> vec2<T> vec2<T>::lerp(const vec2<T>& a, const vec2<T>& b, double t) {
+		return vec2<T>(
+			a.x + (b.x - a.x)*t,
+			a.y + (b.y - a.y)*t
+		);
+	}
+	
 	template<class T> double vec2<T>::distance(const vec2<T>& a, const vec2<T>& b) {
 		double dx = a.x - b.x;
 		double dy = a.y - b.y;
@@ -174,6 +181,14 @@ namespace util {
 		return vec3<T>(x/m, y/m, z/m);
 	}
 	
+	template<class T> vec3<T> vec3<T>::lerp(const vec3<T>& a, const vec3<T>& b, double t) {
+		return vec3<T>(
+			a.x + (b.x - a.x)*t,
+			a.y + (b.y - a.y)*t,
+			a.z + (b.z - a.z)*t
+		);
+	}
+	
 	template<class T> double vec3<T>::distance(const vec3<T>& a, const vec3<T>& b) {
 		double dx = a.x - b.x;
 		double dy = a.y - b.y;
@@ -272,6 +287,15 @@ namespace util {
 	template<class T> vec4<T> vec4<T>::normalize(double t) {
 		double m = mag() / t;
 		return vec4<T>(w/m, x/m, y/m, z/m);
+	}
+	
+	template<class T> vec4<T> vec4<T>::lerp(const vec4<T>& a, const vec4<T>& b, double t) {
+		return vec3<T>(
+			a.w + (b.w - a.w)*t,
+			a.x + (b.x - a.x)*t,
+			a.y + (b.y - a.y)*t,
+			a.z + (b.z - a.z)*t
+		);
 	}
 	
 	template<class T> double vec4<T>::distance(const vec4<T>& a, const vec4<T>& b) {
