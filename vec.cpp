@@ -72,6 +72,20 @@ namespace util {
 		return vec2(x/m, y/m);
 	}
 	
+	template<class T> double vec2<T>::distance(const vec2<T>& a, const vec2<T>& b) {
+		double dx = a.x - b.x;
+		double dy = a.y - b.y;
+		
+		return sqrt(dx*dx + dy*dy);
+	}
+	
+	template<class T> double vec2<T>::sqr_distance(const vec2<T>& a, const vec2<T>& b) {
+		double dx = a.x - b.x;
+		double dy = a.y - b.y;
+		
+		return dx*dx + dy*dy;
+	}
+	
 	template<class T> double vec2<T>::dot(const vec2<T>& a, const vec2<T>& b) {
 		return a.x*b.x + a.y*b.y;
 	}
@@ -150,6 +164,14 @@ namespace util {
 		double dz = a.z - b.z;
 		
 		return sqrt(dx*dx + dy*dy + dz*dz);
+	}
+	
+	template<class T> double vec3<T>::sqr_distance(const vec3<T>& a, const vec3<T>& b) {
+		double dx = a.x - b.x;
+		double dy = a.y - b.y;
+		double dz = a.z - b.z;
+		
+		return dx*dx + dy*dy + dz*dz;
 	}
 	
 	template<class T> double vec3<T>::dot(const vec3<T>& a, const vec3<T>& b) {
@@ -234,6 +256,24 @@ namespace util {
 	template<class T> vec4<T> vec4<T>::normalize(double t) {
 		double m = mag() / t;
 		return vec4<T>(w/m, x/m, y/m, z/m);
+	}
+	
+	template<class T> double vec4<T>::distance(const vec4<T>& a, const vec4<T>& b) {
+		double dw = a.w - b.w;
+		double dx = a.x - b.x;
+		double dy = a.y - b.y;
+		double dz = a.z - b.z;
+		
+		return sqrt(dw*dw + dx*dx + dy*dy + dz*dz);
+	}
+	
+	template<class T> double vec4<T>::sqr_distance(const vec4<T>& a, const vec4<T>& b) {
+		double dw = a.w - b.w;
+		double dx = a.x - b.x;
+		double dy = a.y - b.y;
+		double dz = a.z - b.z;
+		
+		return dw*dw + dx*dx + dy*dy + dz*dz;
 	}
 	
 	template<class T> double vec4<T>::dot(const vec4<T>& a, const vec4<T>& b) {

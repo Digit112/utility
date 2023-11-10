@@ -65,6 +65,9 @@ namespace util {
 		vec2<T> normalize();
 		vec2<T> normalize(double t);
 		
+		static double distance(const vec2<T>& a, const vec2<T>& b);
+		static double sqr_distance(const vec2<T>& a, const vec2<T>& b);
+		
 		// Returns the Dot Product of two vectors
 		static double dot(const vec2<T>& a, const vec2<T>& b);	
 	};
@@ -115,6 +118,7 @@ namespace util {
 		vec3<T> normalize(double t);
 		
 		static double distance(const vec3<T>& a, const vec3<T>& b);
+		static double sqr_distance(const vec3<T>& a, const vec3<T>& b);
 		
 		static double dot(const vec3<T>& a, const vec3<T>& b);
 		static vec3<T> cross(const vec3<T>& a, const vec3<T>& b);
@@ -171,6 +175,9 @@ namespace util {
 		
 		vec4<T> normalize();
 		vec4<T> normalize(double t);
+		
+		static double distance(const vec4<T>& a, const vec4<T>& b);
+		static double sqr_distance(const vec4<T>& a, const vec4<T>& b);
 		
 		static double dot(const vec4<T>& a, const vec4<T>& b);
 	};
