@@ -90,6 +90,14 @@ namespace util {
 		return a.x*b.x + a.y*b.y;
 	}
 	
+	template<class T> vec2<T> vec2<T>::reflect(const vec2<T>& a, const vec2<T>& n) {
+		return n * vec2<T>::dot(a, n) * 2 - a;
+	}
+	
+	template<class T> vec2<T> vec2<T>::rev_reflect(const vec2<T>& a, const vec2<T>& n) {
+		return a - n * vec2<T>::dot(a, n) * 2;
+	}
+	
 	/* ---- vec3 ---- */
 	
 	template<class T> vec3<T>::vec3() : x(0), y(0), z(0) {}
@@ -182,12 +190,12 @@ namespace util {
 		return vec3<T>(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x);
 	}
 	
-	template<class T> vec3<T> vec3<T>::reflect(const vec3<T>& a, const vec3<T>& b) {
-		return b * vec3<T>::dot(a, b) * 2 - a;
+	template<class T> vec3<T> vec3<T>::reflect(const vec3<T>& a, const vec3<T>& n) {
+		return n * vec3<T>::dot(a, n) * 2 - a;
 	}
 	
-	template<class T> vec3<T> vec3<T>::rev_reflect(const vec3<T>& a, const vec3<T>& b) {
-		return a - b * vec3<T>::dot(a, b) * 2;
+	template<class T> vec3<T> vec3<T>::rev_reflect(const vec3<T>& a, const vec3<T>& n) {
+		return a - n * vec3<T>::dot(a, n) * 2;
 	}
 	
 	/* ---- vecd4 ---- */
@@ -278,6 +286,14 @@ namespace util {
 	
 	template<class T> double vec4<T>::dot(const vec4<T>& a, const vec4<T>& b) {
 		return a.w*b.w + a.x*b.x + a.y*b.y + a.z*b.z;
+	}
+	
+	template<class T> vec4<T> vec4<T>::reflect(const vec4<T>& a, const vec4<T>& n) {
+		return n * vec4<T>::dot(a, n) * 2 - a;
+	}
+	
+	template<class T> vec4<T> vec4<T>::rev_reflect(const vec4<T>& a, const vec4<T>& n) {
+		return a - n * vec4<T>::dot(a, n) * 2;
 	}
 	
 	/* ---- complex ---- */

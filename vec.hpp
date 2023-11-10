@@ -69,7 +69,14 @@ namespace util {
 		static double sqr_distance(const vec2<T>& a, const vec2<T>& b);
 		
 		// Returns the Dot Product of two vectors
-		static double dot(const vec2<T>& a, const vec2<T>& b);	
+		static double dot(const vec2<T>& a, const vec2<T>& b);
+		
+		// Reflect the vector a across n.
+		// rev_reflect does the same, but also reverses the direction of the reflected vector.
+		// Thus, rev_reflect returns the direction vector a is traveling after reflecting off of a surface with normal n.
+		// n must be normalized.
+		static vec2<T> reflect(const vec2<T>& a, const vec2<T>& n);
+		static vec2<T> rev_reflect(const vec2<T>& a, const vec2<T>& n);
 	};
 	
 	template<class T> class vec3 {
@@ -123,11 +130,12 @@ namespace util {
 		static double dot(const vec3<T>& a, const vec3<T>& b);
 		static vec3<T> cross(const vec3<T>& a, const vec3<T>& b);
 		
-		// Reflect the vector "a" across "b".
+		// Reflect the vector a across n.
 		// rev_reflect does the same, but also reverses the direction of the reflected vector.
-		// Thus, rev_reflect returns the direction vector "a" is traveling after reflecting off of a surface with normal "b".
-		static vec3<T> reflect(const vec3<T>& a, const vec3<T>& b);
-		static vec3<T> rev_reflect(const vec3<T>& a, const vec3<T>& b);
+		// Thus, rev_reflect returns the direction vector a is traveling after reflecting off of a surface with normal n.
+		// n must be normalized.
+		static vec3<T> reflect(const vec3<T>& a, const vec3<T>& n);
+		static vec3<T> rev_reflect(const vec3<T>& a, const vec3<T>& n);
 	};
 	
 	template<class T> class vec4 {
@@ -180,6 +188,13 @@ namespace util {
 		static double sqr_distance(const vec4<T>& a, const vec4<T>& b);
 		
 		static double dot(const vec4<T>& a, const vec4<T>& b);
+		
+		// Reflect the vector a across n.
+		// rev_reflect does the same, but also reverses the direction of the reflected vector.
+		// Thus, rev_reflect returns the direction vector a is traveling after reflecting off of a surface with normal n.
+		// n must be normalized.
+		static vec4<T> reflect(const vec4<T>& a, const vec4<T>& n);
+		static vec4<T> rev_reflect(const vec4<T>& a, const vec4<T>& n);
 	};
 	
 	template<class T> class complex : public vec2<T> {
