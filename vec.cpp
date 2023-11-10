@@ -29,7 +29,7 @@ namespace util {
 	}
 	
 	template<class T> double vec2<T>::arg() {
-		return atan2(y, x);
+		return M_PI - atan2(y, -x);
 	}
 	
 	template<class T> vec2<T> vec2<T>::operator+(const vec2<T>& a) const {
@@ -125,6 +125,14 @@ namespace util {
 	
 	template<class T> double vec3<T>::sqr_mag() const {
 		return x*x + y*y + z*z;
+	}
+	
+	template<class T> double vec3<T>::yaw() const {
+		return atan2(y, x);
+	}
+	
+	template<class T> double vec3<T>::pitch() const {
+		return atan(z / sqrt(x*x + y*y));
 	}
 	
 	template<class T> vec3<T> vec3<T>::operator+(const vec3<T>& a) const {

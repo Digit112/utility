@@ -46,6 +46,7 @@ namespace util {
 		double sqr_mag() const;
 		
 		// Returns the argument of the vector.
+		// I.e. the angle counter-clockwise from the positive x-axis to this vector.
 		double arg();
 		
 		vec2<T> operator+(const vec2<T>& a) const;
@@ -107,6 +108,15 @@ namespace util {
 		
 		double mag() const;
 		double sqr_mag() const;
+		
+		// Returns the yaw of this vector in the range [-M_PI, M_PI).
+		// Angles towards the positive y-axis return a positive yaw.
+		// Positive z-axis is considered up.
+		double yaw() const;
+		
+		// Returns the pitch of this vector in the range [-M_PI/2, M_PI/2].
+		// Larger values indicate the vector points more towards the positive z-axis.
+		double pitch() const;
 		
 		vec3<T> operator+(const vec3<T>& a) const;
 		vec3<T> operator-(const vec3<T>& a) const;
