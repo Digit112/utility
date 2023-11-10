@@ -11,7 +11,10 @@ namespace util {
 	
 	template<class T> class complex;
 	template<class T> class quaternion;
-
+	
+	// IMPORTANT: Operations between vec2 objects with different template parameters
+	// may return unexpected results. The right operand and return result will be converted
+	// to the type of the left operand.
 	template<class T> class vec2 {
 	public:
 		T x;
@@ -19,6 +22,23 @@ namespace util {
 		
 		vec2();
 		vec2(T x, T y);
+		
+		// Vectors are always implicitly convertable to all integer and floating-point types.
+		vec2(const vec2<signed char>& o);
+		vec2(const vec2<signed short>& o);
+		vec2(const vec2<signed int>& o);
+		vec2(const vec2<signed long int>& o);
+		vec2(const vec2<signed long long int>& o);
+		
+		vec2(const vec2<unsigned char>& o);
+		vec2(const vec2<unsigned short>& o);
+		vec2(const vec2<unsigned int>& o);
+		vec2(const vec2<unsigned long int>& o);
+		vec2(const vec2<unsigned long long int>& o);
+		
+		vec2(const vec2<float>& o);
+		vec2(const vec2<double>& o);
+		vec2(const vec2<long double>& o);
 		
 		// Returns the magnitude of this vector
 		double mag() const;
@@ -57,6 +77,23 @@ namespace util {
 		
 		vec3();
 		vec3(double x, double y, double z);
+		
+		// Vectors are always implicitly convertable to all integer and floating-point types.
+		vec3(const vec3<signed char>& o);
+		vec3(const vec3<signed short>& o);
+		vec3(const vec3<signed int>& o);
+		vec3(const vec3<signed long int>& o);
+		vec3(const vec3<signed long long int>& o);
+		
+		vec3(const vec3<unsigned char>& o);
+		vec3(const vec3<unsigned short>& o);
+		vec3(const vec3<unsigned int>& o);
+		vec3(const vec3<unsigned long int>& o);
+		vec3(const vec3<unsigned long long int>& o);
+		
+		vec3(const vec3<float>& o);
+		vec3(const vec3<double>& o);
+		vec3(const vec3<long double>& o);
 		
 		double mag() const;
 		double sqr_mag() const;
@@ -99,6 +136,23 @@ namespace util {
 		vec4<T>();
 		vec4<T>(T w, T x, T y, T z);
 		
+		// Vectors are always implicitly convertable to all integer and floating-point types.
+		vec4(const vec4<signed char>& o);
+		vec4(const vec4<signed short>& o);
+		vec4(const vec4<signed int>& o);
+		vec4(const vec4<signed long int>& o);
+		vec4(const vec4<signed long long int>& o);
+		
+		vec4(const vec4<unsigned char>& o);
+		vec4(const vec4<unsigned short>& o);
+		vec4(const vec4<unsigned int>& o);
+		vec4(const vec4<unsigned long int>& o);
+		vec4(const vec4<unsigned long long int>& o);
+		
+		vec4(const vec4<float>& o);
+		vec4(const vec4<double>& o);
+		vec4(const vec4<long double>& o);
+		
 		double mag() const;
 		double sqr_mag() const;
 		
@@ -129,6 +183,11 @@ namespace util {
 		
 		complex(const vec2<T>&);
 		
+		// Vectors are always implicitly convertable to all floating-point types.
+		complex(const complex<float>& o);
+		complex(const complex<double>& o);
+		complex(const complex<long double>& o);
+		
 		complex<T> operator*(const complex<T>& a) const;
 		complex<T> operator*(double a) const;
 		
@@ -145,6 +204,11 @@ namespace util {
 		quaternion(const vec3<T>& axis, double theta); // The constructor normalizes the axis for you.
 		
 		quaternion(const vec4<T>& a);
+		
+		// Vectors are always implicitly convertable to all floating-point types.
+		quaternion(const quaternion<float>& o);
+		quaternion(const quaternion<double>& o);
+		quaternion(const quaternion<long double>& o);
 		
 		quaternion operator=(const vec4<T>&) const;
 		

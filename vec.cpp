@@ -4,6 +4,22 @@ namespace util {
 	template<class T> vec2<T>::vec2() : x(0), y(0) {}
 	template<class T> vec2<T>::vec2(T x, T y) : x(x), y(y) {}
 	
+	template<class T> vec2<T>::vec2(const vec2<signed char>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<signed short>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<signed int>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<signed long int>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<signed long long int>& o) : x(o.x), y(o.y) {}
+	
+	template<class T> vec2<T>::vec2(const vec2<unsigned char>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<unsigned short>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<unsigned int>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<unsigned long int>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<unsigned long long int>& o) : x(o.x), y(o.y) {}
+	
+	template<class T> vec2<T>::vec2(const vec2<float>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<double>& o) : x(o.x), y(o.y) {}
+	template<class T> vec2<T>::vec2(const vec2<long double>& o) : x(o.x), y(o.y) {}
+	
 	template<class T> double vec2<T>::mag() const {
 		return sqrt(x*x + y*y);
 	}
@@ -64,6 +80,22 @@ namespace util {
 	
 	template<class T> vec3<T>::vec3() : x(0), y(0), z(0) {}
 	template<class T> vec3<T>::vec3(double x, double y, double z) : x(x), y(y), z(z) {}
+	
+	template<class T> vec3<T>::vec3(const vec3<signed char>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<signed short>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<signed int>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<signed long int>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<signed long long int>& o) : x(o.x), y(o.y), z(o.z) {}
+	
+	template<class T> vec3<T>::vec3(const vec3<unsigned char>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<unsigned short>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<unsigned int>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<unsigned long int>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<unsigned long long int>& o) : x(o.x), y(o.y), z(o.z) {}
+	
+	template<class T> vec3<T>::vec3(const vec3<float>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<double>& o) : x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec3<T>::vec3(const vec3<long double>& o) : x(o.x), y(o.y), z(o.z) {}
 	
 	template<class T> double vec3<T>::mag() const {
 		return sqrt(x*x + y*y + z*z);
@@ -141,6 +173,22 @@ namespace util {
 	template<class T> vec4<T>::vec4() : w(0), x(0), y(0), z(0) {}
 	template<class T> vec4<T>::vec4(T w, T x, T y, T z) : w(w), x(x), y(y), z(z) {}
 	
+	template<class T> vec4<T>::vec4(const vec4<signed char>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<signed short>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<signed int>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<signed long int>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<signed long long int>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	
+	template<class T> vec4<T>::vec4(const vec4<unsigned char>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<unsigned short>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<unsigned int>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<unsigned long int>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<unsigned long long int>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	
+	template<class T> vec4<T>::vec4(const vec4<float>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<double>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	template<class T> vec4<T>::vec4(const vec4<long double>& o) : w(o.w), x(o.x), y(o.y), z(o.z) {}
+	
 	template<class T> double vec4<T>::mag() const {
 		return sqrt(w*w + x*x + y*y + z*z);
 	}
@@ -199,6 +247,9 @@ namespace util {
 	template<class T> complex<T>::complex(double theta) : vec2<T>(cos(theta), sin(theta)) {}
 	
 	template<class T> complex<T>::complex(const vec2<T>& a) : vec2<T>(a) {}
+	template<class T> complex<T>::complex(const complex<float>& o) : vec2<T>(o.x, o.y) {}
+	template<class T> complex<T>::complex(const complex<double>& o) : vec2<T>(o.x, o.y) {}
+	template<class T> complex<T>::complex(const complex<long double>& o) : vec2<T>(o.x, o.y) {}
 	
 	template<class T> complex<T> complex<T>::operator*(const complex<T>& a) const {
 		return complex<T>(this->x*a.x - this->y*a.y, this->x*a.y + this->y*a.x);
@@ -231,6 +282,10 @@ namespace util {
 	}
 	
 	template<class T> quaternion<T>::quaternion(const vec4<T>& a) : vec4<T>(a) {}
+	
+	template<class T> quaternion<T>::quaternion(const quaternion<float>& o) : vec4<T>(o.w, o.x, o.y, o.z) {}
+	template<class T> quaternion<T>::quaternion(const quaternion<double>& o) : vec4<T>(o.w, o.x, o.y, o.z) {}
+	template<class T> quaternion<T>::quaternion(const quaternion<long double>& o) : vec4<T>(o.w, o.x, o.y, o.z) {}
 	
 	template<class T> quaternion<T> quaternion<T>::operator*(const quaternion<T>& a) const {
 		return quaternion<T>(
