@@ -62,9 +62,11 @@ namespace util {
 		// Returns whether this vector is nan. Only returns true if all elements are nan.
 		bool is_nan() const;
 		
-		// Returns a normalized version of this vector
-		vec2<T> normalize();
-		vec2<T> normalize(double t);
+		// Returns a normalized version of this vector.
+		vec2<T> normalize() const;
+		
+		// Returns this vector normalized to a specific length.
+		vec2<T> normalize(double t) const;
 		
 		static vec2<T> lerp(const vec2<T>& a, const vec2<T>& b, double t);
 		
@@ -133,8 +135,11 @@ namespace util {
 		// Returns whether this vector is nan. Only returns true if all elements are nan.
 		bool is_nan();
 		
-		vec3<T> normalize();
-		vec3<T> normalize(double t);
+		// Returns a normalized version of this vector.
+		vec3<T> normalize() const;
+		
+		// Returns this vector normalized to a specific length.
+		vec3<T> normalize(double t) const;
 		
 		static vec3<T> lerp(const vec3<T>& a, const vec3<T>& b, double t);
 		
@@ -195,8 +200,11 @@ namespace util {
 		// Returns whether this vector is nan. Only returns true if all elements are nan
 		bool is_nan();
 		
-		vec4<T> normalize();
-		vec4<T> normalize(double t);
+		// Returns a normalized version of this vector.
+		vec4<T> normalize() const;
+		
+		// Returns this vector normalized to a specific length.
+		vec4<T> normalize(double t) const;
 		
 		static vec4<T> lerp(const vec4<T>& a, const vec4<T>& b, double t);
 		

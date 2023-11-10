@@ -62,12 +62,12 @@ namespace util {
 		return isnan(x) && isnan(y);
 	}
 	
-	template<class T> vec2<T> vec2<T>::normalize() {
+	template<class T> vec2<T> vec2<T>::normalize() const {
 		double m = mag();
 		return vec2(x/m, y/m);
 	}
 	
-	template<class T> vec2<T> vec2<T>::normalize(double t) {
+	template<class T> vec2<T> vec2<T>::normalize(double t) const {
 		double m = mag() / t;
 		return vec2(x/m, y/m);
 	}
@@ -172,11 +172,11 @@ namespace util {
 		return isnan(x) && isnan(y) && isnan(z);
 	}
 	
-	template<class T> vec3<T> vec3<T>::normalize() {
+	template<class T> vec3<T> vec3<T>::normalize() const {
 		double m = mag();
 		return vec3<T>(x/m, y/m, z/m);
 	}
-	template<class T> vec3<T> vec3<T>::normalize(double t) {
+	template<class T> vec3<T> vec3<T>::normalize(double t) const {
 		double m = mag() / t;
 		return vec3<T>(x/m, y/m, z/m);
 	}
@@ -280,11 +280,11 @@ namespace util {
 		return isnan(w) && isnan(x) && isnan(y) && isnan(z);
 	}
 	
-	template<class T> vec4<T> vec4<T>::normalize() {
+	template<class T> vec4<T> vec4<T>::normalize() const {
 		double m = mag();
 		return vec4<T>(w/m, x/m, y/m, z/m);
 	}
-	template<class T> vec4<T> vec4<T>::normalize(double t) {
+	template<class T> vec4<T> vec4<T>::normalize(double t) const {
 		double m = mag() / t;
 		return vec4<T>(w/m, x/m, y/m, z/m);
 	}
