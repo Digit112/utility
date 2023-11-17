@@ -1,74 +1,79 @@
 #ifndef UTIL_EXPRESSION
 #define UTIL_EXPRESSION
 
-#include <math.h>
+#include <cmath>
+#include <cstdarg>
 
 namespace util {
-	// The expr ("expression") class is a binary expression tree node. By combining them, an expression tree can be created.
-	// The evaluate function can be used to get a result.
-	// If this is a leaf node, value is of type T. Otherwise, it is an operation represented by a function pointer.
-	// Many default functions are defined for convenience below.
-	template<class T>
-	class expr {
+	using namespace std;
+	
+	/// The expr ("expression") class is an expression tree node. By combining them, an expression tree can be created.
+	/** The evaluate function can be used to get a result.
+	*   If this is a leaf node, value is of type T. Otherwise, it is an operation represented by a function pointer.
+	*   Many default functions are defined for convenience, in all-caps. */
+	template<class T> class expr {
 	private:
+		// Either a value of type T or an operation on parameters of type T.
 		union value {
 			T v;
-			T (*C)(T);
-			T (*c)(T, T);
+			T (*o)(T*, int); // Takes a list of operands and the number of operands.
 			
-			// For quick initialization
 			value(T v) : v(v) {}
-			value(T (*c)(T)) : C(c) {}
-			value(T (*c)(T, T)) : c(c) {}
+			value(T (*o)(T*, int)) : o(o) {}
 		};
 	
 	public:
-		// Children
-		expr<T>* l;
-		expr<T>* r;
+		// Nodes that are children of this node.
+		expr<T>* children;
+		int num_children;
 		
-		// Value or Operation
+		// Value or Operation.
 		value v;
 		
-		// Constructors
 		expr();
 		expr(T value);
-		expr(T (*unary)(T));
-		expr(T (*binary)(T, T));
+		expr(T (*oper)(T*, int), int num_operands, expr<T>* operands);
 		
-		// Evaluate the expression tree below this node.
-		T evaluate();
+		T evaluate(int depth=0);
 		
-		// Default functions for the purpose of convenience.
+		// Default functions for convenience.
 		// Arithmetic
-		static T ADD(T a, T b) {return a + b;}
-		static T SUB(T a, T b) {return a - b;}
-		static T MUL(T a, T b) {return a * b;}
-		static T DIV(T a, T b) {return a / b;}
-		static T POW(T a, T b) {return pow((double) a, (double) b);}
-		static T NEG(T a)      {return -a;}
-		static T AVG(T a, T b) {return (a+b)/2;}
-		static T MAX(T a, T b) {return a > b ? a : b;}
-		static T MIN(T a, T b) {return a < b ? a : b;}
+		static T ADD(T* o, int n) {return o[0] + o[1];}
+		static T SUB(T* o, int n) {return o[0] - o[1];}
+		static T MUL(T* o, int n) {return o[0] * o[1];}
+		static T DIV(T* o, int n) {return o[0] / o[1];}
+		static T POW(T* o, int n) {return pow((double) o[0], (double) o[1]);}
+		static T NEG(T* o, int n) {return -o[0];}
 		
 		// Comparison
-		static T GT (T a, T b) {return a > b;}
-		static T LT (T a, T b) {return a < b;}
-		static T GTE(T a, T b) {return a >= b;}
-		static T LTE(T a, T b) {return a <= b;}
-		static T EQ (T a, T b) {return a == b;}
-		static T NEQ(T a, T b) {return a != b;}
+		static T GT (T* o, int n) {return o[0] > o[1];}
+		static T LT (T* o, int n) {return o[0] < o[1];}
+		static T GTE(T* o, int n) {return o[0] >= o[1];}
+		static T LTE(T* o, int n) {return o[0] <= o[1];}
+		static T EQ (T* o, int n) {return o[0] == o[1];}
+		static T NEQ(T* o, int n) {return o[0] != o[1];}
+		
+		static T MAX(T* o, int n) {return o[0] > o[1] ? o[0] : o[1];}
+		static T MIN(T* o, int n) {return o[0] < o[1] ? o[0] : o[1];}
 		
 		// Boolean
-		static T AND(T a, T b) {return a && b;}
-		static T OR (T a, T b) {return a || b;}
-		static T NOT(T a)      {return !a;}
+		static T AND(T* o, int n) {return o[0] && o[1];}
+		static T OR (T* o, int n) {return o[0] || o[1];}
+		static T NOT(T* o, int n) {return !o[0];}
 		
 		// Bitwise
-		static T BWA(T a, T b) {return a & b;}
-		static T BWO(T a, T b) {return a | b;}
-		static T XOR(T a, T b) {return a ^ b;}
-		static T INV(T a)      {return ~a;}
+		static T BWA(T* o, int n) {return o[0] & o[1];}
+		static T BWO(T* o, int n) {return o[0] | o[1];}
+		static T XOR(T* o, int n) {return o[0] ^ o[1];}
+		static T INV(T* o, int n) {return ~o[0];}
+		
+		// Array
+		static T AVG(T* o, int n) {
+			float avg = o[0];
+			for (int i = 1; i < n; i++) {
+				avg += o[i];
+			}
+		}
 	};
 }
 

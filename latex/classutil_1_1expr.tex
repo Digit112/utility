@@ -1,0 +1,120 @@
+\doxysection{util\+::expr\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classutil_1_1expr}{}\label{classutil_1_1expr}\index{util::expr$<$ T $>$@{util::expr$<$ T $>$}}
+
+
+The expr ("{}expression"{}) class is an expression tree node. By combining them, an expression tree can be created.  
+
+
+
+
+{\ttfamily \#include $<$expression.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1expr_adddec458d444436ec900a5425dc2f44b}\label{classutil_1_1expr_adddec458d444436ec900a5425dc2f44b} 
+{\bfseries expr} ()
+\begin{DoxyCompactList}\small\item\em Creates a constant using the no-\/arg constructor of T. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1expr_a092f4ab669b0614ac3161afdc81efdaf}\label{classutil_1_1expr_a092f4ab669b0614ac3161afdc81efdaf} 
+{\bfseries expr} (\mbox{\hyperlink{classutil_1_1vec3}{T}} value)
+\begin{DoxyCompactList}\small\item\em Creates a constant with the passed value. Calls T\textquotesingle{}s copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1expr_a908f8b06c502678d43f2c0bffc19c45b}\label{classutil_1_1expr_a908f8b06c502678d43f2c0bffc19c45b} 
+{\bfseries expr} (\mbox{\hyperlink{classutil_1_1vec3}{T}}(\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classutil_1_1vec3}{oper}})(\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classutil_1_1vec3}{int}}), \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{num\+\_\+operands}}, \mbox{\hyperlink{classutil_1_1expr}{expr}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classutil_1_1vec3}{operands}})
+\item 
+\Hypertarget{classutil_1_1expr_ad4150e500a1020de483f2fb78b50fab0}\label{classutil_1_1expr_ad4150e500a1020de483f2fb78b50fab0} 
+\mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries evaluate} (\mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{depth}}=0)
+\begin{DoxyCompactList}\small\item\em Evaluate this node. If this node is an operation, recursively evaluate all children. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1expr_af9214ebc32cedff248688d45baa3d2ba}\label{classutil_1_1expr_af9214ebc32cedff248688d45baa3d2ba} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries ADD} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_ae6f13e3d4ce95345baf304b8584382ad}\label{classutil_1_1expr_ae6f13e3d4ce95345baf304b8584382ad} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries SUB} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a28cc4a4e97e104ab64071d7c9a1dc339}\label{classutil_1_1expr_a28cc4a4e97e104ab64071d7c9a1dc339} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries MUL} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_abbd154c92ff9def0f986a66e25b18959}\label{classutil_1_1expr_abbd154c92ff9def0f986a66e25b18959} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries DIV} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a15f3ab3ced483ea5f09b0e31086004bc}\label{classutil_1_1expr_a15f3ab3ced483ea5f09b0e31086004bc} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries POW} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a76484e4fd3a8bc2754af370286e4bbab}\label{classutil_1_1expr_a76484e4fd3a8bc2754af370286e4bbab} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries NEG} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a7b96171ccb1ac02e6cea1805a78cd1be}\label{classutil_1_1expr_a7b96171ccb1ac02e6cea1805a78cd1be} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries GT} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_ab114e6e7add68c202baa40cdf1ef4162}\label{classutil_1_1expr_ab114e6e7add68c202baa40cdf1ef4162} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries LT} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a5c5dc48825d3402efdab7281e7aff920}\label{classutil_1_1expr_a5c5dc48825d3402efdab7281e7aff920} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries GTE} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_aa69f9d04b9baa9b95e24de5f30920fa9}\label{classutil_1_1expr_aa69f9d04b9baa9b95e24de5f30920fa9} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries LTE} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_ac112cdbe6d47304ccbdf5212e2a79a94}\label{classutil_1_1expr_ac112cdbe6d47304ccbdf5212e2a79a94} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries EQ} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a8e56c101627bda5d2d5243bc652fcd28}\label{classutil_1_1expr_a8e56c101627bda5d2d5243bc652fcd28} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries NEQ} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_afa08035ae5b6377710e72ae0d5aa064f}\label{classutil_1_1expr_afa08035ae5b6377710e72ae0d5aa064f} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries MAX} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a7e99574e558c965c3b397267e9e3f166}\label{classutil_1_1expr_a7e99574e558c965c3b397267e9e3f166} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries MIN} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_afda787059ea27c533de68cb6dda84a3c}\label{classutil_1_1expr_afda787059ea27c533de68cb6dda84a3c} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries AND} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a89456fd16ffbfc3058b44fddcbeafcc2}\label{classutil_1_1expr_a89456fd16ffbfc3058b44fddcbeafcc2} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries OR} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a8d88e2d403145816e3b910e4bb308cbd}\label{classutil_1_1expr_a8d88e2d403145816e3b910e4bb308cbd} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries NOT} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_af3a0d2b80271db083f30fdf6524a0169}\label{classutil_1_1expr_af3a0d2b80271db083f30fdf6524a0169} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries BWA} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a7d0f8bd59bd56ac44f586fd6f7f57917}\label{classutil_1_1expr_a7d0f8bd59bd56ac44f586fd6f7f57917} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries BWO} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_ad922a0ac47d237bb4f53300f8a62442d}\label{classutil_1_1expr_ad922a0ac47d237bb4f53300f8a62442d} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries XOR} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a3458d2c6c70e8708bad34834fb43fd0b}\label{classutil_1_1expr_a3458d2c6c70e8708bad34834fb43fd0b} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries INV} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\item 
+\Hypertarget{classutil_1_1expr_a96a475523f4731f9bc0f277c973c5219}\label{classutil_1_1expr_a96a475523f4731f9bc0f277c973c5219} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries AVG} (\mbox{\hyperlink{classutil_1_1vec3}{T}} \texorpdfstring{$\ast$}{*}o, \mbox{\hyperlink{classutil_1_1vec3}{int}} \mbox{\hyperlink{classutil_1_1vec3}{n}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1expr_ac5d525d1e4f29db682b7430d98db53bc}\label{classutil_1_1expr_ac5d525d1e4f29db682b7430d98db53bc} 
+\mbox{\hyperlink{classutil_1_1expr}{expr}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \texorpdfstring{$\ast$}{*} {\bfseries children}
+\item 
+\Hypertarget{classutil_1_1expr_a2ba76a860b30ff0bdc6e0bf647e3bd6a}\label{classutil_1_1expr_a2ba76a860b30ff0bdc6e0bf647e3bd6a} 
+\mbox{\hyperlink{classutil_1_1vec3}{int}} {\bfseries num\+\_\+children}
+\item 
+\Hypertarget{classutil_1_1expr_ad494934a849ba8eb1fa94e2d187e908f}\label{classutil_1_1expr_ad494934a849ba8eb1fa94e2d187e908f} 
+value {\bfseries v}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classutil_1_1vec3}{class}} \mbox{\hyperlink{classutil_1_1vec3}{T}}$>$\newline
+class util\+::expr$<$ T $>$}
+The expr ("{}expression"{}) class is an expression tree node. By combining them, an expression tree can be created. 
+
+The evaluate function can be used to get a result. If this is a leaf node, value is of type T. Otherwise, it is an operation represented by a function pointer. Many default functions are defined for convenience, in all-\/caps. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+expression.\+hpp\item 
+expression.\+cpp\end{DoxyCompactItemize}

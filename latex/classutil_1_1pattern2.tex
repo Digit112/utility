@@ -1,0 +1,92 @@
+\doxysection{util\+::pattern2 Class Reference}
+\hypertarget{classutil_1_1pattern2}{}\label{classutil_1_1pattern2}\index{util::pattern2@{util::pattern2}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}\label{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45} 
+{\bfseries pattern2} ()
+\begin{DoxyCompactList}\small\item\em Create an empty pattern. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_aa3e6b61bc34acf3a2b2b5763c213de19}\label{classutil_1_1pattern2_aa3e6b61bc34acf3a2b2b5763c213de19} 
+{\bfseries pattern2} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}} \&)
+\begin{DoxyCompactList}\small\item\em Deep-\/copy a pattern. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_a12d298745ae8192e42ede275394e0188}\label{classutil_1_1pattern2_a12d298745ae8192e42ede275394e0188} 
+{\bfseries pattern2} (\mbox{\hyperlink{classutil_1_1vec3}{int}} width, \mbox{\hyperlink{classutil_1_1vec3}{int}} height)
+\begin{DoxyCompactList}\small\item\em Create a pattern with the given width and height. Cells are not initialized. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_af74ecc4c0744319b7410a0c203bf07c1}\label{classutil_1_1pattern2_af74ecc4c0744319b7410a0c203bf07c1} 
+{\bfseries pattern2} (\mbox{\hyperlink{classutil_1_1vec3}{int}} width, \mbox{\hyperlink{classutil_1_1vec3}{int}} height, \mbox{\hyperlink{classutil_1_1vec3}{float}} \mbox{\hyperlink{classutil_1_1pattern2_acb4c5557efe3a23c678a8d3ae5c2154f}{fill}})
+\begin{DoxyCompactList}\small\item\em Create a pattern with the given width and height and initialize all cells to the given fill value. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_adf979109accbbed8cef62e9b012e2b74}\label{classutil_1_1pattern2_adf979109accbbed8cef62e9b012e2b74} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries operator=} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}} \&)
+\begin{DoxyCompactList}\small\item\em Deep copy another pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} \mbox{\hyperlink{classutil_1_1pattern2_a02eda3f73ac0a41fee0a674f21cb144a}{saveppm}} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classutil_1_1vec3}{fn}})
+\begin{DoxyCompactList}\small\item\em Save this pattern as a ppm. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_acb4c5557efe3a23c678a8d3ae5c2154f}\label{classutil_1_1pattern2_acb4c5557efe3a23c678a8d3ae5c2154f} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries fill} (\mbox{\hyperlink{classutil_1_1vec3}{float}} \mbox{\hyperlink{classutil_1_1vec3}{val}})
+\begin{DoxyCompactList}\small\item\em Fill the pattern with the passed value. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_a902f039a1ead2539525de32ebd1c7342}\label{classutil_1_1pattern2_a902f039a1ead2539525de32ebd1c7342} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries add} (\mbox{\hyperlink{classutil_1_1vec3}{float}} \mbox{\hyperlink{classutil_1_1vec3}{val}})
+\begin{DoxyCompactList}\small\item\em Add the passed value to each cell. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_a88721436c73fc2e6cf51272d75b61907}\label{classutil_1_1pattern2_a88721436c73fc2e6cf51272d75b61907} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries scale} (\mbox{\hyperlink{classutil_1_1vec3}{float}} \mbox{\hyperlink{classutil_1_1vec3}{val}})
+\begin{DoxyCompactList}\small\item\em Multiply each cell by the passed value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} \mbox{\hyperlink{classutil_1_1pattern2_a478a76fc53cb9b1f2f263fed9e3265f2}{paint}} (\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}} \mbox{\hyperlink{classutil_1_1vec3}{p}}, \mbox{\hyperlink{classutil_1_1vec3}{float}} \mbox{\hyperlink{classutil_1_1vec3}{opacity}}=1, \mbox{\hyperlink{classutil_1_1vec3}{int}} x=0, \mbox{\hyperlink{classutil_1_1vec3}{int}} y=0)
+\begin{DoxyCompactList}\small\item\em Paint the passed pattern on top of this pattern at the given location and with the given opacity. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_a10bc05540e26a8a833dad2df5cc24c97}\label{classutil_1_1pattern2_a10bc05540e26a8a833dad2df5cc24c97} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries add} (\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}} \mbox{\hyperlink{classutil_1_1vec3}{p}}, \mbox{\hyperlink{classutil_1_1vec3}{int}} x=0, \mbox{\hyperlink{classutil_1_1vec3}{int}} y=0)
+\begin{DoxyCompactList}\small\item\em The same as \doxylink{classutil_1_1pattern2_a478a76fc53cb9b1f2f263fed9e3265f2}{paint()}, but adds the corresponding elements instead of blending them. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_ae0be5f056acec7a5f3505a979fa2448a}\label{classutil_1_1pattern2_ae0be5f056acec7a5f3505a979fa2448a} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries scale} (\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}} \mbox{\hyperlink{classutil_1_1vec3}{p}}, \mbox{\hyperlink{classutil_1_1vec3}{int}} x=0, \mbox{\hyperlink{classutil_1_1vec3}{int}} y=0)
+\begin{DoxyCompactList}\small\item\em The same as \doxylink{classutil_1_1pattern2_a478a76fc53cb9b1f2f263fed9e3265f2}{paint()}, but multiplies the corresponding elements instead of blending them. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_a6250c7498e42822eab2e27aaedfdda13}\label{classutil_1_1pattern2_a6250c7498e42822eab2e27aaedfdda13} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries fit\+\_\+values} ()
+\begin{DoxyCompactList}\small\item\em Calculates the highest and lowest values and in the pattern and linearly scales all cells to fit in the range 0-\/1. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_a08d5c4b69f086cce4fbf24eb7553020f}\label{classutil_1_1pattern2_a08d5c4b69f086cce4fbf24eb7553020f} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries clamp} (\mbox{\hyperlink{classutil_1_1vec3}{float}} \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}}=0, \mbox{\hyperlink{classutil_1_1vec3}{float}} \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}}=1)
+\begin{DoxyCompactList}\small\item\em All values less than min will be set to min, and all values greater than max will be set to max. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}\label{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries max} (\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}} \mbox{\hyperlink{classutil_1_1vec3}{p}})
+\begin{DoxyCompactList}\small\item\em Each cell in this pattern gets the max of itself and the corresponding cell in the passed pattern. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}\label{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries min} (\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}} \mbox{\hyperlink{classutil_1_1vec3}{p}})
+\begin{DoxyCompactList}\small\item\em Each cell in this pattern gets the min of itself and the corresponding cell in the passed pattern. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1pattern2_a070c5663a5789fcf3cab26d5912e4f12}\label{classutil_1_1pattern2_a070c5663a5789fcf3cab26d5912e4f12} 
+\mbox{\hyperlink{classutil_1_1vec3}{int}} {\bfseries width}
+\item 
+\Hypertarget{classutil_1_1pattern2_a67bdf2e27fbbb522b525202fff1d5da7}\label{classutil_1_1pattern2_a67bdf2e27fbbb522b525202fff1d5da7} 
+\mbox{\hyperlink{classutil_1_1vec3}{int}} {\bfseries height}
+\item 
+\Hypertarget{classutil_1_1pattern2_a5468744585585c021c7024914e9fac40}\label{classutil_1_1pattern2_a5468744585585c021c7024914e9fac40} 
+\mbox{\hyperlink{classutil_1_1vec3}{float}} \texorpdfstring{$\ast$}{*} {\bfseries data}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutil_1_1pattern2_a478a76fc53cb9b1f2f263fed9e3265f2}\label{classutil_1_1pattern2_a478a76fc53cb9b1f2f263fed9e3265f2} 
+\index{util::pattern2@{util::pattern2}!paint@{paint}}
+\index{paint@{paint}!util::pattern2@{util::pattern2}}
+\doxysubsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classutil_1_1vec3}{void}} util\+::pattern2\+::paint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}}]{p,  }\item[{\mbox{\hyperlink{classutil_1_1vec3}{float}}}]{opacity = {\ttfamily 1},  }\item[{\mbox{\hyperlink{classutil_1_1vec3}{int}}}]{x = {\ttfamily 0},  }\item[{\mbox{\hyperlink{classutil_1_1vec3}{int}}}]{y = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Paint the passed pattern on top of this pattern at the given location and with the given opacity. 
+
+The passed x, y coordinates specify the location on this pattern where the other pattern\textquotesingle{}s upper-\/left corner will appear. The passed pattern will be cropped as needed to ensure that it is not painted outside the bounds of this pattern. E.\+g., you can paint a 100x100 pattern over a 10x10 pattern without issue. The opacity is in the range 0 to 1. An opacity of 1 overwrites this pattern entirely with the new one. Opacity values less than 1 use a weighted average of the two patterns to perform blending. The opacity is not clamped. \Hypertarget{classutil_1_1pattern2_a02eda3f73ac0a41fee0a674f21cb144a}\label{classutil_1_1pattern2_a02eda3f73ac0a41fee0a674f21cb144a} 
+\index{util::pattern2@{util::pattern2}!saveppm@{saveppm}}
+\index{saveppm@{saveppm}!util::pattern2@{util::pattern2}}
+\doxysubsubsection{\texorpdfstring{saveppm()}{saveppm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classutil_1_1vec3}{void}} util\+::pattern2\+::saveppm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{char}} \texorpdfstring{$\ast$}{*}}]{fn }\end{DoxyParamCaption})}
+
+
+
+Save this pattern as a ppm. 
+
+Values of 0 are black and 1 are white. Values outside this range may produce unexpected results. Use \doxylink{classutil_1_1pattern2_a6250c7498e42822eab2e27aaedfdda13}{fit\+\_\+values()} or \doxylink{classutil_1_1pattern2_a08d5c4b69f086cce4fbf24eb7553020f}{clamp()} to ensure that values are in the appropriate range. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+procedural.\+hpp\item 
+procedural.\+cpp\end{DoxyCompactItemize}

@@ -1,227 +1,16 @@
 namespace util {
-	/* ---- pattern2 ---- */
+	/* ---- rng_xoshiro_starstar ---- */
 	
-	pattern2::pattern2() : width(0), height(0), data(NULL) {}
-	
-	pattern2::pattern2(const pattern2& c) : width(c.width), height(c.height) {
-		data = new float[width*height];
-		for (int i = 0; i < width*height; i++) {
-			data[i] = c.data[i];
-		}
+	/// Initialize the random number generator with a seed.
+	void rng_xoshiro_starstar::init(uint32_t sd) {
+		seed[0] = hashing::FNV_32(sd);
+		seed[1] = hashing::FNV_32(seed[0]);
+		seed[2] = hashing::FNV_32(seed[1]);
+		seed[3] = hashing::FNV_32(seed[2]);
 	}
 	
-	pattern2::pattern2(int width, int height) : width(width), height(height) {
-		data = new float[width*height];
-	}
-	
-	pattern2::pattern2(int width, int height, float fill) : width(width), height(height) {
-		data = new float[width*height];
-		for (int i = 0; i < width*height; i++) {
-			data[i] = fill;
-		}
-	}
-	
-	void pattern2::operator=(const pattern2& c) {
-		if (data != NULL) {
-			delete[] data;
-		}
-		
-		width = c.width;
-		height = c.height;
-		data = new float[width*height];
-		for (int i = 0; i < width*height; i++) {
-			data[i] = c.data[i];
-		}
-	}
-	
-	void pattern2::saveppm(const char* fn) {
-		FILE* fp = fopen(fn, "wb+");
-		
-		char* buff = new char[256];
-		sprintf(buff, "P5\n%d %d\n255\n", width, height);
-		fwrite(buff, 1, strlen(buff), fp);
-		delete[] buff;
-		
-		unsigned short* out = new unsigned short[width*height];
-		unsigned short temp;
-		for (int i = 0; i < width*height; i++) {
-			temp = floor(data[i] * 255.9);
-			// Reverse endianness
-			out[i] = (temp << 8) | (temp >> 8);
-		}
-		fwrite(out, 2, width*height, fp);
-		delete[] out;
-		
-		fclose(fp);
-	}
-	
-	void pattern2::fill(float val) {
-		for (int i = 0; i < width*height; i++) {
-			data[i] = val;
-		}
-	}
-	
-	void pattern2::add(float val) {
-		for (int i = 0; i < width*height; i++) {
-			data[i] += val;
-		}
-	}
-	
-	void pattern2::scale(float val) {
-		for (int i = 0; i < width*height; i++) {
-			data[i] *= val;
-		}
-	}
-	
-	void pattern2::paint(pattern2 p, float opacity, int x, int y) {
-		int Mx = x + p.width;
-		if (width < Mx) Mx = width;
-		int My = y + p.height;
-		if (height < My) My = height;
-		
-		float myop = 1 - opacity;
-		
-		int x0; int x1; int y0; int y1; int rowc0; int rowc1;
-		for (y0 = 0, y1 = y; y1 < My; y1++) {
-			rowc0 = p.width*y0;
-			rowc1 = width*y1;
-			
-			for (x0 = 0, x1 = x; x1 < Mx; x1++) {
-				data[rowc1+x1] = myop*data[rowc1+x1] + opacity*p.data[rowc0+x0];
-				x0++;
-			}
-			y0++;
-		}
-	}
-	
-	void pattern2::add(pattern2 p, int x, int y) {
-		int Mx = x + p.width;
-		if (width < Mx) Mx = width;
-		int My = y + p.height;
-		if (height < My) My = height;
-		
-		int x0; int x1; int y0; int y1; int rowc0; int rowc1;
-		for (y0 = 0, y1 = y; y1 < My; y1++) {
-			rowc0 = p.width*y0;
-			rowc1 = width*y1;
-			
-			for (x0 = 0, x1 = x; x1 < Mx; x1++) {
-				data[rowc1+x1] = data[rowc1+x1] + p.data[rowc0+x0];
-				x0++;
-			}
-			y0++;
-		}
-	}
-	
-	void pattern2::scale(pattern2 p, int x, int y) {
-		int Mx = x + p.width;
-		if (width < Mx) Mx = width;
-		int My = y + p.height;
-		if (height < My) My = height;
-		
-		int x0; int x1; int y0; int y1; int rowc0; int rowc1;
-		for (y0 = 0, y1 = y; y1 < My; y1++) {
-			rowc0 = p.width*y0;
-			rowc1 = width*y1;
-			
-			for (x0 = 0, x1 = x; x1 < Mx; x1++) {
-				data[rowc1+x1] = data[rowc1+x1] * p.data[rowc0+x0];
-				x0++;
-			}
-			y0++;
-		}
-	}
-	
-	void pattern2::fit_values() {
-		float min = 1;
-		float max = 0;
-		
-		for (int i = 0; i < width*height; i++) {
-			min = fmin(data[i], min);
-			max = fmax(data[i], max);
-		}
-		
-		float scale = 1/(max-min);
-//		printf("Max: %.2f, Min: %.2f, Scale: %.2f\n", max, min, scale);
-		for (int i = 0; i < width*height; i++) {
-			data[i] = (data[i] - min) * scale;
-		}
-	}
-	
-	void pattern2::clamp(float min, float max) {
-		for (int i = 0; i < width*height; i++) {
-			if (data[i] < min) {
-				data[i] = min;
-			}
-			else if (data[i] > max) {
-				data[i] = max;
-			}
-		}
-	}
-	
-	void pattern2::max(pattern2 p) {
-		for (int i = 0; i < width*height; i++) {
-			if (data[i] < p.data[i]) {
-				data[i] = p.data[i];
-			}
-		}
-	}
-	
-	void pattern2::min(pattern2 p) {
-		for (int i = 0; i < width*height; i++) {
-			if (data[i] > p.data[i]) {
-				data[i] = p.data[i];
-			}
-		}
-	}
-	
-	pattern2::~pattern2() {
-		if (data != NULL) {
-			delete[] data;
-		}
-	}
-	
-	/* ---- procedural ---- */
-	
-	procedural::procedural() {}
-	
-	uint32_t procedural::FNV_32(uint32_t seed) {
-		uint32_t hash = 2166136261;
-		for (int i = 0; i < 4; i++) {
-			hash *= 16777619;
-			hash ^= (unsigned char) (seed >> (i*8));
-		}
-		return hash;
-	}
-	
-	uint32_t procedural::FNV_32(uint64_t seed) {
-		uint32_t hash = 2166136261;
-		for (int i = 0; i < 8; i++) {
-			hash *= 16777619;
-			hash ^= (unsigned char) (seed >> (i*8));
-		}
-		return hash;
-	}
-	
-	// Expects null-terminated string.
-	uint32_t procedural::FNV_32(const char* seed) {
-		uint32_t hash = 2166136261;
-		for (int i = 0; seed[i] != '\0'; i++) {
-			hash *= 16777619;
-			hash ^= seed[i];
-		}
-		return hash;
-	}
-	
-	void procedural::init(unsigned int sd) {
-		seed[0] = FNV_32(sd);
-		seed[1] = FNV_32(seed[0]);
-		seed[2] = FNV_32(seed[1]);
-		seed[3] = FNV_32(seed[2]);
-	}
-	
-	// Converted to C++
-	int procedural::random_int() {
+	/// Get a random integer in the range -2^31 to 2^31-1, inclusive.
+	int rng_xoshiro_starstar::random_int() {
 		/*  Written in 2018 by David Blackman and Sebastiano Vigna (vigna@acm.org)
 
 		To the extent possible under law, the author has dedicated all copyright
@@ -247,10 +36,253 @@ namespace util {
 		return (int) result;
 	}
 	
-	float procedural::random_val() {
+	/// Get a random floating-point value in the range 0.0 to 1.0.
+	float rng_xoshiro_starstar::random_val() {
 		return (float) random_int() / 0xFFFFFFFF + 0.5;
 	}
 	
+	/* ---- hashing ---- */
+	
+	/// FNV32 hash of a 32-bit integer.
+	uint32_t hashing::FNV_32(uint32_t seed) {
+		uint32_t hash = 2166136261;
+		for (int i = 0; i < 4; i++) {
+			hash *= 16777619;
+			hash ^= (unsigned char) (seed >> (i*8));
+		}
+		return hash;
+	}
+	
+	/// FNV32 hash of a 64-bit integer.
+	uint32_t hashing::FNV_32(uint64_t seed) {
+		uint32_t hash = 2166136261;
+		for (int i = 0; i < 8; i++) {
+			hash *= 16777619;
+			hash ^= (unsigned char) (seed >> (i*8));
+		}
+		return hash;
+	}
+	
+	/// FNV32 hash of a null-terminated string.
+	uint32_t hashing::FNV_32(const char* seed) {
+		uint32_t hash = 2166136261;
+		for (int i = 0; seed[i] != '\0'; i++) {
+			hash *= 16777619;
+			hash ^= seed[i];
+		}
+		return hash;
+	}
+	
+	/* ---- pattern2 ---- */
+	
+	/// Create an empty pattern.
+	pattern2::pattern2() : width(0), height(0), data(NULL) {}
+	
+	/// Deep-copy a pattern.
+	pattern2::pattern2(const pattern2& c) : width(c.width), height(c.height) {
+		data = new float[width*height];
+		for (int i = 0; i < width*height; i++) {
+			data[i] = c.data[i];
+		}
+	}
+	
+	/// Create a pattern with the given width and height. Cells are not initialized.
+	pattern2::pattern2(int width, int height) : width(width), height(height) {
+		data = new float[width*height];
+	}
+	
+	/// Create a pattern with the given width and height and initialize all cells to the given fill value.
+	pattern2::pattern2(int width, int height, float fill) : width(width), height(height) {
+		data = new float[width*height];
+		for (int i = 0; i < width*height; i++) {
+			data[i] = fill;
+		}
+	}
+	
+	/// Deep copy another pattern.
+	void pattern2::operator=(const pattern2& c) {
+		if (data != NULL) {
+			delete[] data;
+		}
+		
+		width = c.width;
+		height = c.height;
+		data = new float[width*height];
+		for (int i = 0; i < width*height; i++) {
+			data[i] = c.data[i];
+		}
+	}
+	
+	/// Save this pattern as a ppm.
+	/** Values of 0 are black and 1 are white. Values outside this range may produce unexpected results.
+	*   Use fit_values() or clamp() to ensure that values are in the appropriate range. */
+	void pattern2::saveppm(const char* fn) {
+		FILE* fp = fopen(fn, "wb+");
+		
+		char* buff = new char[256];
+		sprintf(buff, "P5\n%d %d\n255\n", width, height);
+		fwrite(buff, 1, strlen(buff), fp);
+		delete[] buff;
+		
+		unsigned short* out = new unsigned short[width*height];
+		unsigned short temp;
+		for (int i = 0; i < width*height; i++) {
+			temp = floor(data[i] * 255.9);
+			// Reverse endianness
+			out[i] = (temp << 8) | (temp >> 8);
+		}
+		fwrite(out, 2, width*height, fp);
+		delete[] out;
+		
+		fclose(fp);
+	}
+	
+	/// Fill the pattern with the passed value.
+	void pattern2::fill(float val) {
+		for (int i = 0; i < width*height; i++) {
+			data[i] = val;
+		}
+	}
+	
+	/// Add the passed value to each cell.
+	void pattern2::add(float val) {
+		for (int i = 0; i < width*height; i++) {
+			data[i] += val;
+		}
+	}
+	
+	/// Multiply each cell by the passed value.
+	void pattern2::scale(float val) {
+		for (int i = 0; i < width*height; i++) {
+			data[i] *= val;
+		}
+	}
+	
+	/// Paint the passed pattern on top of this pattern at the given location and with the given opacity.
+	/** The passed x, y coordinates specify the location on this pattern where the other pattern's upper-left corner will appear.
+	*   The passed pattern will be cropped as needed to ensure that it is not painted outside the bounds of this pattern.
+	*   E.g., you can paint a 100x100 pattern over a 10x10 pattern without issue.
+	*   The opacity is in the range 0 to 1. An opacity of 1 overwrites this pattern entirely with the new one.
+	*   Opacity values less than 1 use a weighted average of the two patterns to perform blending. The opacity is not clamped. */
+	void pattern2::paint(pattern2 p, float opacity, int x, int y) {
+		int Mx = x + p.width;
+		if (width < Mx) Mx = width;
+		int My = y + p.height;
+		if (height < My) My = height;
+		
+		float myop = 1 - opacity;
+		
+		int x0; int x1; int y0; int y1; int rowc0; int rowc1;
+		for (y0 = 0, y1 = y; y1 < My; y1++) {
+			rowc0 = p.width*y0;
+			rowc1 = width*y1;
+			
+			for (x0 = 0, x1 = x; x1 < Mx; x1++) {
+				data[rowc1+x1] = myop*data[rowc1+x1] + opacity*p.data[rowc0+x0];
+				x0++;
+			}
+			y0++;
+		}
+	}
+	
+	/// The same as paint(), but adds the corresponding elements instead of blending them.
+	void pattern2::add(pattern2 p, int x, int y) {
+		int Mx = x + p.width;
+		if (width < Mx) Mx = width;
+		int My = y + p.height;
+		if (height < My) My = height;
+		
+		int x0; int x1; int y0; int y1; int rowc0; int rowc1;
+		for (y0 = 0, y1 = y; y1 < My; y1++) {
+			rowc0 = p.width*y0;
+			rowc1 = width*y1;
+			
+			for (x0 = 0, x1 = x; x1 < Mx; x1++) {
+				data[rowc1+x1] = data[rowc1+x1] + p.data[rowc0+x0];
+				x0++;
+			}
+			y0++;
+		}
+	}
+	
+	/// The same as paint(), but multiplies the corresponding elements instead of blending them.
+	void pattern2::scale(pattern2 p, int x, int y) {
+		int Mx = x + p.width;
+		if (width < Mx) Mx = width;
+		int My = y + p.height;
+		if (height < My) My = height;
+		
+		int x0; int x1; int y0; int y1; int rowc0; int rowc1;
+		for (y0 = 0, y1 = y; y1 < My; y1++) {
+			rowc0 = p.width*y0;
+			rowc1 = width*y1;
+			
+			for (x0 = 0, x1 = x; x1 < Mx; x1++) {
+				data[rowc1+x1] = data[rowc1+x1] * p.data[rowc0+x0];
+				x0++;
+			}
+			y0++;
+		}
+	}
+	
+	/// Calculates the highest and lowest values and in the pattern and linearly scales all cells to fit in the range 0-1.
+	void pattern2::fit_values() {
+		float min = 1;
+		float max = 0;
+		
+		for (int i = 0; i < width*height; i++) {
+			min = fmin(data[i], min);
+			max = fmax(data[i], max);
+		}
+		
+		float scale = 1/(max-min);
+//		printf("Max: %.2f, Min: %.2f, Scale: %.2f\n", max, min, scale);
+		for (int i = 0; i < width*height; i++) {
+			data[i] = (data[i] - min) * scale;
+		}
+	}
+	
+	/// All values less than min will be set to min, and all values greater than max will be set to max.
+	void pattern2::clamp(float min, float max) {
+		for (int i = 0; i < width*height; i++) {
+			if (data[i] < min) {
+				data[i] = min;
+			}
+			else if (data[i] > max) {
+				data[i] = max;
+			}
+		}
+	}
+	
+	/// Each cell in this pattern gets the max of itself and the corresponding cell in the passed pattern.
+	void pattern2::max(pattern2 p) {
+		for (int i = 0; i < width*height; i++) {
+			if (data[i] < p.data[i]) {
+				data[i] = p.data[i];
+			}
+		}
+	}
+	
+	/// Each cell in this pattern gets the min of itself and the corresponding cell in the passed pattern.
+	void pattern2::min(pattern2 p) {
+		for (int i = 0; i < width*height; i++) {
+			if (data[i] > p.data[i]) {
+				data[i] = p.data[i];
+			}
+		}
+	}
+	
+	pattern2::~pattern2() {
+		if (data != NULL) {
+			delete[] data;
+		}
+	}
+	
+	/* ---- procedural ---- */
+	
+	procedural::procedural() {}
+	
+	/// Generates a sin wave emanating from a point.
 	pattern2& procedural::sin_circle(pattern2& p, int x, int y, int wavelength, float offset) {
 		float xd; float yd; float dis;
 		int rowc;
@@ -271,6 +303,7 @@ namespace util {
 		return p;		
 	}
 	
+	/// Generates a circle with values darkening according to the log10 of distance from the origin.
 	pattern2& procedural::log_circle(pattern2& p, int x, int y, int r) {
 		float xd; float yd; float dis;
 		int rowc;
@@ -291,6 +324,7 @@ namespace util {
 		return p;		
 	}
 	
+	/// Generates a circle with values darkening according to the ln of distance from the origin.
 	pattern2& procedural::ln_circle(pattern2& p, int x, int y, int r) {
 		float xd; float yd; float dis;
 		int rowc;
@@ -311,6 +345,7 @@ namespace util {
 		return p;		
 	}
 	
+	/// Generates a circle with values darkening according to the log of distance from the origin.
 	pattern2& procedural::lin_circle(pattern2& p, int x, int y, int r) {
 		float xd; float yd; float dis;
 		int rowc;
@@ -392,7 +427,7 @@ namespace util {
 		float s;
 		float z;
 		
-		unsigned int sd = (unsigned int) random_int();
+		unsigned int sd = (unsigned int) rng.random_int();
 		
 		// Check order of min/max
 		if (maxX < minX) {
@@ -504,8 +539,8 @@ namespace util {
 //					printf("Row 0 / %d\n", y);
 					unsigned int a = y ^ sd;
 					pix_seed = col_seed | y;
-					init(FNV_32(pix_seed));
-					buffer2[I][y-min_y] = abs(random_int() % 4);
+					rng.init(hashing::FNV_32(pix_seed));
+					buffer2[I][y-min_y] = abs(rng.random_int() % 4);
 				}
 			}
 			else if (x < last_switch) {
@@ -522,8 +557,8 @@ namespace util {
 				for (int y = min_y; y <= max_y; y++) {
 //					printf("Row 1 / %d\n", y);
 					pix_seed = col_seed | y;
-					init(FNV_32(pix_seed));
-					buffer2[I][y-min_y] = abs(random_int() % 4);
+					rng.init(hashing::FNV_32(pix_seed));
+					buffer2[I][y-min_y] = abs(rng.random_int() % 4);
 				}
 			}
 			else {
@@ -540,8 +575,8 @@ namespace util {
 				for (int y = min_y; y <= max_y; y++) {
 //					printf("Row 2 / %d\n", y);
 					pix_seed = col_seed | y;
-					init(FNV_32(pix_seed));
-					buffer2[I][y-min_y] = abs(random_int() % 4);
+					rng.init(hashing::FNV_32(pix_seed));
+					buffer2[I][y-min_y] = abs(rng.random_int() % 4);
 				}
 			}
 		}
@@ -671,7 +706,7 @@ namespace util {
 	}
 	
 	pattern2& procedural::worley(pattern2& p, float maxX, float maxY, float minX, float minY) {
-		unsigned int sd = random_int();
+		unsigned int sd = rng.random_int();
 		
 		// Ensure the min/max values are in the right order
 		float s;
@@ -714,11 +749,11 @@ namespace util {
 			
 			pbr = pb + iy*vec_w;
 			for (int x = (int) minX; x < Mx; x++) {
-				init(FNV_32(row_seed | (x ^ sd)));
+				rng.init(hashing::FNV_32(row_seed | (x ^ sd)));
 				
 				ix = (int) (x - minX);
 				
-				pbr[ix] = vec2<float>(random_val(), random_val());
+				pbr[ix] = vec2<float>(rng.random_val(), rng.random_val());
 				
 //				printf("Assigned (%.2f, %.2f) to (%d, %d)\n", pbr[ix].x, pbr[ix].y, x, y);
 			}	

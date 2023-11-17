@@ -1,0 +1,500 @@
+\doxysection{vec.\+cpp}
+\hypertarget{vec_8cpp_source}{}\label{vec_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ vec2\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00003\ \ \ \ \ }
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}()\ :\ x(0),\ y(0)\ \{\}}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\mbox{\hyperlink{classutil_1_1vec3}{T}}\ x,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y)\ :\ x(x),\ y(y)\ \{\}}
+\DoxyCodeLine{00008\ \ \ \ \ }
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<signed\ char>}}\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<signed\ short>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<signed\ int>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<signed\ long\ int>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<signed\ long\ long\ int>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00014\ \ \ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<unsigned\ char>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<unsigned\ short>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<unsigned\ int>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<unsigned\ long\ int>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<unsigned\ long\ long\ int>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<float>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<double>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2<T>::vec2}}(\textcolor{keyword}{const}\ vec2<long\ double>\&\ o)\ :\ x(o.x),\ y(o.y)\ \{\}}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_a5a1d4eb00891e550d114ae078737acb3}{vec2<T>::mag}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sqrt}}(x*x\ +\ y*y);}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_aef6e1fa7ef3ea8a83054e14151f5be00}{vec2<T>::sqr\_mag}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x*x\ +\ y*y;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_a7515cab9862f3f99bc8713844efd8c1b}{vec2<T>::arg}}()\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{M\_PI}}\ -\/\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{atan2}}(y,\ -\/x);}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a4be175fe70424477eeab3e3a3a0ffae3}{vec2<T>::operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(x+a.x,\ y+a.y);}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a2cc89a5c83d9d5122c409fe1d77bc7a4}{vec2<T>::operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(x-\/a.x,\ y-\/a.y);}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_ac2ba93bfb6bd46e617d4a7a1c81ab767}{vec2<T>::operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(x*a.x,\ y*a.y);}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a4d8953126bde94df1842066a1cf8ce07}{vec2<T>::operator/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(x/a.x,\ y/a.y);}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_ac2ba93bfb6bd46e617d4a7a1c81ab767}{vec2<T>::operator*}}(\textcolor{keywordtype}{double}\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(x*a,\ y*a);}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a4d8953126bde94df1842066a1cf8ce07}{vec2<T>::operator/}}(\textcolor{keywordtype}{double}\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(x/a,\ y/a);}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a2cc89a5c83d9d5122c409fe1d77bc7a4}{vec2<T>::operator-\/}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(-\/x,\ -\/y);}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec2_a0537b8d26562a67726bed076f0e17bd3}{vec2<T>::operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x\ ==\ a.x\ \&\&\ y\ ==\ a.y;}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec2_a8a15d6bd790208d7f5a4565eab7b4464}{vec2<T>::is\_nan}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(x)\ \&\&\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(y);}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a40aa83ee7dcf2d5ff1bb9749d56a8828}{vec2<T>::normalize}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{m}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}();}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(x/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ y/\mbox{\hyperlink{classutil_1_1vec3}{m}});}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a40aa83ee7dcf2d5ff1bb9749d56a8828}{vec2<T>::normalize}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{m}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}()\ /\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{t}};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}(x/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ y/\mbox{\hyperlink{classutil_1_1vec3}{m}});}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a70416f6802cd5f2eb976d461f30aa451}{vec2<T>::lerp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ b,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec2<T>}}(}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ a.x\ +\ (b.x\ -\/\ a.x)*\mbox{\hyperlink{classutil_1_1vec3}{t}},}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ a.y\ +\ (b.y\ -\/\ a.y)*\mbox{\hyperlink{classutil_1_1vec3}{t}}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_a80f1608b3ec4a710927ec8ae8d4ae5b2}{vec2<T>::distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}\ =\ a.x\ -\/\ b.x;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}\ =\ a.y\ -\/\ b.y;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sqrt}}(\mbox{\hyperlink{classutil_1_1vec3}{dx}}*\mbox{\hyperlink{classutil_1_1vec3}{dx}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}*\mbox{\hyperlink{classutil_1_1vec3}{dy}});}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_a7798c74a48b54e93e63429a91ffaa4d3}{vec2<T>::sqr\_distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}\ =\ a.x\ -\/\ b.x;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}\ =\ a.y\ -\/\ b.y;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}*\mbox{\hyperlink{classutil_1_1vec3}{dx}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}*\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{dy}};}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_add6b6777325289ed8457c6468a10aea8}{vec2<T>::dot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.x*b.x\ +\ a.y*b.y;}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ }
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a32904e3434285b36a8fb5a2170adef06}{vec2<T>::reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{n}}\ *\ \mbox{\hyperlink{classutil_1_1vec2_add6b6777325289ed8457c6468a10aea8}{vec2<T>::dot}}(a,\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ *\ 2\ -\/\ a;}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ }
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_accc65f141ebc7e766fb68eef4cf06cef}{vec2<T>::rev\_reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{n}}\ *\ \mbox{\hyperlink{classutil_1_1vec2_add6b6777325289ed8457c6468a10aea8}{vec2<T>::dot}}(a,\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ *\ 2;}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ vec3\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00140\ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}()\ :\ x(0),\ y(0),\ z(0)\ \{\}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ z)\ :\ x(x),\ y(y),\ z(z)\ \{\}}
+\DoxyCodeLine{00145\ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<signed\ char>}}\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<signed\ short>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<signed\ int>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<signed\ long\ int>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<signed\ long\ long\ int>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00151\ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<unsigned\ char>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<unsigned\ short>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<unsigned\ int>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<unsigned\ long\ int>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<unsigned\ long\ long\ int>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00157\ \ \ \ \ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<float>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<double>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>::vec3}}(\textcolor{keyword}{const}\ vec3<long\ double>\&\ o)\ :\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00161\ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{vec3<T>::mag}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sqrt}}(x*x\ +\ y*y\ +\ z*z);}
+\DoxyCodeLine{00165\ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a352e0410813729f5a70ddd3711e8aca9}{vec3<T>::sqr\_mag}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x*x\ +\ y*y\ +\ z*z;}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ }
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_aba868177c7b66cd745b6ca47c7b282fa}{vec3<T>::yaw}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{atan2}}(y,\ x);}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ }
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a58a279ed24245b8268a1430b19fc7a01}{vec3<T>::pitch}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{atan}}(z\ /\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sqrt}}(x*x\ +\ y*y));}
+\DoxyCodeLine{00183\ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_af4074e073c86968af5cac55e4f50ab8f}{vec3<T>::operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(x+a.x,\ y+a.y,\ z+a.z);}
+\DoxyCodeLine{00188\ \ \ \ \ \}}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_ad8e30165e524f068f99032552d198904}{vec3<T>::operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(x-\/a.x,\ y-\/a.y,\ z-\/a.z);}
+\DoxyCodeLine{00192\ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a7c3317a5405d76e6c1f25c264182a9af}{vec3<T>::operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(x*a.x,\ y*a.y,\ z*a.z);}
+\DoxyCodeLine{00196\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a1ddeed8002db4f30d5e5efa3b98438cb}{vec3<T>::operator/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(x/a.x,\ y/a.y,\ z/a.z);}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a7c3317a5405d76e6c1f25c264182a9af}{vec3<T>::operator*}}(\textcolor{keywordtype}{double}\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(x*a,\ y*a,\ z*a);}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a1ddeed8002db4f30d5e5efa3b98438cb}{vec3<T>::operator/}}(\textcolor{keywordtype}{double}\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(x/a,\ y/a,\ z/a);}
+\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_ad8e30165e524f068f99032552d198904}{vec3<T>::operator-\/}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(-\/x,\ -\/y,\ -\/z);}
+\DoxyCodeLine{00212\ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec3_a64bd0d9b87250b3cc6a90d3576baa054}{vec3<T>::operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x\ ==\ a.x\ \&\&\ y\ ==\ a.y\ \&\&\ z\ ==\ a.z;}
+\DoxyCodeLine{00217\ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec3_a31320b1ff8bed9cc5c648379144f285f}{vec3<T>::is\_nan}}()\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(x)\ \&\&\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(y)\ \&\&\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(z);}
+\DoxyCodeLine{00222\ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_ad240a8df2e35a408a412fdae502f092e}{vec3<T>::normalize}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{m}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}();}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(x/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ y/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ z/\mbox{\hyperlink{classutil_1_1vec3}{m}});}
+\DoxyCodeLine{00228\ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_ad240a8df2e35a408a412fdae502f092e}{vec3<T>::normalize}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{m}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}()\ /\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{t}};}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(x/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ y/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ z/\mbox{\hyperlink{classutil_1_1vec3}{m}});}
+\DoxyCodeLine{00233\ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_aff92645be6de7c0ce9165a2ce25653a6}{vec3<T>::lerp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ a.x\ +\ (b.x\ -\/\ a.x)*\mbox{\hyperlink{classutil_1_1vec3}{t}},}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ a.y\ +\ (b.y\ -\/\ a.y)*\mbox{\hyperlink{classutil_1_1vec3}{t}},}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ a.z\ +\ (b.z\ -\/\ a.z)*\mbox{\hyperlink{classutil_1_1vec3}{t}}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_ad6caff657192d9c2657397462fd27950}{vec3<T>::distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}\ =\ a.x\ -\/\ b.x;}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}\ =\ a.y\ -\/\ b.y;}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dz}}\ =\ a.z\ -\/\ b.z;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sqrt}}(\mbox{\hyperlink{classutil_1_1vec3}{dx}}*\mbox{\hyperlink{classutil_1_1vec3}{dx}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}*\mbox{\hyperlink{classutil_1_1vec3}{dy}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dz}}*\mbox{\hyperlink{classutil_1_1vec3}{dz}});}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ }
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a4004954dacea0e6fd14755c00201a88e}{vec3<T>::sqr\_distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}\ =\ a.x\ -\/\ b.x;}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}\ =\ a.y\ -\/\ b.y;}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dz}}\ =\ a.z\ -\/\ b.z;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}*\mbox{\hyperlink{classutil_1_1vec3}{dx}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}*\mbox{\hyperlink{classutil_1_1vec3}{dy}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dz}}*\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{dz}};}
+\DoxyCodeLine{00260\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \ \ \ \ }
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<T>::dot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.x*b.x\ +\ a.y*b.y\ +\ a.z*b.z;}
+\DoxyCodeLine{00267\ \ \ \ \ \}}
+\DoxyCodeLine{00268\ \ \ \ \ }
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_accd48d7dd4faff42b9e6dac5e3f2b4ae}{vec3<T>::cross}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(a.y*b.z\ -\/\ a.z*b.y,\ a.z*b.x\ -\/\ a.x*b.z,\ a.x*b.y\ -\/\ a.y*b.x);}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ }
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a558ccb50b1f6465419bdcb284111af6b}{vec3<T>::reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{n}}\ *\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<T>::dot}}(a,\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ *\ 2\ -\/\ a;}
+\DoxyCodeLine{00280\ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \ \ \ \ }
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_aa71590e3b193a1ac6086a53500f8a1b5}{vec3<T>::rev\_reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{n}}\ *\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<T>::dot}}(a,\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ *\ 2;}
+\DoxyCodeLine{00287\ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ }
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ vecd4\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00290\ \ \ \ \ }
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}()\ :\ w(0),\ x(0),\ y(0),\ z(0)\ \{\}}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\mbox{\hyperlink{classutil_1_1vec3}{T}}\ w,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ x,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ z)\ :\ w(w),\ x(x),\ y(y),\ z(z)\ \{\}}
+\DoxyCodeLine{00295\ \ \ \ \ }
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<signed\ char>}}\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<signed\ short>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<signed\ int>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<signed\ long\ int>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<signed\ long\ long\ int>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00301\ \ \ \ \ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<unsigned\ char>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<unsigned\ short>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<unsigned\ int>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<unsigned\ long\ int>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<unsigned\ long\ long\ int>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00307\ \ \ \ \ }
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<float>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<double>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4<T>::vec4}}(\textcolor{keyword}{const}\ vec4<long\ double>\&\ o)\ :\ w(o.w),\ x(o.x),\ y(o.y),\ z(o.z)\ \{\}}
+\DoxyCodeLine{00311\ \ \ \ \ }
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_ade41a73c66f2e537f6bd9aab3842e1f9}{vec4<T>::mag}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sqrt}}(w*w\ +\ x*x\ +\ y*y\ +\ z*z);}
+\DoxyCodeLine{00315\ \ \ \ \ \}}
+\DoxyCodeLine{00316\ \ \ \ \ }
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_a7542f089042f3c3f706d3542da032954}{vec4<T>::sqr\_mag}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ w*w\ +\ x*x\ +\ y*y\ +\ z*z;}
+\DoxyCodeLine{00320\ \ \ \ \ \}}
+\DoxyCodeLine{00321\ \ \ \ \ }
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a23be5183e43ae57a66e42b25ddd123b4}{vec4<T>::operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(w+a.w,\ x+a.x,\ y+a.y,\ z+a.z);}
+\DoxyCodeLine{00325\ \ \ \ \ \}}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_aedf44d0c27c5f3bfb558090c236c176c}{vec4<T>::operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(w-\/a.w,\ x-\/a.x,\ y-\/a.y,\ z-\/a.z);}
+\DoxyCodeLine{00329\ \ \ \ \ \}}
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_ae9f7727139c085cca175374057eee91f}{vec4<T>::operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(w*a.w,\ x*a.x,\ y*a.y,\ z*a.z);}
+\DoxyCodeLine{00333\ \ \ \ \ \}}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_ad1049cc6a8a50bb97ed30a9da85e45e0}{vec4<T>::operator/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(w/a.w,\ x/a.x,\ y/a.y,\ z/a.z);}
+\DoxyCodeLine{00337\ \ \ \ \ \}}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_ae9f7727139c085cca175374057eee91f}{vec4<T>::operator*}}(\textcolor{keywordtype}{double}\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(w*a,\ x*a,\ y*a,\ z*a);}
+\DoxyCodeLine{00341\ \ \ \ \ \}}
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_ad1049cc6a8a50bb97ed30a9da85e45e0}{vec4<T>::operator/}}(\textcolor{keywordtype}{double}\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(w/a,\ x/a,\ y/a,\ z/a);}
+\DoxyCodeLine{00345\ \ \ \ \ \}}
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_aedf44d0c27c5f3bfb558090c236c176c}{vec4<T>::operator-\/}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(-\/w,\ -\/x,\ -\/y,\ -\/z);}
+\DoxyCodeLine{00349\ \ \ \ \ \}}
+\DoxyCodeLine{00350\ \ \ \ \ }
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec4_af0e9572fdbc1c7f6727de05be5bb6a7d}{vec4<T>::operator==}}(\mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ a)\ \{}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ w\ ==\ a.w\ \&\&\ x\ ==\ a.x\ \&\&\ y\ ==\ a.y\ \&\&\ z\ ==\ a.z;}
+\DoxyCodeLine{00354\ \ \ \ \ \}}
+\DoxyCodeLine{00355\ \ \ \ \ }
+\DoxyCodeLine{00357\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec4_a656ad4b6c0a51ff41bc1906204962327}{vec4<T>::is\_nan}}()\ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(w)\ \&\&\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(x)\ \&\&\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(y)\ \&\&\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{isnan}}(z);}
+\DoxyCodeLine{00359\ \ \ \ \ \}}
+\DoxyCodeLine{00360\ \ \ \ \ }
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a55bdf4321cc13f7c1be7964d62bc81c7}{vec4<T>::normalize}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{m}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}();}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(w/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ x/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ y/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ z/\mbox{\hyperlink{classutil_1_1vec3}{m}});}
+\DoxyCodeLine{00365\ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a55bdf4321cc13f7c1be7964d62bc81c7}{vec4<T>::normalize}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{m}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}()\ /\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{t}};}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec4<T>}}(w/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ x/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ y/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ z/\mbox{\hyperlink{classutil_1_1vec3}{m}});}
+\DoxyCodeLine{00370\ \ \ \ \ \}}
+\DoxyCodeLine{00371\ \ \ \ \ }
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a89bf890a2881698e3b0478cb9fb6530c}{vec4<T>::lerp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ b,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\ \{}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3<T>}}(}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ a.w\ +\ (b.w\ -\/\ a.w)*\mbox{\hyperlink{classutil_1_1vec3}{t}},}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ a.x\ +\ (b.x\ -\/\ a.x)*\mbox{\hyperlink{classutil_1_1vec3}{t}},}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ a.y\ +\ (b.y\ -\/\ a.y)*\mbox{\hyperlink{classutil_1_1vec3}{t}},}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ a.z\ +\ (b.z\ -\/\ a.z)*\mbox{\hyperlink{classutil_1_1vec3}{t}}}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00380\ \ \ \ \ \}}
+\DoxyCodeLine{00381\ \ \ \ \ }
+\DoxyCodeLine{00383\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_a9b4cc17bbf1b667b67be8250a0bc0e20}{vec4<T>::distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dw}}\ =\ a.w\ -\/\ b.w;}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}\ =\ a.x\ -\/\ b.x;}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}\ =\ a.y\ -\/\ b.y;}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dz}}\ =\ a.z\ -\/\ b.z;}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sqrt}}(\mbox{\hyperlink{classutil_1_1vec3}{dw}}*\mbox{\hyperlink{classutil_1_1vec3}{dw}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}*\mbox{\hyperlink{classutil_1_1vec3}{dx}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}*\mbox{\hyperlink{classutil_1_1vec3}{dy}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dz}}*\mbox{\hyperlink{classutil_1_1vec3}{dz}});}
+\DoxyCodeLine{00390\ \ \ \ \ \}}
+\DoxyCodeLine{00391\ \ \ \ \ }
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_ae506a21a770fb1dd1087ba5420f96bd0}{vec4<T>::sqr\_distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dw}}\ =\ a.w\ -\/\ b.w;}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}\ =\ a.x\ -\/\ b.x;}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}\ =\ a.y\ -\/\ b.y;}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{dz}}\ =\ a.z\ -\/\ b.z;}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{dw}}*\mbox{\hyperlink{classutil_1_1vec3}{dw}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dx}}*\mbox{\hyperlink{classutil_1_1vec3}{dx}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dy}}*\mbox{\hyperlink{classutil_1_1vec3}{dy}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{dz}}*\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{dz}};}
+\DoxyCodeLine{00400\ \ \ \ \ \}}
+\DoxyCodeLine{00401\ \ \ \ \ }
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00405\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_abb1aa4bc47283abb2c7639098796269d}{vec4<T>::dot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.w*b.w\ +\ a.x*b.x\ +\ a.y*b.y\ +\ a.z*b.z;}
+\DoxyCodeLine{00407\ \ \ \ \ \}}
+\DoxyCodeLine{00408\ \ \ \ \ }
+\DoxyCodeLine{00410\ }
+\DoxyCodeLine{00412\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a0914838a354ea4fc16f6d098c152ee3b}{vec4<T>::reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ \{}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{n}}\ *\ \mbox{\hyperlink{classutil_1_1vec4_abb1aa4bc47283abb2c7639098796269d}{vec4<T>::dot}}(a,\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ *\ 2\ -\/\ a;}
+\DoxyCodeLine{00414\ \ \ \ \ \}}
+\DoxyCodeLine{00415\ \ \ \ \ }
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00419\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a48e1390a7629337ecd2284ff2537ce14}{vec4<T>::rev\_reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ \{}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{n}}\ *\ \mbox{\hyperlink{classutil_1_1vec4_abb1aa4bc47283abb2c7639098796269d}{vec4<T>::dot}}(a,\ \mbox{\hyperlink{classutil_1_1vec3}{n}})\ *\ 2;}
+\DoxyCodeLine{00421\ \ \ \ \ \}}
+\DoxyCodeLine{00422\ \ \ \ \ }
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ complex\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00424\ \ \ \ \ }
+\DoxyCodeLine{00426\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex<T>::complex}}()\ :\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>()\ \{\}}
+\DoxyCodeLine{00428\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex<T>::complex}}(\mbox{\hyperlink{classutil_1_1vec3}{T}}\ r,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ \mbox{\hyperlink{classutil_1_1vec3}{i}})\ :\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>(r,\ \mbox{\hyperlink{classutil_1_1vec3}{i}})\ \{\}}
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00432\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex<T>::complex}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{theta}})\ :\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>(\mbox{\hyperlink{classutil_1_1vec3}{cos}}(\mbox{\hyperlink{classutil_1_1vec3}{theta}}),\ \mbox{\hyperlink{classutil_1_1vec3}{sin}}(\mbox{\hyperlink{classutil_1_1vec3}{theta}}))\ \{\}}
+\DoxyCodeLine{00433\ \ \ \ \ }
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex<T>::complex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\ :\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>(a)\ \{\}}
+\DoxyCodeLine{00436\ \ \ \ \ }
+\DoxyCodeLine{00437\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex<T>::complex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<float>}}\&\ o)\ :\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>(o.x,\ o.y)\ \{\}}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex<T>::complex}}(\textcolor{keyword}{const}\ complex<double>\&\ o)\ :\ vec2<T>(o.x,\ o.y)\ \{\}}
+\DoxyCodeLine{00439\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex<T>::complex}}(\textcolor{keyword}{const}\ complex<long\ double>\&\ o)\ :\ vec2<T>(o.x,\ o.y)\ \{\}}
+\DoxyCodeLine{00440\ \ \ \ \ }
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ \mbox{\hyperlink{classutil_1_1complex_a0b62e7d0238b5269ddfee1f856ecb0f0}{complex<T>::operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{complex<T>}}(this-\/>x*a.x\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>y*a.y,\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>x*a.y\ +\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>y*a.x);}
+\DoxyCodeLine{00444\ \ \ \ \ \}}
+\DoxyCodeLine{00445\ \ \ \ \ }
+\DoxyCodeLine{00447\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ \mbox{\hyperlink{classutil_1_1complex_a0b62e7d0238b5269ddfee1f856ecb0f0}{complex<T>::operator*}}(\textcolor{keywordtype}{double}\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{complex<T>}}(this-\/>x*a,\ this-\/>y*a);}
+\DoxyCodeLine{00449\ \ \ \ \ \}}
+\DoxyCodeLine{00450\ \ \ \ \ }
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ \mbox{\hyperlink{classutil_1_1complex_adebdadda962a8c3d0312cf92edaf972a}{complex<T>::scale}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{complex<T>}}(a.x*b.x,\ a.y*b.y);}
+\DoxyCodeLine{00454\ \ \ \ \ \}}
+\DoxyCodeLine{00455\ \ \ \ \ }
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ \mbox{\hyperlink{classutil_1_1complex_afedc2e34e8699bce6d31882bcd05cdca}{complex<T>::operator\string~}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{complex<T>}}(this-\/>x,\ -\/this-\/>y);}
+\DoxyCodeLine{00459\ \ \ \ \ \}}
+\DoxyCodeLine{00460\ \ \ \ \ }
+\DoxyCodeLine{00461\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ quaternion\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00462\ \ \ \ \ }
+\DoxyCodeLine{00464\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion<T>::quaternion}}()\ :\ \mbox{\hyperlink{classutil_1_1vec4}{vec4}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>()\ \{\}}
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion<T>::quaternion}}(\mbox{\hyperlink{classutil_1_1vec3}{T}}\ w,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ x,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ z)\ :\ \mbox{\hyperlink{classutil_1_1vec4}{vec4}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>(w,\ x,\ y,\ z)\ \{\}}
+\DoxyCodeLine{00467\ \ \ \ \ }
+\DoxyCodeLine{00469\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion<T>::quaternion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{axis}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{theta}})\ \{}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{axis}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{axis}}.\mbox{\hyperlink{classutil_1_1vec3_ad240a8df2e35a408a412fdae502f092e}{normalize}}();}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ s\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin}}(\mbox{\hyperlink{classutil_1_1vec3}{theta}}/2);}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ this-\/>w\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{cos}}(\mbox{\hyperlink{classutil_1_1vec3}{theta}}/2);}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ this-\/>x\ =\ \mbox{\hyperlink{classutil_1_1vec3}{axis}}.x\ *\ s;}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ this-\/>y\ =\ \mbox{\hyperlink{classutil_1_1vec3}{axis}}.y\ *\ s;}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ this-\/>z\ =\ \mbox{\hyperlink{classutil_1_1vec3}{axis}}.z\ *\ s;}
+\DoxyCodeLine{00476\ \ \ \ \ \}}
+\DoxyCodeLine{00477\ \ \ \ \ }
+\DoxyCodeLine{00479\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion<T>::quaternion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\ :\ \mbox{\hyperlink{classutil_1_1vec4}{vec4}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>(a)\ \{\}}
+\DoxyCodeLine{00480\ \ \ \ \ }
+\DoxyCodeLine{00481\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion<T>::quaternion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<float>}}\&\ o)\ :\ \mbox{\hyperlink{classutil_1_1vec4}{vec4}}<\mbox{\hyperlink{classutil_1_1vec3}{T}}>(o.w,\ o.x,\ o.y,\ o.z)\ \{\}}
+\DoxyCodeLine{00482\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion<T>::quaternion}}(\textcolor{keyword}{const}\ quaternion<double>\&\ o)\ :\ vec4<T>(o.w,\ o.x,\ o.y,\ o.z)\ \{\}}
+\DoxyCodeLine{00483\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion<T>::quaternion}}(\textcolor{keyword}{const}\ quaternion<long\ double>\&\ o)\ :\ vec4<T>(o.w,\ o.x,\ o.y,\ o.z)\ \{\}}
+\DoxyCodeLine{00484\ \ \ \ \ }
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00489\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_a619e412bf8f7ebeb3beb2d612bae79e9}{quaternion<T>::operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}(}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>w*a.w\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>x*a.x\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>y*a.y\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>z*a.z,}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>w*a.x\ +\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>x*a.w\ +\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>y*a.z\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>z*a.y,}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>w*a.y\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>x*a.z\ +\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>y*a.w\ +\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>z*a.x,}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>w*a.z\ +\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>x*a.y\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>y*a.x\ +\ \mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>z*a.w}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00496\ \ \ \ \ \}}
+\DoxyCodeLine{00497\ \ \ \ \ }
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_a619e412bf8f7ebeb3beb2d612bae79e9}{quaternion<T>::operator*}}(\textcolor{keywordtype}{double}\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}(this-\/>w*a,\ this-\/>x*a,\ this-\/>y*a,\ this-\/>z*a);}
+\DoxyCodeLine{00501\ \ \ \ \ \}}
+\DoxyCodeLine{00502\ \ \ \ \ }
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_aef2bc8abc97adc78691c0992ca002638}{quaternion<T>::scale}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}(a.w*b.w,\ a.x*b.x,\ a.y*b.y,\ a.z*b.z);}
+\DoxyCodeLine{00506\ \ \ \ \ \}}
+\DoxyCodeLine{00507\ \ \ \ \ }
+\DoxyCodeLine{00509\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_aaf8e42564f36cbdc4362905b1ac391a2}{quaternion<T>::operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}(a.w,\ a.x,\ a.y,\ a.z);}
+\DoxyCodeLine{00511\ \ \ \ \ \}}
+\DoxyCodeLine{00512\ \ \ \ \ }
+\DoxyCodeLine{00514\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_a2f75ef728ce9d32e514fbd94e9c6fc67}{quaternion<T>::operator\string~}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}(this-\/>w,\ -\/this-\/>x,\ -\/this-\/>y,\ -\/this-\/>z);}
+\DoxyCodeLine{00516\ \ \ \ \ \}}
+\DoxyCodeLine{00517\ \ \ \ \ }
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_aafe53d41c49e02eb1091b5c5d9871b5a}{quaternion<T>::normalize}}()\ \{}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{m}}\ =\ this-\/>\mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}();}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}(this-\/>w/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ this-\/>x/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ this-\/>y/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ this-\/>z/\mbox{\hyperlink{classutil_1_1vec3}{m}});}
+\DoxyCodeLine{00522\ \ \ \ \ \}}
+\DoxyCodeLine{00523\ \ \ \ \ }
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_aafe53d41c49e02eb1091b5c5d9871b5a}{quaternion<T>::normalize}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{m}}\ =\ this-\/>\mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}()\ /\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{t}};}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}(this-\/>w/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ this-\/>x/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ this-\/>y/\mbox{\hyperlink{classutil_1_1vec3}{m}},\ this-\/>z/\mbox{\hyperlink{classutil_1_1vec3}{m}});}
+\DoxyCodeLine{00528\ \ \ \ \ \}}
+\DoxyCodeLine{00529\ \ \ \ \ }
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_af99851b3bc7e4b02209b85e81de80edd}{quaternion<T>::hamilton}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}(}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ a.w*b.w\ -\/\ a.x*b.x\ -\/\ a.y*b.y\ -\/\ a.z*b.z,}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ a.w*b.x\ +\ a.x*b.w\ +\ a.y*b.z\ -\/\ a.z*b.y,}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ a.w*b.y\ -\/\ a.x*b.z\ +\ a.y*b.w\ +\ a.z*b.x,}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ a.w*b.z\ +\ a.x*b.y\ -\/\ a.y*b.x\ +\ a.z*b.w}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00538\ \ \ \ \ \}}
+\DoxyCodeLine{00539\ \ \ \ \ }
+\DoxyCodeLine{00541\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_ac2ecc8ff1b57e6bb7246431255fec1fc}{quaternion<T>::vhamilton}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vecd3}}(}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ a.w*b.x\ +\ a.x*b.w\ +\ a.y*b.z\ -\/\ a.z*b.y,}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ a.w*b.y\ -\/\ a.x*b.z\ +\ a.y*b.w\ +\ a.z*b.x,}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ a.w*b.z\ +\ a.x*b.y\ -\/\ a.y*b.x\ +\ a.z*b.w}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00547\ \ \ \ \ \}}
+\DoxyCodeLine{00548\ \ \ \ \ }
+\DoxyCodeLine{00550\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_afa20e0827875390088a8d8991085567a}{quaternion<T>::apply}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{in}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vhamilton(}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ hamilton(}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this},}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}(0,\ \mbox{\hyperlink{classutil_1_1vec3}{in}}.x,\ \mbox{\hyperlink{classutil_1_1vec3}{in}}.y,\ \mbox{\hyperlink{classutil_1_1vec3}{in}}.z)}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}(\mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>w,\ -\/\mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>x,\ -\/\mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>y,\ -\/\mbox{\hyperlink{classutil_1_1vec3}{this}}-\/>z)}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00558\ \ \ \ \ \}}
+\DoxyCodeLine{00559\ \ \ \ \ }
+\DoxyCodeLine{00561\ }
+\DoxyCodeLine{00563\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_a088d49f0fa599585b898e1645d6ee89c}{quaternion<T>::rotate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{in}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{axis\_offset}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{axis\_dir}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{theta}})\ \{}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{in}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{in}}\ -\/\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{axis\_offset}};}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{in}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}(\mbox{\hyperlink{classutil_1_1vec3}{axis\_dir}},\ \mbox{\hyperlink{classutil_1_1vec3}{theta}}).apply(\mbox{\hyperlink{classutil_1_1vec3}{in}});}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{in}}\ +\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{axis\_offset}};}
+\DoxyCodeLine{00567\ \ \ \ \ \}}
+\DoxyCodeLine{00568\ \ \ \ \ }
+\DoxyCodeLine{00570\ }
+\DoxyCodeLine{00572\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_a088d49f0fa599585b898e1645d6ee89c}{quaternion<T>::rotate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{in}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{axis\_offset}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ r)\ \{}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{in}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{in}}\ -\/\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{axis\_offset}};}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{in}}\ =\ r.apply(\mbox{\hyperlink{classutil_1_1vec3}{in}});}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{in}}\ +\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{axis\_offset}};}
+\DoxyCodeLine{00576\ \ \ \ \ \}}
+\DoxyCodeLine{00577\ \ \ \ \ }
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion<T>::slerp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ b,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\ \{}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{dot}}\ =\ \mbox{\hyperlink{classutil_1_1vec4_abb1aa4bc47283abb2c7639098796269d}{quaternion<T>::dot}}(a,\ b);}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{dot}}\ <\ 0)\ \{}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ -\/a;}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{dot}}\ =\ -\/\mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{dot}};}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{DOT\_THRESHOLD}}\ =\ 0.995;}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{dot}}\ >\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{DOT\_THRESHOLD}})\ \{}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{quaternion<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{out}}\ =\ a\ +\ (b-\/a)*\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{t}};}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{out}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{out}}.\mbox{\hyperlink{classutil_1_1vec3_ad240a8df2e35a408a412fdae502f092e}{normalize}}();}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{out}};}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{theta\_0}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{acos}}(\mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{dot}});}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{theta}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{theta\_0}}\ *\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{t}};}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin\_theta}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin}}(\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{theta}});}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin\_theta\_0}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin}}(\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{theta\_0}});}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{s0}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{cos}}(\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{theta}})\ -\/\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{dot}}\ *\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin\_theta}}\ /\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin\_theta\_0}};}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{s1}}\ =\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin\_theta}}\ /\ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{sin\_theta\_0}};}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (a*\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{s0}})\ +\ (b*\mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{s1}});}
+\DoxyCodeLine{00602\ \ \ \ \ \}}
+\DoxyCodeLine{00603\ \}}
+
+\end{DoxyCode}

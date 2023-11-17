@@ -1,0 +1,40 @@
+\doxysection{util\+::rng\+\_\+xoshiro\+\_\+starstar Class Reference}
+\hypertarget{classutil_1_1rng__xoshiro__starstar}{}\label{classutil_1_1rng__xoshiro__starstar}\index{util::rng\_xoshiro\_starstar@{util::rng\_xoshiro\_starstar}}
+
+
+Generate random values using xoshiro\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} 1.\+1.  
+
+
+
+
+{\ttfamily \#include $<$procedural.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1rng__xoshiro__starstar_addc00c18102593815482ec48178a9e7f}\label{classutil_1_1rng__xoshiro__starstar_addc00c18102593815482ec48178a9e7f} 
+\mbox{\hyperlink{classutil_1_1vec3}{void}} {\bfseries init} (\mbox{\hyperlink{classutil_1_1vec3}{uint32\+\_\+t}} \mbox{\hyperlink{classutil_1_1vec3}{sd}}=0)
+\begin{DoxyCompactList}\small\item\em Initialize the random number generator with a seed. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}\label{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede} 
+\mbox{\hyperlink{classutil_1_1vec3}{int}} {\bfseries random\+\_\+int} ()
+\begin{DoxyCompactList}\small\item\em Get a random integer in the range -\/2\texorpdfstring{$^\wedge$}{\string^}31 to 2\texorpdfstring{$^\wedge$}{\string^}31-\/1, inclusive. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1rng__xoshiro__starstar_a0e98c970cff661849de1b1730ff6db79}\label{classutil_1_1rng__xoshiro__starstar_a0e98c970cff661849de1b1730ff6db79} 
+\mbox{\hyperlink{classutil_1_1vec3}{float}} {\bfseries random\+\_\+val} ()
+\begin{DoxyCompactList}\small\item\em Get a random floating-\/point value in the range 0.\+0 to 1.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}\label{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880} 
+\mbox{\hyperlink{classutil_1_1vec3}{uint32\+\_\+t}} {\bfseries seed} \mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em The state of the random number generator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Generate random values using xoshiro\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} 1.\+1. 
+
+I recommend this rng for general-\/purpose image generation. Written in 2018 by David Blackman and Sebastiano Vigna (\href{mailto:vigna@acm.org}{\texttt{ vigna@acm.\+org}}) Original \href{http://xoshiro.di.unimi.it/xoshiro128starstar.c}{\texttt{ http\+://xoshiro.\+di.\+unimi.\+it/xoshiro128starstar.\+c}} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+procedural.\+hpp\item 
+procedural.\+cpp\end{DoxyCompactItemize}

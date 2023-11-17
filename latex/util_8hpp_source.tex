@@ -1,0 +1,29 @@
+\doxysection{util.\+hpp}
+\hypertarget{util_8hpp_source}{}\label{util_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#ifdef\ USE\_GPU}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}vec\_GPU.hpp"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}vec.hpp"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}procedural.hpp"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}geometry.hpp"{}}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}expression.hpp"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}color.hpp"{}}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}graph.hpp"{}}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#ifdef\ UTIL\_LEGACY\_VECTORS}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{typedef}\ vec2<double>\ vecd2;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{typedef}\ vec3<double>\ vecd3;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{typedef}\ vec4<double>\ vecd4;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{typedef}\ vec2<int>\ veci2;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{typedef}\ vec3<int>\ veci3;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{typedef}\ vec4<int>\ veci4;}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,84 @@
+\doxysection{expression.\+hpp}
+\hypertarget{expression_8hpp_source}{}\label{expression_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UTIL\_EXPRESSION}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UTIL\_EXPRESSION}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstdarg>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00009\ \ \ \ \ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1expr}{expr}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Either\ a\ value\ of\ type\ T\ or\ an\ operation\ on\ parameters\ of\ type\ T.}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }value\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ T\ v;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ T\ (*o)(T*,\ int);\ \textcolor{comment}{//\ Takes\ a\ list\ of\ operands\ and\ the\ number\ of\ operands.}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ value(T\ v)\ :\ v(v)\ \{\}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ value(T\ (*o)(T*,\ \textcolor{keywordtype}{int}))\ :\ o(o)\ \{\}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nodes\ that\ are\ children\ of\ this\ node.}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1expr}{expr<T>}}*\ children;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_children;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Value\ or\ Operation.}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ value\ v;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1expr_adddec458d444436ec900a5425dc2f44b}{expr}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1expr_adddec458d444436ec900a5425dc2f44b}{expr}}(T\ value);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1expr_adddec458d444436ec900a5425dc2f44b}{expr}}(T\ (*oper)(T*,\ \textcolor{keywordtype}{int}),\ \textcolor{keywordtype}{int}\ num\_operands,\ \mbox{\hyperlink{classutil_1_1expr}{expr<T>}}*\ operands);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{classutil_1_1expr_ad4150e500a1020de483f2fb78b50fab0}{evaluate}}(\textcolor{keywordtype}{int}\ depth=0);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Default\ functions\ for\ convenience.}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Arithmetic}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ ADD(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ +\ o[1];\}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ SUB(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ -\/\ o[1];\}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ MUL(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ *\ o[1];\}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ DIV(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ /\ o[1];\}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ POW(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ pow((\textcolor{keywordtype}{double})\ o[0],\ (\textcolor{keywordtype}{double})\ o[1]);\}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ NEG(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ -\/o[0];\}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Comparison}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ GT\ (T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ >\ o[1];\}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ LT\ (T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ <\ o[1];\}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ GTE(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ >=\ o[1];\}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ LTE(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ <=\ o[1];\}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ EQ\ (T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ ==\ o[1];\}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ NEQ(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ !=\ o[1];\}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ MAX(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ >\ o[1]\ ?\ o[0]\ :\ o[1];\}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ MIN(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ <\ o[1]\ ?\ o[0]\ :\ o[1];\}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Boolean}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ AND(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ \&\&\ o[1];\}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ OR\ (T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ ||\ o[1];\}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ NOT(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ !o[0];\}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bitwise}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ BWA(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ \&\ o[1];\}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ BWO(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ |\ o[1];\}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ XOR(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ o[0]\ \string^\ o[1];\}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ INV(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{\textcolor{keywordflow}{return}\ \string~o[0];\}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Array}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ AVG(T*\ o,\ \textcolor{keywordtype}{int}\ n)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ avg\ =\ o[0];}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avg\ +=\ o[i];}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \};}
+\DoxyCodeLine{00078\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#include\ "{}expression.cpp"{}}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

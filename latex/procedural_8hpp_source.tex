@@ -1,0 +1,141 @@
+\doxysection{procedural.\+hpp}
+\hypertarget{procedural_8hpp_source}{}\label{procedural_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UTIL\_PROCEDURAL}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UTIL\_PROCEDURAL}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{class\ }pattern2;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{class\ }procedural;}
+\DoxyCodeLine{00014\ \ \ \ \ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar}{rng\_xoshiro\_starstar}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[4];}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ RNG\ initialization}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_addc00c18102593815482ec48178a9e7f}{init}}(\mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1vec3}{sd}}\ =\ 0);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ RNG\ functions}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}{random\_int}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a0e98c970cff661849de1b1730ff6db79}{random\_val}}();}
+\DoxyCodeLine{00030\ \ \ \ \ \};}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1hashing}{hashing}}\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{FNV\_32}}(\mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ seed);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{FNV\_32}}(\mbox{\hyperlink{classutil_1_1vec3}{uint64\_t}}\ seed);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{FNV\_32}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ seed);}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ simple\ class\ for\ holding\ 2D\ monochrome\ data.}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ data;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}{pattern2}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}{pattern2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}{pattern2}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}{pattern2}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1pattern2_acb4c5557efe3a23c678a8d3ae5c2154f}{fill}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assignment\ opertor\ deep\ copies.}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_adf979109accbbed8cef62e9b012e2b74}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a02eda3f73ac0a41fee0a674f21cb144a}{saveppm}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classutil_1_1vec3}{fn}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_acb4c5557efe3a23c678a8d3ae5c2154f}{fill}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{val}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ all\ values\ in\ the\ pattern\ by\ a\ number.}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a902f039a1ead2539525de32ebd1c7342}{add}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{val}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Multiply\ all\ values\ in\ the\ pattern\ by\ a\ number.}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a88721436c73fc2e6cf51272d75b61907}{scale}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{val}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ the\ supplied\ pattern\ over\ this\ pattern,\ aligning\ the\ upper\ left\ corner\ to\ x\ and\ y\ and\ with\ the\ given\ opacity\ ranging\ from\ 0\ to\ 1.}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a478a76fc53cb9b1f2f263fed9e3265f2}{paint}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{opacity}}\ =\ 1,\ \textcolor{keywordtype}{int}\ x\ =\ 0,\ \textcolor{keywordtype}{int}\ y\ =\ 0);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Same\ as\ paint(),\ but\ add\ the\ values\ instead\ of\ averaging\ them.}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a902f039a1ead2539525de32ebd1c7342}{add}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x\ =\ 0,\ \textcolor{keywordtype}{int}\ y\ =\ 0);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Same\ as\ paint()\ but\ multiply\ values\ instead\ of\ averaging\ them.}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a88721436c73fc2e6cf51272d75b61907}{scale}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x\ =\ 0,\ \textcolor{keywordtype}{int}\ y\ =\ 0);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Scale\ all\ the\ values\ in\ this\ pattern\ such\ that\ the\ lowest\ becomes\ 0\ and\ the\ highest\ becomes\ 1}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a6250c7498e42822eab2e27aaedfdda13}{fit\_values}}();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ all\ values\ below\ min\ to\ min,\ and\ all\ values\ above\ max\ to\ max.}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a08d5c4b69f086cce4fbf24eb7553020f}{clamp}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}}\ =\ 0,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}}\ =\ 1);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ each\ value\ in\ this\ pattern\ to\ the\ max\ or\ min\ between\ itself\ and\ another\ pattern.}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{\string~pattern2}}();}
+\DoxyCodeLine{00086\ \ \ \ \ \};}
+\DoxyCodeLine{00087\ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1procedural}{procedural}}\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ RNG}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar}{rng\_xoshiro\_starstar}}\ rng;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Preset\ vector\ choices\ for\ simplex\ noise\ generation}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<float>}}\ vecpick2[4]\ =\ \{\mbox{\hyperlink{classutil_1_1vec3}{vec2<float>}}(1,\ 1),\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<float>}}(1,\ -\/1),\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<float>}}(-\/1,\ 1),\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<float>}}(-\/1,\ -\/1)\};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//const\ vecd3\ vecpick3[12];}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1procedural}{procedural}}();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Simple\ patterns.\ All\ coordinates\ and\ distances\ are\ given\ in\ pixels.\ */}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ a\ sine\ wave\ emanating\ from\ a\ point.}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1procedural_a61839bcc1e44f2b7c0c4501e7a7c232f}{sin\_circle}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{wavelength}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{offset}}\ =\ 0);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ a\ circle\ around\ a\ point\ where\ the\ brightness\ of\ each\ pixel\ falls\ off\ with\ the\ common\ log}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1procedural_aebb0029e9a9371bd9345626c5ad9b3fb}{log\_circle}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Same\ as\ log\_circle,\ but\ using\ the\ natural\ log.}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1procedural_acf4df5df6f4f0ad24e49c81d83c65960}{ln\_circle}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generates\ a\ circle\ where\ brightness\ falls\ off\ with\ linear\ distance\ from\ the\ circle's\ center.}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1procedural_a610fbca5fba49e9f692467537ea6abd0}{lin\_circle}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Creates\ a\ circle\ where\ brightness\ falls\ off\ according\ to\ a\ logistic\ curve.}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ circle\ technically\ \ continues\ forever,\ and\ will\ be\ at\ 0.5\ brightness\ at\ radius\ r.}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ "{}s"{}\ controls\ the\ steepness\ of\ the\ falloff,\ S=0\ will\ have\ no\ falloff\ and\ will\ paint\ everything\ 0.5.\ Negative\ steepness\ inverts\ the\ circle!}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ logistic\_circle(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r,\ \textcolor{keywordtype}{float}\ s);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ a\ sine\ wave\ with\ the\ given\ wavelength\ and\ offset\ propagating\ in\ the\ direction\ (dx,\ dy)}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ sin\_wave(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dy}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{wavelength}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{offset}}=0);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ a\ gradient\ between\ the\ two\ given\ values.}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ lin\_gradient(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dx}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dy}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{start}}=0,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{end}}=1);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Random\ Noise\ */}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2D\ Simplex\ Noise}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ simplex(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{maxX}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{maxY}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{minX}}\ =\ 0,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{minY}}\ =\ 0);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2D\ Worley\ Noise}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ worley(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{maxX}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{maxY}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{minX}}\ =\ 0,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{minY}}\ =\ 0);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Operations\ */}\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rounds\ the\ values\ of\ all\ pixels\ towards\ the\ nearest\ multiple\ of\ "{}inc"{}.}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ band(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{inc}});}
+\DoxyCodeLine{00136\ \ \ \ \ \};}
+\DoxyCodeLine{00137\ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#include\ "{}procedural.cpp"{}}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

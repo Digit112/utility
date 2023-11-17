@@ -1,0 +1,309 @@
+\doxysection{vec.\+hpp}
+\hypertarget{vec_8hpp_source}{}\label{vec_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UTIL\_VECTOR}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UTIL\_VECTOR}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }vec2;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }vec3;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }vec4;}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }complex;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }quaternion;}
+\DoxyCodeLine{00014\ \ \ \ \ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1vec2}{vec2}}\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ x;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\mbox{\hyperlink{classutil_1_1vec3}{T}}\ x,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vectors\ are\ always\ implicitly\ convertable\ to\ all\ integer\ and\ floating-\/point\ types.}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<signed\ char>}}\&\ o);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<signed\ short>}}\&\ o);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<signed\ int>}}\&\ o);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<signed\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<signed\ long\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<unsigned\ char>}}\&\ o);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<unsigned\ short>}}\&\ o);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<unsigned\ int>}}\&\ o);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<unsigned\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<unsigned\ long\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<float>}}\&\ o);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<double>}}\&\ o);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec2_a87ae8bf226b34a73cafef7ef97a3bd3b}{vec2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<long\ double>}}\&\ o);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ magnitude\ of\ this\ vector}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_a5a1d4eb00891e550d114ae078737acb3}{mag}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ squared\ magnitude\ of\ this\ vector}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_aef6e1fa7ef3ea8a83054e14151f5be00}{sqr\_mag}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ argument\ of\ the\ vector.}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ I.e.\ the\ angle\ counter-\/clockwise\ from\ the\ positive\ x-\/axis\ to\ this\ vector.}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_a7515cab9862f3f99bc8713844efd8c1b}{arg}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a4be175fe70424477eeab3e3a3a0ffae3}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a2cc89a5c83d9d5122c409fe1d77bc7a4}{operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_ac2ba93bfb6bd46e617d4a7a1c81ab767}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a4d8953126bde94df1842066a1cf8ce07}{operator/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_ac2ba93bfb6bd46e617d4a7a1c81ab767}{operator*}}(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a4d8953126bde94df1842066a1cf8ce07}{operator/}}(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a2cc89a5c83d9d5122c409fe1d77bc7a4}{operator-\/}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec2_a0537b8d26562a67726bed076f0e17bd3}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ whether\ this\ vector\ is\ nan.\ Only\ returns\ true\ if\ all\ elements\ are\ nan.}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec2_a8a15d6bd790208d7f5a4565eab7b4464}{is\_nan}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ a\ normalized\ version\ of\ this\ vector.}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a40aa83ee7dcf2d5ff1bb9749d56a8828}{normalize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ this\ vector\ normalized\ to\ a\ specific\ length.}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a40aa83ee7dcf2d5ff1bb9749d56a8828}{normalize}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a70416f6802cd5f2eb976d461f30aa451}{lerp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ b,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}});}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_a80f1608b3ec4a710927ec8ae8d4ae5b2}{distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ b);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_a7798c74a48b54e93e63429a91ffaa4d3}{sqr\_distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ b);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ Dot\ Product\ of\ two\ vectors}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec2_add6b6777325289ed8457c6468a10aea8}{dot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ b);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reflect\ the\ vector\ a\ across\ n.}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rev\_reflect\ does\ the\ same,\ but\ also\ reverses\ the\ direction\ of\ the\ reflected\ vector.}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Thus,\ rev\_reflect\ returns\ the\ direction\ vector\ a\ is\ traveling\ after\ reflecting\ off\ of\ a\ surface\ with\ normal\ n.}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ n\ must\ be\ normalized.}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_a32904e3434285b36a8fb5a2170adef06}{reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\ \mbox{\hyperlink{classutil_1_1vec2_accc65f141ebc7e766fb68eef4cf06cef}{rev\_reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}});}
+\DoxyCodeLine{00101\ \ \ \ \ \};}
+\DoxyCodeLine{00102\ \ \ \ \ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1vec3}{vec3}}\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ x;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ z;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}();}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vectors\ are\ always\ implicitly\ convertable\ to\ all\ integer\ and\ floating-\/point\ types.}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<signed\ char>}}\&\ o);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<signed\ short>}}\&\ o);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<signed\ int>}}\&\ o);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<signed\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<signed\ long\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<unsigned\ char>}}\&\ o);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<unsigned\ short>}}\&\ o);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<unsigned\ int>}}\&\ o);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<unsigned\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<unsigned\ long\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<float>}}\&\ o);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<double>}}\&\ o);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3_a566028057c2841c95da19331bf9d1b75}{vec3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<long\ double>}}\&\ o);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a9f892356d5a761fe9c92c11cf6a9a3dc}{mag}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a352e0410813729f5a70ddd3711e8aca9}{sqr\_mag}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ yaw\ of\ this\ vector\ in\ the\ range\ [-\/M\_PI,\ M\_PI).}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Angles\ towards\ the\ positive\ y-\/axis\ return\ a\ positive\ yaw.}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Positive\ z-\/axis\ is\ considered\ up.}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_aba868177c7b66cd745b6ca47c7b282fa}{yaw}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ pitch\ of\ this\ vector\ in\ the\ range\ [-\/M\_PI/2,\ M\_PI/2].}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Larger\ values\ indicate\ the\ vector\ points\ more\ towards\ the\ positive\ z-\/axis.}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a58a279ed24245b8268a1430b19fc7a01}{pitch}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_af4074e073c86968af5cac55e4f50ab8f}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_ad8e30165e524f068f99032552d198904}{operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a7c3317a5405d76e6c1f25c264182a9af}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a1ddeed8002db4f30d5e5efa3b98438cb}{operator/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a7c3317a5405d76e6c1f25c264182a9af}{operator*}}(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a1ddeed8002db4f30d5e5efa3b98438cb}{operator/}}(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_ad8e30165e524f068f99032552d198904}{operator-\/}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec3_a64bd0d9b87250b3cc6a90d3576baa054}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ whether\ this\ vector\ is\ nan.\ Only\ returns\ true\ if\ all\ elements\ are\ nan.}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec3_a31320b1ff8bed9cc5c648379144f285f}{is\_nan}}();}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ a\ normalized\ version\ of\ this\ vector.}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_ad240a8df2e35a408a412fdae502f092e}{normalize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ this\ vector\ normalized\ to\ a\ specific\ length.}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_ad240a8df2e35a408a412fdae502f092e}{normalize}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_aff92645be6de7c0ce9165a2ce25653a6}{lerp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}});}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_ad6caff657192d9c2657397462fd27950}{distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a4004954dacea0e6fd14755c00201a88e}{sqr\_distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{dot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_accd48d7dd4faff42b9e6dac5e3f2b4ae}{cross}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ b);}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reflect\ the\ vector\ a\ across\ n.}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rev\_reflect\ does\ the\ same,\ but\ also\ reverses\ the\ direction\ of\ the\ reflected\ vector.}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Thus,\ rev\_reflect\ returns\ the\ direction\ vector\ a\ is\ traveling\ after\ reflecting\ off\ of\ a\ surface\ with\ normal\ n.}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ n\ must\ be\ normalized.}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_a558ccb50b1f6465419bdcb284111af6b}{reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}});}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1vec3_aa71590e3b193a1ac6086a53500f8a1b5}{rev\_reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}});}
+\DoxyCodeLine{00193\ \ \ \ \ \};}
+\DoxyCodeLine{00194\ \ \ \ \ }
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1vec4}{vec4}}\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ w;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ x;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ z;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}();}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}(\mbox{\hyperlink{classutil_1_1vec3}{T}}\ w,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ x,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ z);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vectors\ are\ always\ implicitly\ convertable\ to\ all\ integer\ and\ floating-\/point\ types.}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<signed\ char>}}\&\ o);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<signed\ short>}}\&\ o);}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<signed\ int>}}\&\ o);}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<signed\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<signed\ long\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<unsigned\ char>}}\&\ o);}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<unsigned\ short>}}\&\ o);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<unsigned\ int>}}\&\ o);}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<unsigned\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<unsigned\ long\ long\ int>}}\&\ o);}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<float>}}\&\ o);}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<double>}}\&\ o);}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec4_ac4c454743800a4b33f1e2ad9d0b978b5}{vec4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<long\ double>}}\&\ o);}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_ade41a73c66f2e537f6bd9aab3842e1f9}{mag}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_a7542f089042f3c3f706d3542da032954}{sqr\_mag}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a23be5183e43ae57a66e42b25ddd123b4}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_aedf44d0c27c5f3bfb558090c236c176c}{operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_ae9f7727139c085cca175374057eee91f}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_ad1049cc6a8a50bb97ed30a9da85e45e0}{operator/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_ae9f7727139c085cca175374057eee91f}{operator*}}(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_ad1049cc6a8a50bb97ed30a9da85e45e0}{operator/}}(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_aedf44d0c27c5f3bfb558090c236c176c}{operator-\/}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec4_af0e9572fdbc1c7f6727de05be5bb6a7d}{operator==}}(\mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ a);}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ whether\ this\ vector\ is\ nan.\ Only\ returns\ true\ if\ all\ elements\ are\ nan}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classutil_1_1vec4_a656ad4b6c0a51ff41bc1906204962327}{is\_nan}}();}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ a\ normalized\ version\ of\ this\ vector.}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a55bdf4321cc13f7c1be7964d62bc81c7}{normalize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ this\ vector\ normalized\ to\ a\ specific\ length.}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a55bdf4321cc13f7c1be7964d62bc81c7}{normalize}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a89bf890a2881698e3b0478cb9fb6530c}{lerp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ b,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}});}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_a9b4cc17bbf1b667b67be8250a0bc0e20}{distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ b);}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_ae506a21a770fb1dd1087ba5420f96bd0}{sqr\_distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ b);}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec4_abb1aa4bc47283abb2c7639098796269d}{dot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ b);}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reflect\ the\ vector\ a\ across\ n.}}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rev\_reflect\ does\ the\ same,\ but\ also\ reverses\ the\ direction\ of\ the\ reflected\ vector.}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Thus,\ rev\_reflect\ returns\ the\ direction\ vector\ a\ is\ traveling\ after\ reflecting\ off\ of\ a\ surface\ with\ normal\ n.}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ n\ must\ be\ normalized.}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a0914838a354ea4fc16f6d098c152ee3b}{reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}});}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\ \mbox{\hyperlink{classutil_1_1vec4_a48e1390a7629337ecd2284ff2537ce14}{rev\_reflect}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{n}});}
+\DoxyCodeLine{00277\ \ \ \ \ \};}
+\DoxyCodeLine{00278\ \ \ \ \ }
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1complex}{complex}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classutil_1_1vec2}{vec2}}<T>\ \{}
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex}}();}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex}}(\mbox{\hyperlink{classutil_1_1vec3}{T}}\ r,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ \mbox{\hyperlink{classutil_1_1vec3}{i}});}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{theta}});}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec2<T>}}\&);}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vectors\ are\ always\ implicitly\ convertable\ to\ all\ floating-\/point\ types.}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<float>}}\&\ o);}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<double>}}\&\ o);}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1complex_a0a318eeb87b14efcb06fb51680cfdce8}{complex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<long\ double>}}\&\ o);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ \mbox{\hyperlink{classutil_1_1complex_a0b62e7d0238b5269ddfee1f856ecb0f0}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ \mbox{\hyperlink{classutil_1_1complex_a0b62e7d0238b5269ddfee1f856ecb0f0}{operator*}}(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ \mbox{\hyperlink{classutil_1_1complex_adebdadda962a8c3d0312cf92edaf972a}{scale}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\&\ b);}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Complex\ conjugation}}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ \mbox{\hyperlink{classutil_1_1complex_afedc2e34e8699bce6d31882bcd05cdca}{operator\string~}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00306\ \ \ \ \ \};}
+\DoxyCodeLine{00307\ \ \ \ \ }
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classutil_1_1vec4}{vec4}}<T>\ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion}}();}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion}}(\mbox{\hyperlink{classutil_1_1vec3}{T}}\ w,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ x,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ y,\ \mbox{\hyperlink{classutil_1_1vec3}{T}}\ z);}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{axis}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{theta}});\ \textcolor{comment}{//\ The\ constructor\ normalizes\ the\ axis\ for\ you.}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&\ a);}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vectors\ are\ always\ implicitly\ convertable\ to\ all\ floating-\/point\ types.}}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<float>}}\&\ o);}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<double>}}\&\ o);}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}{quaternion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<long\ double>}}\&\ o);}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ \mbox{\hyperlink{classutil_1_1quaternion_aaf8e42564f36cbdc4362905b1ac391a2}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec4<T>}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ \mbox{\hyperlink{classutil_1_1quaternion_a619e412bf8f7ebeb3beb2d612bae79e9}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\&\ a)\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ Hamilton\ product}}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ \mbox{\hyperlink{classutil_1_1quaternion_a619e412bf8f7ebeb3beb2d612bae79e9}{operator*}}(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ \mbox{\hyperlink{classutil_1_1quaternion_aef2bc8abc97adc78691c0992ca002638}{scale}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\&\ b);}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Complex\ conjugation}}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ \mbox{\hyperlink{classutil_1_1quaternion_a2f75ef728ce9d32e514fbd94e9c6fc67}{operator\string~}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ \mbox{\hyperlink{classutil_1_1quaternion_af99851b3bc7e4b02209b85e81de80edd}{hamilton}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\&\ b);}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_ac2ecc8ff1b57e6bb7246431255fec1fc}{vhamilton}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\&\ b);}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Normalize\ identical\ to\ the\ vecd4\ normalize.\ This\ version\ exists\ so\ that\ quaternion::normalize()\ will\ return\ a\ quaternion.}}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ \mbox{\hyperlink{classutil_1_1quaternion_aafe53d41c49e02eb1091b5c5d9871b5a}{normalize}}();}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}\ \mbox{\hyperlink{classutil_1_1quaternion_aafe53d41c49e02eb1091b5c5d9871b5a}{normalize}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}});}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rotates\ the\ passed\ vector\ according\ to\ the\ current\ quaternion\ about\ the\ origin.}}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_afa20e0827875390088a8d8991085567a}{apply}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{in}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rotate\ the\ given\ vector\ theta\ radians\ around\ the\ given\ axis\ or\ by\ applying\ the\ given\ quaternion.}}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ offset\ to\ specify\ a\ point\ through\ which\ the\ axis\ of\ rotation\ passes.}}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_a088d49f0fa599585b898e1645d6ee89c}{rotate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{in}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{axis\_offset}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{axis\_dir}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{theta}});}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ \mbox{\hyperlink{classutil_1_1quaternion_a088d49f0fa599585b898e1645d6ee89c}{rotate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{in}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{axis\_offset}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ r);}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Interpolate\ between\ two\ quaternions\ in\ such\ a\ way\ as\ to\ produce\ smooth\ rotations.}}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ slerp(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\&\ b,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classutil_1_1vec3}{t}});\ }
+\DoxyCodeLine{00355\ \ \ \ \ \};}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ forward(1,\ 0,\ 0);}
+\DoxyCodeLine{00358\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ backward(-\/1,\ 0,\ 0);}
+\DoxyCodeLine{00359\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ right(0,\ 1,\ 0);}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ left(0,\ -\/1,\ 0);}
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ up(0,\ 0,\ 1);}
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classutil_1_1vec3}{vec3<T>}}\ down(0,\ 0,\ -\/1);}
+\DoxyCodeLine{00363\ \ \ \ \ }
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classutil_1_1vec3}{complex<T>}}\ cid(1,\ 0);}
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classutil_1_1vec3}{quaternion<T>}}\ qid(1,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00366\ \}}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \textcolor{preprocessor}{\#include\ "{}vec.cpp"{}}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

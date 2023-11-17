@@ -1,0 +1,216 @@
+\doxysection{graph.\+cpp}
+\hypertarget{graph_8cpp_source}{}\label{graph_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ linear\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00005\ \ \ \ \ }
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordtype}{float}\ linear::derivative()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
+\DoxyCodeLine{00008\ \ \ \ \ \}}
+\DoxyCodeLine{00009\ \ \ \ \ }
+\DoxyCodeLine{00010\ \ \ \ \ quadratic\ linear::integrate(\textcolor{keywordtype}{float}\ C)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ quadratic(a/2,\ b,\ C);}
+\DoxyCodeLine{00012\ \ \ \ \ \}}
+\DoxyCodeLine{00013\ \ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{float}\ linear::evaluate(\textcolor{keywordtype}{float}\ x)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a*x\ +\ b;}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ quadratic\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00019\ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ linear\ quadratic::derivative()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ linear(2*a,\ b);}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ cubic\ quadratic::integrate(\textcolor{keywordtype}{float}\ C)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cubic(a/3,\ b/2,\ c,\ C);}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ quadratic::evaluate(\textcolor{keywordtype}{float}\ x)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a*x*x\ +\ b*c\ +\ c;}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ cubic\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ quadratic\ cubic::derivative()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ quadratic(3*a,\ 2*b,\ c);}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{float}\ cubic::evaluate(\textcolor{keywordtype}{float}\ x)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a*x*x*x\ +\ b*x*x\ +\ c*x\ +\ d;}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ cubic\_interpolator\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ swap\_rows(\textcolor{keywordtype}{float}**\ mat,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ temp\ =\ mat[i];}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ mat[i]\ =\ mat[j];}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ mat[j]\ =\ temp;}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ cubic\_interpolator::interpolate(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_points,\ vec2<float>*\ p)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N\ =\ 4*num\_points\ -\/\ 4;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mat[row][column],\ column\ =\ N\ indexes\ the\ RHS.}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}**\ mat\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}*[N];}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N;\ i++)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ mat[i]\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[N+1];}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <=\ N;\ j++)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat[i][j]\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cache\ squares\ and\ cubes\ of\ x\ values.}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ New\ is\ used\ to\ avoid\ CUDA\ errors.}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ squares\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[num\_points];}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ cubes\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[num\_points];}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_points;\ i++)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ squares[i]\ =\ p[i].x\ *\ p[i].x;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ cubes[i]\ =\ squares[i]\ *\ p[i].x;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Load\ matrix}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ 0;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Restrict\ functions\ by\ a\ pair\ of\ points\ that\ they\ must\ pass\ through.}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_points-\/1;\ i++)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ a\_i\ *\ x\_i\string^3\ +\ b\_i\ *\ x\_i\string^2\ +\ c\_i\ *\ x\_i\ +\ d\_i\ =\ y\_i}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4\ \ ]\ =\ cubes[i];}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+1]\ =\ squares[i];}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+2]\ =\ p[i].x;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+3]\ =\ 1;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][N]\ =\ p[i].y;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ r++;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ a\_i\ *\ x\_(i+1)\string^3\ +\ b\_i\ *\ x\_(i+1)\string^2\ +\ c\_i\ *\ x\_(i+1)\ +\ d\_i\ =\ y\_(i+1)}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4\ \ ]\ =\ cubes[i+1];}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+1]\ =\ squares[i+1];}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+2]\ =\ p[i+1].x;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+3]\ =\ 1;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][N]\ =\ p[i+1].y;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ r++;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Restrict\ adjacent\ segments\ to\ have\ the\ same\ first\ derivative\ where\ they\ meet.}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_points-\/2;\ i++)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3\ *\ a\_i\ *\ x\_(i+1)\string^2\ +\ 2\ *\ b\_i\ *\ x\_(i+1)\ +\ c\_i\ \ -\/\ \ 3\ *\ a\_(i+1)\ *\ x\_(i+1)\string^2\ -\/\ 2\ *\ b\_(i+1)\ *\ x\_(i+1)\ -\/\ c\_(i+1)\ =\ 0}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4\ \ ]\ =\ 3\ *\ squares[i+1];}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+1]\ =\ 2\ *\ p[i+1].x;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+2]\ =\ 1;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][(i+1)*4\ \ ]\ =\ -\/3\ *\ squares[i+1];}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][(i+1)*4+1]\ =\ -\/2\ *\ p[i+1].x;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][(i+1)*4+2]\ =\ -\/1;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ r++;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Restrict\ adjacent\ segments\ to\ have\ the\ same\ second\ derivative\ where\ they\ meet.}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_points-\/2;\ i++)\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 6\ *\ a\_i\ *\ x\_(i+1)\ +\ 2\ *\ b\_i\ \ -\/\ \ 6\ *\ a\_(i+1)\ *\ x\_(i+1)\ -\/\ 2\ *\ b\_(i+1)\ =\ 0;}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4\ \ ]\ =\ 6\ *\ p[i+1].x;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][i*4+1]\ =\ 2;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][(i+1)*4\ \ ]\ =\ -\/6\ *\ p[i+1].x;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ mat[r][(i+1)*4+1]\ =\ -\/2;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ r++;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Restrict\ the\ second\ derivative\ at\ the\ first\ and\ last\ points.}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 6\ *\ a\_1\ *\ x\_1\ +\ 2\ *\ b\_1\ =\ 0}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ mat[r][0]\ =\ 6\ *\ p[0].x;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ mat[r][1]\ =\ 2;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ r++;}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 6\ *\ a\_(n-\/1)\ *\ x\_n\ +\ 2\ *\ b\_(n-\/1)\ =\ 0}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ mat[r][(num\_points-\/2)*4\ \ ]\ =\ 6\ *\ p[num\_points-\/1].x;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ mat[r][(num\_points-\/2)*4+1]\ =\ 2;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ gaussian\ elimination\ to\ bring\ the\ matrix\ into\ row\ echelon\ form.}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ matrix\ is\ not\ put\ into\ reduced\ row\ echelon\ form.}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ N;\ k++)\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ max\_i\ =\ fabs(mat[k][k]);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\_row\ =\ k;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ k+1;\ i\ <\ N;\ i++)\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fabs(mat[i][k])\ >\ max\_i)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_i\ =\ fabs(mat[i][k]);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_i\_row\ =\ i;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ largest\ entry\ is\ 0,\ there\ is\ no\ solution.}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max\_i\ ==\ 0)\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N;\ i++)\ \textcolor{keyword}{delete}[]\ mat[i];}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ mat;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ squares;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ cubes;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max\_i\_row\ !=\ k)\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ swap\_rows(mat,\ k,\ max\_i\_row);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ multiples\ of\ the\ kth\ row\ to\ each\ of\ the\ below\ columns\ in\ order\ to\ make\ all\ of\ the\ entries\ beneath\ k\ 0.}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ k+1;\ i\ <\ N;\ i++)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ m\ =\ -\/mat[i][k]\ /\ mat[k][k];}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <=\ N;\ j++)\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat[i][j]\ +=\ m\ *\ mat[k][j];}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Solve\ for\ the\ unknowns\ in\ reverse\ order.\ The\ results\ are\ placed\ in\ column\ N\ in\ the\ RHS.}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Solves\ from\ bottom\ to\ top}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ N-\/1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Subtract\ all\ previous\ terms.}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ N-\/1;\ j\ >\ i;\ j-\/-\/)\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat[i][N]\ -\/=\ mat[j][N]\ *\ mat[i][j];}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ mat[i][N]\ /=\ mat[i][i];}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reallocate\ the\ segments\ to\ the\ appropriate\ size.}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (segments\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ segments;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ segments\ =\ \textcolor{keyword}{new}\ cubic[num\_points\ -\/\ 1];}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_points\ -\/\ 1;\ i++)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ segments[i]\ =\ cubic(}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat[i*4\ \ ][N],}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat[i*4+1][N],}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat[i*4+2][N],}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat[i*4+3][N]}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N;\ i++)\ \textcolor{keyword}{delete}[]\ mat[i];}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ mat;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ squares;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ cubes;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ cubic\_interpolator::\string~cubic\_interpolator()\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (segments\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ segments;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \}}
+
+\end{DoxyCode}

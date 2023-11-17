@@ -1,0 +1,24 @@
+\doxysection{geometry.\+hpp}
+\hypertarget{geometry_8hpp_source}{}\label{geometry_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UTIL\_GEOMETRY}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UTIL\_GEOMETRY}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}vec.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{//\ Rearranges\ the\ passed\ three\ points\ so\ that\ the\ longest\ side\ of\ the\ triangle\ formed\ by\ the\ points\ is\ side\ AB.}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{comment}{//\ It\ accomplishes\ this\ by\ swapping\ a\ pair\ of\ points\ if\ necessary.}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{void}\ format\_tri(vec3<float>\&\ a,\ vec3<float>\&\ b,\ vec3<float>\&\ c);}
+\DoxyCodeLine{00010\ \ \ \ \ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ point\ at\ which\ the\ passed\ ray\ passing\ through\ point\ P\ in\ direction\ D\ collides\ with\ triangle\ A,\ B,\ C,}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{comment}{//\ or\ returns\ (nan,\ nan,\ nan)\ if\ no\ collision\ exists.\ D\ must\ be\ normalized\ already.}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ This\ function\ assumes\ that\ the\ points\ are\ not\ collinear,\ that\ d\ is\ normalized,\ and\ that\ AB\ is\ the\ longest\ line\ of\ the\ triangle.}}
+\DoxyCodeLine{00014\ \ \ \ \ vec3<float>\ coll\_ray\_tri(vec3<float>\ p,\ vec3<float>\ d,\ vec3<float>\ a,\ vec3<float>\ b,\ vec3<float>\ c);}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}geometry.cpp"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

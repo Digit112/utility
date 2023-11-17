@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['normalize_0',['normalize',['../classutil_1_1vec2.html#a40aa83ee7dcf2d5ff1bb9749d56a8828',1,'util::vec2::normalize() const'],['../classutil_1_1vec2.html#af3081659bcf1cf827950910205be1ff8',1,'util::vec2::normalize(double t) const'],['../classutil_1_1vec3.html#ad240a8df2e35a408a412fdae502f092e',1,'util::vec3::normalize() const'],['../classutil_1_1vec3.html#a299ded0d7b91075ea2086f6169e157ae',1,'util::vec3::normalize(double t) const'],['../classutil_1_1vec4.html#a55bdf4321cc13f7c1be7964d62bc81c7',1,'util::vec4::normalize() const'],['../classutil_1_1vec4.html#ae56320e760a3f9c11327e170220ddb47',1,'util::vec4::normalize(double t) const'],['../classutil_1_1quaternion.html#aafe53d41c49e02eb1091b5c5d9871b5a',1,'util::quaternion::normalize()'],['../classutil_1_1quaternion.html#ab69c304093b34d8e32149dcd6d3ceb53',1,'util::quaternion::normalize(double t)']]]
+];

@@ -12,9 +12,25 @@ namespace util {
 	template<class T> class complex;
 	template<class T> class quaternion;
 	
-	// IMPORTANT: Operations between vec2 objects with different template parameters
-	// may return unexpected results. The right operand and return result will be converted
-	// to the type of the left operand.
+	/// A class representing 2D vectors. Implicit conversions between types with differing template parameters are defined.
+	/** IMPORTANT: Operations between vec2 objects with different template parameters
+	*   may return unexpected results. The right operand will be converted to the type of the left operand.
+	*   
+	*   Implicit conversion to the following template parameter types are allowed:
+	*   - `signed char`
+	*   - `signed short`
+	*   - `signed int`
+	*   - `signed long int`
+	*   - `signed long long int`
+	*   - `unsigned char`
+	*   - `unsigned short`
+	*   - `unsigned int`
+	*   - `unsigned long int`
+	*   - `unsigned long long int`
+	*   - `float`
+	*   - `double`
+	*   - `long double`
+	*/
 	template<class T> class vec2 {
 	public:
 		T x;
@@ -84,6 +100,25 @@ namespace util {
 		static vec2<T> rev_reflect(const vec2<T>& a, const vec2<T>& n);
 	};
 	
+	/// A class representing 3D vectors. Implicit conversions between types with differing template parameters are defined.
+	/** IMPORTANT: Operations between vec3 objects with different template parameters
+	*   may return unexpected results. The right operand will be converted to the type of the left operand.
+	*   
+	*   Implicit conversion to the following template parameter types are allowed:
+	*   - `signed char`
+	*   - `signed short`
+	*   - `signed int`
+	*   - `signed long int`
+	*   - `signed long long int`
+	*   - `unsigned char`
+	*   - `unsigned short`
+	*   - `unsigned int`
+	*   - `unsigned long int`
+	*   - `unsigned long long int`
+	*   - `float`
+	*   - `double`
+	*   - `long double`
+	*/
 	template<class T> class vec3 {
 	public:
 		T x;
@@ -157,6 +192,26 @@ namespace util {
 		static vec3<T> rev_reflect(const vec3<T>& a, const vec3<T>& n);
 	};
 	
+	/// A class representing 4D vectors. Implicit conversions between types with differing template parameters are defined.
+	/** The components are taken to be in the order w, x, y, z.
+	*   IMPORTANT: Operations between vec4 objects with different template parameters
+	*   may return unexpected results. The right operand will be converted to the type of the left operand.
+	*   
+	*   Implicit conversion to the following template parameter types are allowed:
+	*   - `signed char`
+	*   - `signed short`
+	*   - `signed int`
+	*   - `signed long int`
+	*   - `signed long long int`
+	*   - `unsigned char`
+	*   - `unsigned short`
+	*   - `unsigned int`
+	*   - `unsigned long int`
+	*   - `unsigned long long int`
+	*   - `float`
+	*   - `double`
+	*   - `long double`
+	*/
 	template<class T> class vec4 {
 	public:
 		T w;
@@ -221,6 +276,13 @@ namespace util {
 		static vec4<T> rev_reflect(const vec4<T>& a, const vec4<T>& n);
 	};
 	
+	/// A class representing complex numbers.
+	/** Complex numbers serve to represent rotations in 2D, among other things.
+	*   
+	*   Implicit conversion to the following template parameter types are allowed:
+	*   - `float`
+	*   - `double`
+	*   - `long double` */
 	template<class T> class complex : public vec2<T> {
 	public:
 		complex();
@@ -243,6 +305,13 @@ namespace util {
 		complex<T> operator~() const;
 	};
 	
+	/// A class representing quaternions.
+	/** Quaternions serve to represent rotations in 3D, among other things.
+	*   
+	*   Implicit conversion to the following template parameter types are allowed:
+	*   - `float`
+	*   - `double`
+	*   - `long double` */
 	template<class T> class quaternion : public vec4<T> {
 	public:
 		quaternion();
@@ -268,8 +337,6 @@ namespace util {
 		
 		static quaternion hamilton(const quaternion& a, const quaternion& b);
 		static vec3<T> vhamilton(const quaternion& a, const quaternion& b);
-		
-		quaternion& mhamilton(quaternion& a, const quaternion& b);
 		
 		// Normalize identical to the vecd4 normalize. This version exists so that quaternion::normalize() will return a quaternion.
 		quaternion normalize();

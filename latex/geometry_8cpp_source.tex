@@ -1,0 +1,120 @@
+\doxysection{geometry.\+cpp}
+\hypertarget{geometry_8cpp_source}{}\label{geometry_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{keywordtype}{void}\ format\_tri(vec3<float>\&\ a,\ vec3<float>\&\ b,\ vec3<float>\&\ c)\ \{}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ segment\ AB\ is\ longest.}}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ab\ =\ (a-\/b).sqr\_mag();}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ bc\ =\ (b-\/c).sqr\_mag();}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ca\ =\ (c-\/a).sqr\_mag();}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bc\ >\ ab)\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ vec3<float>\ tmp;}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bc\ >\ ca)\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ a;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ c;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ tmp;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ c;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ b;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ tmp;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ca\ >\ ab)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ vec3<float>\ tmp;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ c;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ b;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ tmp;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ AB\ must\ be\ the\ longest\ line\ in\ the\ triangle}}
+\DoxyCodeLine{00029\ \ \ \ \ vec3<float>\ coll\_ray\_tri(vec3<float>\ p,\ vec3<float>\ d,\ vec3<float>\ a,\ vec3<float>\ b,\ vec3<float>\ c)\ \{}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}(\%.2lf,\ \%.2lf,\ \%.2lf),\ (\%.2lf,\ \%.2lf,\ \%.2lf),\ (\%.2lf,\ \%.2lf,\ \%.2lf)\(\backslash\)n"{},\ a.x,\ a.y,\ a.z,\ b.x,\ b.y,\ b.z,\ c.x,\ c.y,\ c.z);}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ unit\ normal\ vector\ of\ the\ plane\ containing\ the\ triangle}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ vec3<float>\ n\ =\ \mbox{\hyperlink{classutil_1_1vec3_accd48d7dd4faff42b9e6dac5e3f2b4ae}{vec3<float>::cross}}(b-\/a,\ c-\/a).\mbox{\hyperlink{classutil_1_1vec3_ad240a8df2e35a408a412fdae502f092e}{normalize}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ denom\ =\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(d,\ n);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ plane\ and\ ray\ are\ perpendicular,\ no\ collision.}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (denom\ ==\ 0)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vec3<float>(NAN,\ NAN,\ NAN);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ distance\ from\ the\ origin\ to\ the\ nearest\ point\ on\ the\ plane}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ nd\ =\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(n,\ a);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}n:\ (\%.4lf,\ \%.4lf,\ \%.4lf),\ nd:\ \%lf\(\backslash\)n"{},\ n.x,\ n.y,\ n.z,\ nd);}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ where\ along\ the\ line\ the\ collision\ occurs.}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ (nd\ -\/\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(p,\ n))\ /\ denom;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}t:\ \%.2lf\(\backslash\)n"{},\ t);}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ collision\ happens\ at\ or\ before\ the\ start\ of\ the\ ray,\ no\ collision}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ <=\ 0)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vec3<float>(NAN,\ NAN,\ NAN);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ vec3<float>\ p\_hit\ =\ p\ +\ d*t;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Axes\ defining\ a\ space\ in\ the\ triangle's\ plane.}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ eu\ \&\ ev\ are\ certain\ to\ form\ a\ right\ angle}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ vec3<float>\ eu\ =\ (b-\/a).normalize();}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ vec3<float>\ ev\ =\ ((c-\/a)\ -\/\ eu\ *\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(eu,\ c-\/a)).normalize();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ plane\ coordinates\ of\ the\ points\ of\ the\ triangle.}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ a\ is\ (0,\ 0)}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ b\ is\ (w,\ 0)}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ c\ is\ (g,\ h)}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ w\ >=\ g}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ w\ =\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(eu,\ (b\ -\/\ a));}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ g\ =\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(eu,\ (c\ -\/\ a));}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ h\ =\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(ev,\ (c\ -\/\ a));}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ plane\ coordinates\ of\ p\_hit}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ u\ =\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(eu,\ (p\_hit\ -\/\ a));}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ v\ =\ \mbox{\hyperlink{classutil_1_1vec3_a801db9b63c828d983809260e8ad12922}{vec3<float>::dot}}(ev,\ (p\_hit\ -\/\ a));}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ (u,\ v)\ is\ not\ in\ the\ triangle.}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((u\ <\ 0)\ ||}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ (u\ >\ w)\ ||}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ (v\ <\ 0)\ ||}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ (v\ >\ h)\ ||}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ (u\ <=\ g\ \&\&\ v\ >\ u*h/g)\ ||}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ (u\ >=\ g\ \&\&\ v\ >\ (w-\/u)\ *\ h\ /\ (w-\/g)))\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vec3<float>(NAN,\ NAN,\ NAN);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p\_hit;}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ }
+
+\end{DoxyCode}

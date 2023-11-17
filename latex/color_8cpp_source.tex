@@ -1,0 +1,100 @@
+\doxysection{color.\+cpp}
+\hypertarget{color_8cpp_source}{}\label{color_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00002\ \ \ \ \ hsv::hsv(rgb\ in)\ \{}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ min,\ max,\ delta;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ min\ =\ in.r\ <\ in.g\ ?\ in.r\ :\ in.g;}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ min\ =\ min\ \ <\ in.b\ ?\ min\ \ :\ in.b;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ max\ =\ in.r\ >\ in.g\ ?\ in.r\ :\ in.g;}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ max\ =\ max\ \ >\ in.b\ ?\ max\ \ :\ in.b;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ v\ =\ max;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ v}}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ delta\ =\ max\ -\/\ min;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delta\ <\ 0.00001)}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ h\ =\ 0;\ \textcolor{comment}{//\ undefined,\ maybe\ nan?}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ max\ >\ 0.0\ )\ \{\ \textcolor{comment}{//\ NOTE:\ if\ Max\ is\ ==\ 0,\ this\ divide\ would\ cause\ a\ crash}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ (delta\ /\ max);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ s}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ max\ is\ 0,\ then\ r\ =\ g\ =\ b\ =\ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ s\ =\ 0,\ h\ is\ undefined}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ 0.0;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ h\ =\ NAN;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ its\ now\ undefined}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ in.r\ >=\ max\ )\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ >\ is\ bogus,\ just\ keeps\ compilor\ happy}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ h\ =\ (\ in.g\ -\/\ in.b\ )\ /\ delta;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ between\ yellow\ \&\ magenta}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ in.g\ >=\ max\ )}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ h\ =\ 2.0\ +\ (\ in.b\ -\/\ in.r\ )\ /\ delta;\ \ \textcolor{comment}{//\ between\ cyan\ \&\ yellow}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ h\ =\ 4.0\ +\ (\ in.r\ -\/\ in.g\ )\ /\ delta;\ \ \textcolor{comment}{//\ between\ magenta\ \&\ cyan}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ h\ *=\ 60.0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ degrees}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ h\ <\ 0.0\ )}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ h\ +=\ 360.0;}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ rgb::rgb(hsv\ in)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ hh,\ p,\ q,\ t,\ ff;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ \ i;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(in.s\ <=\ 0.0)\ \{\ \ \ \ \ \ \ \textcolor{comment}{//\ <\ is\ bogus,\ just\ shuts\ up\ warnings}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ in.v;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ in.v;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ in.v;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ hh\ =\ in.h;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hh\ >=\ 360.0)\ hh\ =\ 0.0;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ hh\ /=\ 60.0;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ i\ =\ (long)hh;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ ff\ =\ hh\ -\/\ i;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ p\ =\ in.v\ *\ (1.0\ -\/\ in.s);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ q\ =\ in.v\ *\ (1.0\ -\/\ (in.s\ *\ ff));}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ t\ =\ in.v\ *\ (1.0\ -\/\ (in.s\ *\ (1.0\ -\/\ ff)));}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(i)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ in.v;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ t;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ p;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ q;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ in.v;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ p;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ p;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ in.v;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ t;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ p;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ q;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ in.v;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ t;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ p;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ in.v;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 5:}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ in.v;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ p;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ q;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \}}
+
+\end{DoxyCode}

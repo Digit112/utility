@@ -1,0 +1,38 @@
+\doxysection{color.\+hpp}
+\hypertarget{color_8hpp_source}{}\label{color_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UTIL\_COLOR}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UTIL\_COLOR}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{class\ }rgb;}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{class\ }hsv;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1rgb}{rgb}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ r;\ \ \ \ \ \ \ \textcolor{comment}{//\ a\ fraction\ between\ 0\ and\ 1}}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ g;\ \ \ \ \ \ \ \textcolor{comment}{//\ a\ fraction\ between\ 0\ and\ 1}}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ b;\ \ \ \ \ \ \ \textcolor{comment}{//\ a\ fraction\ between\ 0\ and\ 1}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rgb}{rgb}}()\ :\ r(0),\ g(0),\ b(0)\ \{\}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rgb}{rgb}}(\textcolor{keywordtype}{float}\ r,\ \textcolor{keywordtype}{float}\ g,\ \textcolor{keywordtype}{float}\ b)\ :\ r(r),\ g(g),\ b(b)\ \{\}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rgb}{rgb}}(\mbox{\hyperlink{classutil_1_1hsv}{hsv}}\ in);}
+\DoxyCodeLine{00017\ \ \ \ \ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classutil_1_1hsv}{hsv}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ h;\ \ \ \ \ \ \ \textcolor{comment}{//\ angle\ in\ degrees}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s;\ \ \ \ \ \ \ \textcolor{comment}{//\ a\ fraction\ between\ 0\ and\ 1}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ v;\ \ \ \ \ \ \ \textcolor{comment}{//\ a\ fraction\ between\ 0\ and\ 1}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1hsv}{hsv}}()\ :\ h(0),\ s(0),\ v(0)\ \{\}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1hsv}{hsv}}(\textcolor{keywordtype}{float}\ h,\ \textcolor{keywordtype}{float}\ s,\ \textcolor{keywordtype}{float}\ v)\ :\ h(h),\ s(s),\ v(v)\ \{\}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1hsv}{hsv}}(\mbox{\hyperlink{classutil_1_1rgb}{rgb}}\ in);}
+\DoxyCodeLine{00028\ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}color.cpp"{}}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

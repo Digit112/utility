@@ -1,0 +1,222 @@
+\doxysection{util\+::quaternion\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classutil_1_1quaternion}{}\label{classutil_1_1quaternion}\index{util::quaternion$<$ T $>$@{util::quaternion$<$ T $>$}}
+
+
+A class representing quaternions.  
+
+
+
+
+{\ttfamily \#include $<$vec.\+hpp$>$}
+
+Inheritance diagram for util\+::quaternion\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classutil_1_1quaternion}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e}\label{classutil_1_1quaternion_a16ec340968bb17193a555a5bee4fab4e} 
+{\bfseries quaternion} ()
+\begin{DoxyCompactList}\small\item\em Construct a quaternion representing 0 + 0i + 0j + 0k. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_ac4491483a904ce0befed4364a8be3593}\label{classutil_1_1quaternion_ac4491483a904ce0befed4364a8be3593} 
+{\bfseries quaternion} (\mbox{\hyperlink{classutil_1_1vec3}{T}} w, \mbox{\hyperlink{classutil_1_1vec3}{T}} x, \mbox{\hyperlink{classutil_1_1vec3}{T}} y, \mbox{\hyperlink{classutil_1_1vec3}{T}} z)
+\begin{DoxyCompactList}\small\item\em Construct a quaternion with the passed components. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_a11852a8f1f61e3e4f07827e9d897d5a1}\label{classutil_1_1quaternion_a11852a8f1f61e3e4f07827e9d897d5a1} 
+{\bfseries quaternion} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{axis}}, \mbox{\hyperlink{classutil_1_1vec3}{double}} \mbox{\hyperlink{classutil_1_1vec3}{theta}})
+\begin{DoxyCompactList}\small\item\em Construct a quaternion representing a rotation of theta degrees about the passed axis. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_adc93601f5434ab1d94f735d69df5a7fa}\label{classutil_1_1quaternion_adc93601f5434ab1d94f735d69df5a7fa} 
+{\bfseries quaternion} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a)
+\begin{DoxyCompactList}\small\item\em Construct a quaternion from a \doxylink{classutil_1_1vec4}{vec4}. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_a94231084ab52413a77f457077534e559}\label{classutil_1_1quaternion_a94231084ab52413a77f457077534e559} 
+{\bfseries quaternion} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{float}} $>$ \&o)
+\item 
+\Hypertarget{classutil_1_1quaternion_a76673451c6326174133c0340fa01169a}\label{classutil_1_1quaternion_a76673451c6326174133c0340fa01169a} 
+{\bfseries quaternion} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{double}} $>$ \&o)
+\item 
+\Hypertarget{classutil_1_1quaternion_a5865e61f762f40ca0b32445f2fb6c0fd}\label{classutil_1_1quaternion_a5865e61f762f40ca0b32445f2fb6c0fd} 
+{\bfseries quaternion} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{long}} \mbox{\hyperlink{classutil_1_1vec3}{double}} $>$ \&o)
+\item 
+\Hypertarget{classutil_1_1quaternion_aaf8e42564f36cbdc4362905b1ac391a2}\label{classutil_1_1quaternion_aaf8e42564f36cbdc4362905b1ac391a2} 
+\mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} {\bfseries operator=} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} \mbox{\hyperlink{classutil_1_1quaternion_a619e412bf8f7ebeb3beb2d612bae79e9}{operator\texorpdfstring{$\ast$}{*}}} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} \&a) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Quaternion multiplication, i.\+e. the hamilton product. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_af3ec722e397100eaed7b6802afd7cf19}\label{classutil_1_1quaternion_af3ec722e397100eaed7b6802afd7cf19} 
+\mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} {\bfseries operator\texorpdfstring{$\ast$}{*}} (\mbox{\hyperlink{classutil_1_1vec3}{double}} a) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Multiplication by a real number. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_a2f75ef728ce9d32e514fbd94e9c6fc67}\label{classutil_1_1quaternion_a2f75ef728ce9d32e514fbd94e9c6fc67} 
+\mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} {\bfseries operator\texorpdfstring{$\sim$}{\string~}} () \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Quaternion conjugation. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_aafe53d41c49e02eb1091b5c5d9871b5a}\label{classutil_1_1quaternion_aafe53d41c49e02eb1091b5c5d9871b5a} 
+\mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} {\bfseries normalize} ()
+\begin{DoxyCompactList}\small\item\em Returns this vector normalized to a length of 1. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_ab69c304093b34d8e32149dcd6d3ceb53}\label{classutil_1_1quaternion_ab69c304093b34d8e32149dcd6d3ceb53} 
+\mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} {\bfseries normalize} (\mbox{\hyperlink{classutil_1_1vec3}{double}} \mbox{\hyperlink{classutil_1_1vec3}{t}})
+\begin{DoxyCompactList}\small\item\em Returns this vector normalized to the passed length. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_afa20e0827875390088a8d8991085567a}\label{classutil_1_1quaternion_afa20e0827875390088a8d8991085567a} 
+\mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries apply} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{in}}) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Return the point rotated about the origin according to this quaternion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classutil_1_1vec4}{util\+::vec4$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries vec4} ()
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{classutil_1_1vec4}{vec4} with components initialized to 0. \end{DoxyCompactList}\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{T}} w, \mbox{\hyperlink{classutil_1_1vec3}{T}} x, \mbox{\hyperlink{classutil_1_1vec3}{T}} y, \mbox{\hyperlink{classutil_1_1vec3}{T}} z)
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{classutil_1_1vec4}{vec4} with specified values. \end{DoxyCompactList}\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{signed}} \mbox{\hyperlink{classutil_1_1vec3}{char}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{signed}} \mbox{\hyperlink{classutil_1_1vec3}{short}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{signed}} \mbox{\hyperlink{classutil_1_1vec3}{int}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{signed}} \mbox{\hyperlink{classutil_1_1vec3}{long}} \mbox{\hyperlink{classutil_1_1vec3}{int}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{signed}} \mbox{\hyperlink{classutil_1_1vec3}{long}} \mbox{\hyperlink{classutil_1_1vec3}{long}} \mbox{\hyperlink{classutil_1_1vec3}{int}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{unsigned}} \mbox{\hyperlink{classutil_1_1vec3}{char}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{unsigned}} \mbox{\hyperlink{classutil_1_1vec3}{short}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{unsigned}} \mbox{\hyperlink{classutil_1_1vec3}{int}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{unsigned}} \mbox{\hyperlink{classutil_1_1vec3}{long}} \mbox{\hyperlink{classutil_1_1vec3}{int}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{unsigned}} \mbox{\hyperlink{classutil_1_1vec3}{long}} \mbox{\hyperlink{classutil_1_1vec3}{long}} \mbox{\hyperlink{classutil_1_1vec3}{int}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{float}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{double}} $>$ \&o)
+\item 
+{\bfseries vec4} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{long}} \mbox{\hyperlink{classutil_1_1vec3}{double}} $>$ \&o)
+\item 
+\mbox{\hyperlink{classutil_1_1vec3}{double}} {\bfseries mag} () \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Return the magnitude of the \doxylink{classutil_1_1vec4}{vec4}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{double}} {\bfseries sqr\+\_\+mag} () \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Return the squared magnitude of a \doxylink{classutil_1_1vec4}{vec4}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries operator+} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Piecewise vector addition. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries operator-\/} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Piecewise vector subtraction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries operator\texorpdfstring{$\ast$}{*}} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Piecewise vector multiplication. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries operator/} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Piecewise vector division. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries operator\texorpdfstring{$\ast$}{*}} (\mbox{\hyperlink{classutil_1_1vec3}{double}} a) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Multiply by a scalar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries operator/} (\mbox{\hyperlink{classutil_1_1vec3}{double}} a) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Divide by a scalar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries operator-\/} () \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Piecewise vector negation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{bool}} {\bfseries operator==} (\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ a)
+\begin{DoxyCompactList}\small\item\em Eaulity between vectors. Be mindful of floating point errors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{bool}} {\bfseries is\+\_\+nan} ()
+\begin{DoxyCompactList}\small\item\em Returns true if all components are nan. Always returns false for integer vectors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries normalize} () \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Returns this vector normalized to a length of 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries normalize} (\mbox{\hyperlink{classutil_1_1vec3}{double}} \mbox{\hyperlink{classutil_1_1vec3}{t}}) \mbox{\hyperlink{classutil_1_1vec3}{const}}
+\begin{DoxyCompactList}\small\item\em Returns this vector normalized to the passed length. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classutil_1_1quaternion_aef2bc8abc97adc78691c0992ca002638}\label{classutil_1_1quaternion_aef2bc8abc97adc78691c0992ca002638} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} {\bfseries scale} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} \&b)
+\begin{DoxyCompactList}\small\item\em Piecewise vector multiplication. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_af99851b3bc7e4b02209b85e81de80edd}\label{classutil_1_1quaternion_af99851b3bc7e4b02209b85e81de80edd} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} {\bfseries hamilton} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} \&b)
+\begin{DoxyCompactList}\small\item\em The same as \doxylink{classutil_1_1quaternion_a619e412bf8f7ebeb3beb2d612bae79e9}{operator\texorpdfstring{$\ast$}{*}()}. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_ac2ecc8ff1b57e6bb7246431255fec1fc}\label{classutil_1_1quaternion_ac2ecc8ff1b57e6bb7246431255fec1fc} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries vhamilton} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}} \&b)
+\begin{DoxyCompactList}\small\item\em Hamilton product, but does not calculate the real component. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \mbox{\hyperlink{classutil_1_1quaternion_a088d49f0fa599585b898e1645d6ee89c}{rotate}} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{in}}, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{axis\+\_\+offset}}, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{axis\+\_\+dir}}, \mbox{\hyperlink{classutil_1_1vec3}{double}} \mbox{\hyperlink{classutil_1_1vec3}{theta}})
+\begin{DoxyCompactList}\small\item\em Rotate the given point around axis\+\_\+offset theta degrees about the passed axis. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \mbox{\hyperlink{classutil_1_1quaternion_a6e234a42fff1f2b31c6af1553d622bf8}{rotate}} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{in}}, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{axis\+\_\+offset}}, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&r)
+\begin{DoxyCompactList}\small\item\em Rotate the given point around axis\+\_\+offset according to this quaternion. \end{DoxyCompactList}\item 
+\Hypertarget{classutil_1_1quaternion_a53ebcc52d22a3bfe8f978c82949b7a62}\label{classutil_1_1quaternion_a53ebcc52d22a3bfe8f978c82949b7a62} 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries slerp} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&b, \mbox{\hyperlink{classutil_1_1vec3}{double}} \mbox{\hyperlink{classutil_1_1vec3}{t}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classutil_1_1vec4}{util\+::vec4$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ {\bfseries lerp} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&b, \mbox{\hyperlink{classutil_1_1vec3}{double}} \mbox{\hyperlink{classutil_1_1vec3}{t}})
+\begin{DoxyCompactList}\small\item\em Linear interpolation between vectors. Unclamped. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{double}} {\bfseries distance} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Get the distance between two vectors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{double}} {\bfseries sqr\+\_\+distance} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Get the square of the distance between two vectors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec3}{double}} \mbox{\hyperlink{classutil_1_1vec4_abb1aa4bc47283abb2c7639098796269d}{dot}} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Get the dot product between two vectors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \mbox{\hyperlink{classutil_1_1vec4_a0914838a354ea4fc16f6d098c152ee3b}{reflect}} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{n}})
+\begin{DoxyCompactList}\small\item\em Reflect vector a about vector n, which must be normalized. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutil_1_1vec3}{static}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \mbox{\hyperlink{classutil_1_1vec4_a48e1390a7629337ecd2284ff2537ce14}{rev\+\_\+reflect}} (\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&a, \mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec4}{vec4}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&\mbox{\hyperlink{classutil_1_1vec3}{n}})
+\begin{DoxyCompactList}\small\item\em Reflect vector a about vector n, which must be normalized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classutil_1_1vec4}{util\+::vec4$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries w}
+\item 
+\mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries x}
+\item 
+\mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries y}
+\item 
+\mbox{\hyperlink{classutil_1_1vec3}{T}} {\bfseries z}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classutil_1_1vec3}{class}} \mbox{\hyperlink{classutil_1_1vec3}{T}}$>$\newline
+class util\+::quaternion$<$ T $>$}
+A class representing quaternions. 
+
+Quaternions serve to represent rotations in 3D, among other things.
+
+Implicit conversion to the following template parameter types are allowed\+:
+\begin{DoxyItemize}
+\item {\ttfamily float}
+\item {\ttfamily double}
+\item {\ttfamily long double} 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutil_1_1quaternion_a619e412bf8f7ebeb3beb2d612bae79e9}\label{classutil_1_1quaternion_a619e412bf8f7ebeb3beb2d612bae79e9} 
+\index{util::quaternion$<$ T $>$@{util::quaternion$<$ T $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!util::quaternion$<$ T $>$@{util::quaternion$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classutil_1_1vec3}{class}} \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \\
+\mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \mbox{\hyperlink{classutil_1_1quaternion}{util\+::quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&}]{a }\end{DoxyParamCaption}) const}
+
+
+
+Quaternion multiplication, i.\+e. the hamilton product. 
+
+Used primarily to combine two quaternions which represent rotations into a single quaternion which represents the result of applying both input quaternions in sequence. The operation is not commutative, and the second inout is the rotation that gets applied first. \Hypertarget{classutil_1_1quaternion_a6e234a42fff1f2b31c6af1553d622bf8}\label{classutil_1_1quaternion_a6e234a42fff1f2b31c6af1553d622bf8} 
+\index{util::quaternion$<$ T $>$@{util::quaternion$<$ T $>$}!rotate@{rotate}}
+\index{rotate@{rotate}!util::quaternion$<$ T $>$@{util::quaternion$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classutil_1_1vec3}{class}} \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \\
+\mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \mbox{\hyperlink{classutil_1_1quaternion}{util\+::quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$\+::rotate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&}]{in,  }\item[{\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&}]{axis\+\_\+offset,  }\item[{\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1quaternion}{quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Rotate the given point around axis\+\_\+offset according to this quaternion. 
+
+This is used for rotating around points other than the origin. To rotate around an axis/angle pair, use \doxylink{classutil_1_1quaternion_a088d49f0fa599585b898e1645d6ee89c}{rotate(const vec3$<$\+T$>$\& in, const vec3$<$\+T$>$\& axis\+\_\+offset, const vec3$<$\+T$>$\& axis\+\_\+dir, double theta)}. \Hypertarget{classutil_1_1quaternion_a088d49f0fa599585b898e1645d6ee89c}\label{classutil_1_1quaternion_a088d49f0fa599585b898e1645d6ee89c} 
+\index{util::quaternion$<$ T $>$@{util::quaternion$<$ T $>$}!rotate@{rotate}}
+\index{rotate@{rotate}!util::quaternion$<$ T $>$@{util::quaternion$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classutil_1_1vec3}{class}} \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \\
+\mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \mbox{\hyperlink{classutil_1_1quaternion}{util\+::quaternion}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$\+::rotate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&}]{in,  }\item[{\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&}]{axis\+\_\+offset,  }\item[{\mbox{\hyperlink{classutil_1_1vec3}{const}} \mbox{\hyperlink{classutil_1_1vec3}{vec3}}$<$ \mbox{\hyperlink{classutil_1_1vec3}{T}} $>$ \&}]{axis\+\_\+dir,  }\item[{\mbox{\hyperlink{classutil_1_1vec3}{double}}}]{theta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Rotate the given point around axis\+\_\+offset theta degrees about the passed axis. 
+
+This is used for rotating around points other than the origin. To rotate around an existing quaternion, use \doxylink{classutil_1_1quaternion_a6e234a42fff1f2b31c6af1553d622bf8}{rotate(const vec3$<$\+T$>$\& in, const vec3$<$\+T$>$\& axis\+\_\+offset, const quaternion$<$\+T$>$\& r)}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+vec.\+hpp\item 
+vec.\+cpp\end{DoxyCompactItemize}

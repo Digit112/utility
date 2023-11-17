@@ -12,6 +12,31 @@ namespace util {
 	class pattern2;
 	class procedural;
 	
+	/// Generate random values using xoshiro** 1.1
+	/** I recommend this rng for general-purpose image generation.
+	*   Written in 2018 by David Blackman and Sebastiano Vigna (vigna@acm.org)
+	*   Original <http://xoshiro.di.unimi.it/xoshiro128starstar.c> */
+	class rng_xoshiro_starstar {
+	public:
+		/// The state of the random number generator.
+		uint32_t seed[4];
+		
+		// RNG initialization
+		void init(uint32_t sd = 0);
+		
+		// RNG functions
+		int random_int();
+		float random_val();
+	};
+	
+	/// Implements hash functions.
+	class hashing {
+	public:
+		static uint32_t FNV_32(uint32_t seed);
+		static uint32_t FNV_32(uint64_t seed);
+		static uint32_t FNV_32(const char* seed);
+	};
+	
 	// simple class for holding 2D monochrome data.
 	class pattern2 {
 	public:
@@ -62,26 +87,14 @@ namespace util {
 	
 	class procedural {
 	public:
-		// RNG seed
-		unsigned int seed[4] = {0, 0, 0, 0};
+		// RNG
+		rng_xoshiro_starstar rng;
 		
 		// Preset vector choices for simplex noise generation
 		const vec2<float> vecpick2[4] = {vec2<float>(1, 1), vec2<float>(1, -1), vec2<float>(-1, 1), vec2<float>(-1, -1)};
 		//const vecd3 vecpick3[12];
 		
 		procedural();
-		
-		// FNV_32 hash function
-		uint32_t FNV_32(uint32_t seed);
-		uint32_t FNV_32(uint64_t seed);
-		uint32_t FNV_32(const char* seed);
-		
-		// RNG initialization
-		void init(uint32_t sd = 0);
-		
-		// RNG functions
-		int random_int();
-		float random_val();
 		
 		/* Simple patterns. All coordinates and distances are given in pixels. */
 		

@@ -1,0 +1,800 @@
+\doxysection{procedural.\+cpp}
+\hypertarget{procedural_8cpp_source}{}\label{procedural_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{namespace\ }util\ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ rng\_xoshiro\_starstar\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00003\ \ \ \ \ }
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_addc00c18102593815482ec48178a9e7f}{rng\_xoshiro\_starstar::init}}(\mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1vec3}{sd}})\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[0]\ =\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(\mbox{\hyperlink{classutil_1_1vec3}{sd}});}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[1]\ =\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[0]);}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[2]\ =\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[1]);}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[3]\ =\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[2]);}
+\DoxyCodeLine{00010\ \ \ \ \ \}}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}{rng\_xoshiro\_starstar::random\_int}}()\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ \ Written\ in\ 2018\ by\ David\ Blackman\ and\ Sebastiano\ Vigna\ (vigna@acm.org)}}
+\DoxyCodeLine{00015\ \textcolor{comment}{}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ \ \ \ To\ the\ extent\ possible\ under\ law,\ the\ author\ has\ dedicated\ all\ copyright}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ \ \ \ \ and\ related\ and\ neighboring\ rights\ to\ this\ software\ to\ the\ public\ domain}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ \ \ \ worldwide.\ This\ software\ is\ distributed\ without\ any\ warranty.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ \ \ \ \ See\ <http://creativecommons.org/publicdomain/zero/1.0/>}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ \ \ \ \ Original\ <http://xoshiro.di.unimi.it/xoshiro128starstar.c>\ \ */}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{temp}}\ =\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[0]\ *\ 5;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{result}}\ =\ (\mbox{\hyperlink{classutil_1_1vec3}{temp}}\ <<\ 7)\ |\ (\mbox{\hyperlink{classutil_1_1vec3}{temp}}\ >>\ 25);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{t}}\ =\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[1]\ <<\ 9;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[2]\ \string^=\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[0];}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[3]\ \string^=\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[1];}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[1]\ \string^=\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[2];}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[0]\ \string^=\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[3];}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{temp}}\ =\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[3];}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_ab912dcbd30d92be7ad26104aa3494880}{seed}}[3]\ =\ (\mbox{\hyperlink{classutil_1_1vec3}{temp}}\ <<\ 11)\ |\ (\mbox{\hyperlink{classutil_1_1vec3}{temp}}\ >>\ 21);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})\ \mbox{\hyperlink{classutil_1_1vec3}{result}};}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a0e98c970cff661849de1b1730ff6db79}{rng\_xoshiro\_starstar::random\_val}}()\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{float})\ \mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}{random\_int}}()\ /\ 0xFFFFFFFF\ +\ 0.5;}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ hashing\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(\mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ seed)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ =\ 2166136261;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ 4;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ *=\ 16777619;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ \string^=\ (\textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classutil_1_1vec3}{char}})\ (seed\ >>\ (\mbox{\hyperlink{classutil_1_1vec3}{i}}*8));}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{hash}};}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(\mbox{\hyperlink{classutil_1_1vec3}{uint64\_t}}\ seed)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ =\ 2166136261;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ 8;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ *=\ 16777619;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ \string^=\ (\textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classutil_1_1vec3}{char}})\ (seed\ >>\ (\mbox{\hyperlink{classutil_1_1vec3}{i}}*8));}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{hash}};}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ seed)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{uint32\_t}}\ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ =\ 2166136261;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ seed[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'};\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ *=\ 16777619;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{hash}}\ \string^=\ seed[\mbox{\hyperlink{classutil_1_1vec3}{i}}];}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{hash}};}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ pattern2\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00077\ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}{pattern2::pattern2}}()\ :\ width(0),\ height(0),\ data(\mbox{\hyperlink{classutil_1_1vec3}{NULL}})\ \{\}}
+\DoxyCodeLine{00080\ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}{pattern2::pattern2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ c)\ :\ width(c.width),\ height(c.height)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ data\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[width*height];}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ c.data[\mbox{\hyperlink{classutil_1_1vec3}{i}}];}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}{pattern2::pattern2}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)\ :\ width(width),\ height(height)\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ data\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[width*height];}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_adf53b8a27146074538af8f29503b4b45}{pattern2::pattern2}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{float}\ fill)\ :\ width(width),\ height(height)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ data\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[width*height];}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ \mbox{\hyperlink{classutil_1_1pattern2_acb4c5557efe3a23c678a8d3ae5c2154f}{fill}};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_adf979109accbbed8cef62e9b012e2b74}{pattern2::operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ c)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \mbox{\hyperlink{classutil_1_1vec3}{NULL}})\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ data;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ width\ =\ c.width;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ height\ =\ c.height;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ data\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[width*height];}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ c.data[\mbox{\hyperlink{classutil_1_1vec3}{i}}];}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a02eda3f73ac0a41fee0a674f21cb144a}{pattern2::saveppm}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classutil_1_1vec3}{fn}})\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{FILE}}*\ \mbox{\hyperlink{classutil_1_1vec3}{fp}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{fopen}}(\mbox{\hyperlink{classutil_1_1vec3}{fn}},\ \textcolor{stringliteral}{"{}wb+"{}});}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classutil_1_1vec3}{buff}}\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}[256];}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{sprintf}}(\mbox{\hyperlink{classutil_1_1vec3}{buff}},\ \textcolor{stringliteral}{"{}P5\(\backslash\)n\%d\ \%d\(\backslash\)n255\(\backslash\)n"{}},\ width,\ height);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{fwrite}}(\mbox{\hyperlink{classutil_1_1vec3}{buff}},\ 1,\ \mbox{\hyperlink{classutil_1_1vec3}{strlen}}(\mbox{\hyperlink{classutil_1_1vec3}{buff}}),\ \mbox{\hyperlink{classutil_1_1vec3}{fp}});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ \mbox{\hyperlink{classutil_1_1vec3}{buff}};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}*\ \mbox{\hyperlink{classutil_1_1vec3}{out}}\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}[width*height];}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{classutil_1_1vec3}{temp}};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{temp}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{floor}}(data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ *\ 255.9);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reverse\ endianness}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{out}}[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ (\mbox{\hyperlink{classutil_1_1vec3}{temp}}\ <<\ 8)\ |\ (\mbox{\hyperlink{classutil_1_1vec3}{temp}}\ >>\ 8);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{fwrite}}(\mbox{\hyperlink{classutil_1_1vec3}{out}},\ 2,\ width*height,\ \mbox{\hyperlink{classutil_1_1vec3}{fp}});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ \mbox{\hyperlink{classutil_1_1vec3}{out}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{fclose}}(\mbox{\hyperlink{classutil_1_1vec3}{fp}});}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_acb4c5557efe3a23c678a8d3ae5c2154f}{pattern2::fill}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{val}})\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ \mbox{\hyperlink{classutil_1_1vec3}{val}};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a902f039a1ead2539525de32ebd1c7342}{pattern2::add}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{val}})\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ +=\ \mbox{\hyperlink{classutil_1_1vec3}{val}};}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a88721436c73fc2e6cf51272d75b61907}{pattern2::scale}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{val}})\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{val}};}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ }
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a478a76fc53cb9b1f2f263fed9e3265f2}{pattern2::paint}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{opacity}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}}\ =\ x\ +\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (width\ <\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}})\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}}\ =\ width;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{My}}\ =\ y\ +\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.height;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (height\ <\ \mbox{\hyperlink{classutil_1_1vec3}{My}})\ \mbox{\hyperlink{classutil_1_1vec3}{My}}\ =\ height;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{myop}}\ =\ 1\ -\/\ \mbox{\hyperlink{classutil_1_1vec3}{opacity}};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{x0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{x1}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{y0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{y1}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc1}};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutil_1_1vec3}{y0}}\ =\ 0,\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}\ =\ y;\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{My}};\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}++)\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc0}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width*\mbox{\hyperlink{classutil_1_1vec3}{y0}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc1}}\ =\ width*\mbox{\hyperlink{classutil_1_1vec3}{y1}};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutil_1_1vec3}{x0}}\ =\ 0,\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}\ =\ x;\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}};\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}++)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{rowc1}}+\mbox{\hyperlink{classutil_1_1vec3}{x1}}]\ =\ \mbox{\hyperlink{classutil_1_1vec3}{myop}}*data[\mbox{\hyperlink{classutil_1_1vec3}{rowc1}}+\mbox{\hyperlink{classutil_1_1vec3}{x1}}]\ +\ \mbox{\hyperlink{classutil_1_1vec3}{opacity}}*\mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{rowc0}}+\mbox{\hyperlink{classutil_1_1vec3}{x0}}];}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{x0}}++;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{y0}}++;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a902f039a1ead2539525de32ebd1c7342}{pattern2::add}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}}\ =\ x\ +\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (width\ <\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}})\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}}\ =\ width;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{My}}\ =\ y\ +\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.height;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (height\ <\ \mbox{\hyperlink{classutil_1_1vec3}{My}})\ \mbox{\hyperlink{classutil_1_1vec3}{My}}\ =\ height;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{x0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{x1}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{y0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{y1}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc1}};}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutil_1_1vec3}{y0}}\ =\ 0,\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}\ =\ y;\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{My}};\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}++)\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc0}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width*\mbox{\hyperlink{classutil_1_1vec3}{y0}};}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc1}}\ =\ width*\mbox{\hyperlink{classutil_1_1vec3}{y1}};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutil_1_1vec3}{x0}}\ =\ 0,\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}\ =\ x;\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}};\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}++)\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{rowc1}}+\mbox{\hyperlink{classutil_1_1vec3}{x1}}]\ =\ data[\mbox{\hyperlink{classutil_1_1vec3}{rowc1}}+\mbox{\hyperlink{classutil_1_1vec3}{x1}}]\ +\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{rowc0}}+\mbox{\hyperlink{classutil_1_1vec3}{x0}}];}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{x0}}++;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{y0}}++;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a88721436c73fc2e6cf51272d75b61907}{pattern2::scale}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}}\ =\ x\ +\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (width\ <\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}})\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}}\ =\ width;}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{My}}\ =\ y\ +\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.height;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (height\ <\ \mbox{\hyperlink{classutil_1_1vec3}{My}})\ \mbox{\hyperlink{classutil_1_1vec3}{My}}\ =\ height;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{x0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{x1}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{y0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{y1}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc0}};\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc1}};}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutil_1_1vec3}{y0}}\ =\ 0,\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}\ =\ y;\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{My}};\ \mbox{\hyperlink{classutil_1_1vec3}{y1}}++)\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc0}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width*\mbox{\hyperlink{classutil_1_1vec3}{y0}};}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc1}}\ =\ width*\mbox{\hyperlink{classutil_1_1vec3}{y1}};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classutil_1_1vec3}{x0}}\ =\ 0,\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}\ =\ x;\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{Mx}};\ \mbox{\hyperlink{classutil_1_1vec3}{x1}}++)\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{rowc1}}+\mbox{\hyperlink{classutil_1_1vec3}{x1}}]\ =\ data[\mbox{\hyperlink{classutil_1_1vec3}{rowc1}}+\mbox{\hyperlink{classutil_1_1vec3}{x1}}]\ *\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{rowc0}}+\mbox{\hyperlink{classutil_1_1vec3}{x0}}];}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{x0}}++;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{y0}}++;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a6250c7498e42822eab2e27aaedfdda13}{pattern2::fit\_values}}()\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}}\ =\ 1;}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}}\ =\ 0;}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{fmin}}(data[\mbox{\hyperlink{classutil_1_1vec3}{i}}],\ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}});}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{fmax}}(data[\mbox{\hyperlink{classutil_1_1vec3}{i}}],\ \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}});}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1pattern2_a88721436c73fc2e6cf51272d75b61907}{scale}}\ =\ 1/(\mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}}-\/\mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}});}
+\DoxyCodeLine{00239\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}Max:\ \%.2f,\ Min:\ \%.2f,\ Scale:\ \%.2f\(\backslash\)n"{},\ max,\ min,\ scale);}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ (data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ -\/\ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}})\ *\ \mbox{\hyperlink{classutil_1_1pattern2_a88721436c73fc2e6cf51272d75b61907}{scale}};}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \ \ \ \ \}}
+\DoxyCodeLine{00244\ \ \ \ \ }
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a08d5c4b69f086cce4fbf24eb7553020f}{pattern2::clamp}}(\textcolor{keywordtype}{float}\ min,\ \textcolor{keywordtype}{float}\ max)\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ <\ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}})\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{min}};}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ >\ \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}})\ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{max}};}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_aee5eb86cadf482001f64d2d1dcd47cb9}{pattern2::max}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}})\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{i}}])\ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{i}}];}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classutil_1_1pattern2_a25dd6638f2f3e52ae97fb06cc495f678}{pattern2::min}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\ \mbox{\hyperlink{classutil_1_1vec3}{p}})\ \{}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}\ <\ width*height;\ \mbox{\hyperlink{classutil_1_1vec3}{i}}++)\ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ >\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{i}}])\ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[\mbox{\hyperlink{classutil_1_1vec3}{i}}]\ =\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{i}}];}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ }
+\DoxyCodeLine{00275\ \ \ \ \ pattern2::\string~pattern2()\ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \mbox{\hyperlink{classutil_1_1vec3}{NULL}})\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ data;}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00279\ \ \ \ \ \}}
+\DoxyCodeLine{00280\ \ \ \ \ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/\ procedural\ -\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00282\ \ \ \ \ }
+\DoxyCodeLine{00283\ \ \ \ \ procedural::procedural()\ \{\}}
+\DoxyCodeLine{00284\ \ \ \ \ }
+\DoxyCodeLine{00286\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1procedural_a61839bcc1e44f2b7c0c4501e7a7c232f}{procedural::sin\_circle}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{wavelength}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{offset}})\ \{}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dis}};}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc}};}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.height;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}++)\ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ -\/\ y;}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ *\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}++)\ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ -\/\ x;}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{dis}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{sqrt}}(\mbox{\hyperlink{classutil_1_1vec3}{xd}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{yd}});}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{px}}+\mbox{\hyperlink{classutil_1_1vec3}{rowc}}]\ =\ \mbox{\hyperlink{classutil_1_1vec3}{sin}}(2*3.14159*(\mbox{\hyperlink{classutil_1_1vec3}{dis}}\ /\ \mbox{\hyperlink{classutil_1_1vec3}{wavelength}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{offset}}))\ /\ 2\ +\ 0.5;}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{p}};\ \ \ \ \ \ }
+\DoxyCodeLine{00304\ \ \ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \ \ }
+\DoxyCodeLine{00307\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1procedural_aebb0029e9a9371bd9345626c5ad9b3fb}{procedural::log\_circle}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r)\ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dis}};}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc}};}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.height;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}++)\ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ -\/\ y;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ *\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}++)\ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ -\/\ x;}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{dis}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{sqrt}}(\mbox{\hyperlink{classutil_1_1vec3}{xd}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{yd}});}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{px}}+\mbox{\hyperlink{classutil_1_1vec3}{rowc}}]\ =\ \mbox{\hyperlink{classutil_1_1vec3}{fmax}}((\mbox{\hyperlink{classutil_1_1vec3}{log10}}(r-\/\mbox{\hyperlink{classutil_1_1vec3}{dis}})+1)\ /\ (\mbox{\hyperlink{classutil_1_1vec3}{log10}}(r)+1),\ 0);}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{p}};\ \ \ \ \ \ }
+\DoxyCodeLine{00325\ \ \ \ \ \}}
+\DoxyCodeLine{00326\ \ \ \ \ }
+\DoxyCodeLine{00328\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1procedural_acf4df5df6f4f0ad24e49c81d83c65960}{procedural::ln\_circle}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r)\ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dis}};}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc}};}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.height;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}++)\ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ -\/\ y;}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ *\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}++)\ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ -\/\ x;}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{dis}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{sqrt}}(\mbox{\hyperlink{classutil_1_1vec3}{xd}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{yd}});}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{px}}+\mbox{\hyperlink{classutil_1_1vec3}{rowc}}]\ =\ \mbox{\hyperlink{classutil_1_1vec3}{fmax}}((\mbox{\hyperlink{classutil_1_1vec3}{log}}(r-\/\mbox{\hyperlink{classutil_1_1vec3}{dis}})+1)\ /\ (\mbox{\hyperlink{classutil_1_1vec3}{log}}(r)+1),\ 0);}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{p}};\ \ \ \ \ \ }
+\DoxyCodeLine{00346\ \ \ \ \ \}}
+\DoxyCodeLine{00347\ \ \ \ \ }
+\DoxyCodeLine{00349\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1procedural_a610fbca5fba49e9f692467537ea6abd0}{procedural::lin\_circle}}(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r)\ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dis}};}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc}};}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.height;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}++)\ \{}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ -\/\ y;}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ *\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}++)\ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ -\/\ x;}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{dis}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{sqrt}}(\mbox{\hyperlink{classutil_1_1vec3}{xd}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{yd}});}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{px}}+\mbox{\hyperlink{classutil_1_1vec3}{rowc}}]\ =\ \mbox{\hyperlink{classutil_1_1vec3}{fmax}}(-\/\mbox{\hyperlink{classutil_1_1vec3}{dis}}/r+1,\ 0);}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classutil_1_1vec3}{p}};\ \ \ \ \ \ }
+\DoxyCodeLine{00367\ \ \ \ \ \}}
+\DoxyCodeLine{00368\ \ \ \ \ }
+\DoxyCodeLine{00369\ \ \ \ \ \mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ procedural::logistic\_circle(\mbox{\hyperlink{classutil_1_1pattern2}{pattern2}}\&\ \mbox{\hyperlink{classutil_1_1vec3}{p}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r,\ \textcolor{keywordtype}{float}\ s\ =\ 5)\ \{}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classutil_1_1vec3}{dis}};}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{rowc}};}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.height;\ \mbox{\hyperlink{classutil_1_1vec3}{py}}++)\ \{}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ -\/\ y;}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{yd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{yd}};}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{rowc}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{py}}\ *\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ =\ 0;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ <\ \mbox{\hyperlink{classutil_1_1vec3}{p}}.width;\ \mbox{\hyperlink{classutil_1_1vec3}{px}}++)\ \{}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{px}}\ -\/\ x;}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{xd}}\ *=\ \mbox{\hyperlink{classutil_1_1vec3}{xd}};}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{dis}}\ =\ \mbox{\hyperlink{classutil_1_1vec3}{sqrt}}(\mbox{\hyperlink{classutil_1_1vec3}{xd}}\ +\ \mbox{\hyperlink{classutil_1_1vec3}{yd}});}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classutil_1_1vec3}{p}}.data[\mbox{\hyperlink{classutil_1_1vec3}{px}}+\mbox{\hyperlink{classutil_1_1vec3}{rowc}}]\ =\ -\/1\ /\ (1\ +\ \mbox{\hyperlink{classutil_1_1vec3}{pow}}(2.718282,\ -\/s\ *\ (\mbox{\hyperlink{classutil_1_1vec3}{dis}}\ -\/\ r)\ /\ r))\ +\ 1;}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00387\ \ \ \ \ \}}
+\DoxyCodeLine{00388\ \ \ \ \ }
+\DoxyCodeLine{00389\ \ \ \ \ pattern2\&\ procedural::sin\_wave(pattern2\&\ p,\ \textcolor{keywordtype}{float}\ dx,\ \textcolor{keywordtype}{float}\ dy,\ \textcolor{keywordtype}{int}\ wavelength,\ \textcolor{keywordtype}{float}\ offset)\ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m\ =\ sqrt(dx*dx\ +\ dy*dy);}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ dx\ /=\ m;}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ dy\ /=\ m;}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rowc;}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ py\ =\ 0;\ py\ <\ p.height;\ py++)\ \{}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ rowc\ =\ py\ *\ p.width;}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ px\ =\ 0;\ px\ <\ p.width;\ px++)\ \{}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p.data[rowc\ +\ px]\ =\ sin(2*3.14159*((dx*px\ +\ dy*py)\ /\ wavelength\ +\ offset))\ /\ 2\ +\ 0.5;}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00404\ \ \ \ \ \}}
+\DoxyCodeLine{00405\ \ \ \ \ }
+\DoxyCodeLine{00406\ \ \ \ \ pattern2\&\ procedural::lin\_gradient(pattern2\&\ p,\ \textcolor{keywordtype}{float}\ dx,\ \textcolor{keywordtype}{float}\ dy,\ \textcolor{keywordtype}{float}\ start,\ \textcolor{keywordtype}{float}\ end)\ \{}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m\ =\ sqrt(dx*dx\ +\ dy*dy);}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ dx\ /=\ m;}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ dy\ /=\ m;}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ max\_dis\ =\ sqrt(p.width*p.width\ +\ p.height*p.height);}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rowc;}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ py\ =\ 0;\ py\ <\ p.height;\ py++)\ \{}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ rowc\ =\ py\ *\ p.width;}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ px\ =\ 0;\ px\ <\ p.width;\ px++)\ \{}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p.data[rowc\ +\ px]\ =\ (dx*px\ +\ dy*py)\ /\ max\_dis;}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00423\ \ \ \ \ \}}
+\DoxyCodeLine{00424\ \ \ \ \ }
+\DoxyCodeLine{00425\ \ \ \ \ pattern2\&\ procedural::simplex(pattern2\&\ p,\ \textcolor{keywordtype}{float}\ maxX,\ \textcolor{keywordtype}{float}\ maxY,\ \textcolor{keywordtype}{float}\ minX,\ \textcolor{keywordtype}{float}\ minY)\ \{}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Working\ variables}}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s;}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ z;}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sd\ =\ (\textcolor{keywordtype}{unsigned}\ int)\ rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}{random\_int}}();}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ order\ of\ min/max}}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (maxX\ <\ minX)\ \{}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ minX;}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ minX\ =\ maxX;}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ maxX\ =\ s;}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (maxY\ <\ minY)\ \{}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ minY;}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ minY\ =\ maxY;}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ maxY\ =\ s;}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Variables\ to\ store\ the\ original\ specified\ region.}}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mx\ =\ minX;}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ Mx\ =\ maxX;}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ my\ =\ minY;}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ My\ =\ maxY;}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expand\ the\ region\ provided\ by\ the\ player\ to\ include\ all\ corners\ which\ have\ any\ influence\ over\ any\ point\ in\ the\ original\ region.}}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ minX-\/-\/;}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ minY-\/-\/;}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ maxX++;}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ maxY++;}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00456\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}Region\ (\%.2f,\ \%.2f)\ -\/\ (\%.2f,\ \%.2f)\ Expanded\ into\ (\%.2f,\ \%.2f)\ -\/\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ mx,\ my,\ Mx,\ My,\ minX,\ minY,\ maxX,\ maxY);}}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ the\ inverse\ equalateralization\ transform\ to\ the\ upper\ left\ and\ lower\ right\ corners\ of\ the\ supplied\ region.}}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ s\ =\ 0.366025404\ *\ (minX\ +\ maxY);}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ high\_left\_x\ =\ minX\ +\ s;}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ high\_left\_y\ =\ maxY\ +\ s;}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ s\ =\ 0.366025404\ *\ (maxX\ +\ minY);}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ low\_right\_x\ =\ maxX\ +\ s;}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ low\_right\_y\ =\ minY\ +\ s;}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ the\ transform\ on\ the\ remaining\ corners\ as\ well,\ although\ they\ don't\ need\ new\ variables.}}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ s\ =\ 0.366025404\ *\ (minX\ +\ minY);}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ minX\ +=\ s;}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ minY\ +=\ s;}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ s\ =\ 0.366025404\ *\ (maxX\ +\ maxY);}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ maxX\ +=\ s;}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ maxY\ +=\ s;}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00474\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}Corners\ become\ (ABCD):\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ minX,\ minY,\ high\_left\_x,\ high\_left\_y,\ maxX,\ maxY,\ low\_right\_x,\ low\_right\_y);}}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cache\ useful\ variables.}}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ intMinX\ =\ (int)\ ceil(minX);}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ intMaxX\ =\ (int)\ ceil(maxX);}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Divide\ the\ newly-\/defined\ parallelogram\ into\ three\ segments\ arranged\ horizontally,\ two\ triangles\ and\ one\ parallelogram\ in\ the\ middle.}}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ In\ cases\ where\ the\ sampled\ region\ has\ a\ low\ enough\ aspect\ ratio,\ the\ high\_left\_x\ might\ be\ farther\ right\ than\ the\ low\_right\_x\ value.}}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ In\ this\ case\ we\ must\ ensure\ the\ regions\ are\ re-\/ordered\ correctly.}}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ first\_switch;}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ last\_switch;}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (high\_left\_x\ <\ low\_right\_x)\ \{}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ first\_switch\ =\ high\_left\_x;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ last\_switch\ =\ low\_right\_x;}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00490\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ printf("{}Swapping\ switch\ points.\(\backslash\)n"{});}}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ first\_switch\ =\ low\_right\_x;}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ last\_switch\ =\ high\_left\_x;}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00495\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}Switches\ at\ \%.2f\ \&\ \%.2f\(\backslash\)n"{},\ first\_switch,\ last\_switch);}}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assign\ one\ of\ four\ random\ vectors\ to\ each\ lattice\ point\ (point\ having\ integer\ coordinates)\ contained\ in\ the\ parallelogram.}}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First\ Iterate\ over\ integer\ x\ values\ from\ the\ left-\/most\ point\ in\ the\ parallelogram\ to\ the\ right-\/most\ point.}}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ each\ x,\ iterate\ over\ all\ y\ values\ such\ that\ (x,\ y)\ is\ a\ point\ in\ the\ parallelogram.}}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ buffer2\ contains\ the\ randomly-\/chosen\ vector\ for\ all\ lattice\ points\ with\ influence\ over\ the\ supplied\ region.}}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Important:\ For\ some\ n,\ buffer1[n]\ gives\ the\ y\ value\ of\ the\ lattice\ point\ whose\ assigned\ vector\ is\ given\ at\ buffer2[n][0].}}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ y-\/value\ of\ the\ lattice\ point\ whose\ vector\ is\ given\ at\ buffer[n][a]\ is\ one\ greater\ than\ the\ y-\/value\ for\ buffer[n][a-\/1]}}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ s\ =\ 0.267949192f;}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ z\ =\ 3.732050808f;}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ space\ for\ a\ jagged\ matrix.}}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_cols\ =\ intMaxX\ -\/\ intMinX;}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}**\ buffer2\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*[num\_cols];}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ \ buffer1\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[num\_cols];}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00514\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}Allocating\ for\ \%d\ columns\ in\ range\ \%.2f\ -\/\ \%.2f\(\backslash\)n"{},\ num\_cols,\ minX,\ maxX);}}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ uint64\_t\ col\_seed;}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ uint64\_t\ pix\_seed;}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ I;}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ min\_y;}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ max\_y;}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ intMinX;\ x\ <\ maxX;\ x++)\ \{}
+\DoxyCodeLine{00522\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ printf("{}Column\ \%d\(\backslash\)n"{},\ x);}}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ I\ =\ x\ -\/\ intMinX;}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ col\_seed\ =\ x\ \string^\ sd;}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ col\_seed\ <<=\ 32;}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ first\_switch)\ \{}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ space\ for\ this\ row.}}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_y\ =\ ceil((x\ -\/\ minX)\ *\ s\ +\ minY);}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_y\ =\ floor((x\ -\/\ minX)\ *\ z\ +\ minY);}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00532\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}buffer2[\%d]\ gets\ \%d\ -\/\ \%d\ +\ 1.\(\backslash\)n"{},\ I,\ max\_y,\ min\_y);}}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer2[I]\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}[max\_y\ -\/\ min\_y\ +\ 1];}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer1[I]\ =\ min\_y;}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ y\ values.}}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ min\_y;\ y\ <=\ max\_y;\ y++)\ \{}
+\DoxyCodeLine{00539\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Row\ 0\ /\ \%d\(\backslash\)n"{},\ y);}}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ a\ =\ y\ \string^\ sd;}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pix\_seed\ =\ col\_seed\ |\ y;}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_addc00c18102593815482ec48178a9e7f}{init}}(\mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(pix\_seed));}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer2[I][y-\/min\_y]\ =\ abs(rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}{random\_int}}()\ \%\ 4);}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (x\ <\ last\_switch)\ \{}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ space\ for\ this\ row.}}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_y\ =\ ceil((x\ -\/\ minX)\ *\ s\ +\ minY);}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_y\ =\ floor((x\ -\/\ maxX)\ *\ s\ +\ maxY);}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00551\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}buffer2[\%d]\ gets\ \%d\ -\/\ \%d\ +\ 1.\(\backslash\)n"{},\ I,\ max\_y,\ min\_y);}}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer2[I]\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}[max\_y\ -\/\ min\_y\ +\ 1];}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer1[I]\ =\ min\_y;}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ y\ values.}}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ min\_y;\ y\ <=\ max\_y;\ y++)\ \{}
+\DoxyCodeLine{00558\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Row\ 1\ /\ \%d\(\backslash\)n"{},\ y);}}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pix\_seed\ =\ col\_seed\ |\ y;}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_addc00c18102593815482ec48178a9e7f}{init}}(\mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(pix\_seed));}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer2[I][y-\/min\_y]\ =\ abs(rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}{random\_int}}()\ \%\ 4);}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ space\ for\ this\ row.}}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_y\ =\ ceil((x\ -\/\ maxX)\ *\ z\ +\ maxY);}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_y\ =\ floor((x\ -\/\ maxX)\ *\ s\ +\ maxY);}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00569\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}buffer2[\%d]\ gets\ \%d\ -\/\ \%d\ +\ 1.\(\backslash\)n"{},\ I,\ max\_y,\ min\_y);}}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer2[I]\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}[max\_y\ -\/\ min\_y\ +\ 1];}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer1[I]\ =\ min\_y;}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ y\ values.}}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ min\_y;\ y\ <=\ max\_y;\ y++)\ \{}
+\DoxyCodeLine{00576\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Row\ 2\ /\ \%d\(\backslash\)n"{},\ y);}}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pix\_seed\ =\ col\_seed\ |\ y;}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_addc00c18102593815482ec48178a9e7f}{init}}(\mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(pix\_seed));}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer2[I][y-\/min\_y]\ =\ abs(rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}{random\_int}}()\ \%\ 4);}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00584\ \textcolor{comment}{//\ \ \ \ \ \ printf("{}Vector\ Assignment\ Complete.\(\backslash\)n"{});}}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Now\ buffer2\ contains\ a\ random\ vector\ for\ every\ relevant\ lattice\ point.}}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Now\ we\ iterate\ over\ every\ point\ in\ the\ supplied\ region\ to\ calculate\ the\ simplex\ noise\ at\ each\ point.}}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Store\ the\ 3corners\ of\ the\ simplex\ that\ contains\ point\ p\ and\ their\ values.}}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ vec2<float>\ px;\ vec2<float>\ py;\ vec2<float>\ pz;}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ vec2<float>\ vx;\ vec2<float>\ vy;\ vec2<float>\ vz;}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ugh}}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ left;\ \textcolor{keywordtype}{float}\ low;\ \textcolor{keywordtype}{float}\ right;\ \textcolor{keywordtype}{float}\ high;}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u;\ \textcolor{keywordtype}{float}\ v;\ \textcolor{keywordtype}{float}\ w;\ \textcolor{keywordtype}{float}\ m;}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ X;\ \textcolor{keywordtype}{float}\ Y;\ \textcolor{keywordtype}{float}\ Px;\ \textcolor{keywordtype}{float}\ Py;}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ vec2<float>\ Uvec;\ vec2<float>\ Vvec;\ vec2<float>\ Wvec;}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ p.width;\ x++)\ \{}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ p.height;\ y++)\ \{}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ input\ point\ coordinates}}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Px\ =\ ((float)\ x\ /\ p.width)\ *\ (Mx\ -\/\ mx)\ +\ mx;}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Py\ =\ ((float)\ y\ /\ p.height)\ *\ (My\ -\/\ my)\ +\ my;}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ the\ equalateralization\ transform\ to\ the\ input\ point}}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ 0.3660254037f\ *\ (Px\ +\ Py);}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X\ =\ Px\ +\ s;}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Y\ =\ Py\ +\ s;}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00608\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}\(\backslash\)n(\%d,\ \%d)\ -\/>\ (\%.2f,\ \%.2f)\ -\/>\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ x,\ y,\ Px,\ Py,\ X,\ Y);}}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ corners\ of\ the\ square\ in\ which\ (X,\ Y)\ resides.}}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ left\ =\ floor(X);}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ low\ =\ floor(Y);}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ right\ =\ floor(X+1);}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ high\ =\ floor(Y+1);}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00616\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Bounded\ by\ \%.2f\ <\ x\ <\ \%.2f\ \&\ \%.2f\ <\ y\ <\ \%.2f.\(\backslash\)n"{},\ left,\ right,\ low,\ high);}}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ In\ quadrants\ 2\ and\ 4,\ due\ to\ one\ value\ being\ negative,\ either\ (X\ \%\ 1)\ is\ always\ greater\ than\ (Y\ \%\ 1)\ or\ vice\ verse.\ This\ code\ corrects\ that\ by\ making\ negatives\ positve.}}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (X\ <\ 0)\ \{}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X\ =\ fmodf(X,\ 1)\ +\ 1;}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Y\ <\ 0)\ \{}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Y\ =\ fmodf(Y,\ 1)\ +\ 1;}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ two\ corners\ that\ the\ point\ must\ belong\ to.}}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ px\ =\ vec2<float>(left,\ low);}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ py\ =\ vec2<float>(right,\ high);}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ last\ corner.}}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fmodf(X,\ 1)\ >\ fmodf(Y,\ 1))\ \{}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pz\ =\ vec2<float>(right,\ low);}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pz\ =\ vec2<float>(left,\ high);}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00636\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Bounding\ half-\/square\ is:\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ px.x,\ px.y,\ py.x,\ py.y,\ pz.x,\ pz.y);}}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ random\ vectors\ stored\ in\ buffer2}}
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ (x,\ y)\ coords\ of\ each\ point\ to\ (u,\ v)\ buffer2\ coordinates.}}
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u\ =\ px.x\ -\/\ intMinX;}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ px.y\ -\/\ (float)\ buffer1[(\textcolor{keywordtype}{int})\ u];}
+\DoxyCodeLine{00642\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}px\ -\/>\ uv:\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ px.x,\ px.y,\ u,\ v);}}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vx\ =\ vecpick2[buffer2[(int)\ u][(\textcolor{keywordtype}{int})\ v]];}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u\ =\ py.x\ -\/\ intMinX;}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ py.y\ -\/\ (float)\ buffer1[(\textcolor{keywordtype}{int})\ u];}
+\DoxyCodeLine{00646\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}py\ -\/>\ uv:\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ py.x,\ py.y,\ u,\ v);}}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vy\ =\ vecpick2[buffer2[(int)\ u][(\textcolor{keywordtype}{int})\ v]];}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u\ =\ pz.x\ -\/\ intMinX;}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ pz.y\ -\/\ (float)\ buffer1[(\textcolor{keywordtype}{int})\ u];}
+\DoxyCodeLine{00650\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}pz\ -\/>\ uv:\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ pz.x,\ pz.y,\ u,\ v);}}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vz\ =\ vecpick2[buffer2[(int)\ u][(\textcolor{keywordtype}{int})\ v]];}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Skew\ the\ corners\ of\ this\ simplex\ into\ a\ simplex\ grid.}}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ 0.2113248654f\ *\ (px.x\ +\ px.y);}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ px\ =\ vec2<float>(px.x\ -\/\ s,\ px.y\ -\/\ s);}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ 0.2113248654f\ *\ (py.x\ +\ py.y);}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ py\ =\ vec2<float>(py.x\ -\/\ s,\ py.y\ -\/\ s);}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ 0.2113248654f\ *\ (pz.x\ +\ pz.y);}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pz\ =\ vec2<float>(pz.x\ -\/\ s,\ pz.y\ -\/\ s);}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00663\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Bounding\ simplex\ is:\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ px.x,\ px.y,\ py.x,\ py.y,\ pz.x,\ pz.y);}}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uvec\ =\ vec2<float>(Px\ -\/\ px.x,\ Py\ -\/\ px.y);}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vvec\ =\ vec2<float>(Px\ -\/\ py.x,\ Py\ -\/\ py.y);}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Wvec\ =\ vec2<float>(Px\ -\/\ pz.x,\ Py\ -\/\ pz.y);}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ influence\ of\ each\ corner\ to\ the\ given\ point\ by\ distance.}}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u\ =\ 2\ *\ fmin(Uvec.sqr\_mag(),\ 0.5);}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ 2\ *\ fmin(Vvec.sqr\_mag(),\ 0.5);}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ =\ 2\ *\ fmin(Wvec.sqr\_mag(),\ 0.5);}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00674\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Corner-\/Distance\ vectors\ are\ (\%.2f,\ \%.2f)\ @\ \%.2f,\ (\%.2f,\ \%.2f)\ @\ \%.2f,\ (\%.2f,\ \%.2f)\ @\ \%.2f\(\backslash\)n"{},\ Uvec.x,\ Uvec.y,\ u,\ Vvec.x,\ Vvec.y,\ v,\ Wvec.x,\ Wvec.y,\ w);}}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Modify\ values\ to\ simulate\ a\ quadratice\ falloff\ of\ each\ corner's\ influence}}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u\ =\ u\ *\ (u\ -\/\ 1)\ -\/\ u\ +\ 1;}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ v\ *\ (v\ -\/\ 1)\ -\/\ v\ +\ 1;}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ =\ w\ *\ (w\ -\/\ 1)\ -\/\ w\ +\ 1;}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Normalize\ u,\ v,\ and\ w\ so\ they\ sum\ to\ 1}}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\ =\ u\ +\ v\ +\ w;}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u\ =\ u\ /\ m;\ v\ =\ v\ /\ m;\ w\ =\ w\ /\ m;}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00685\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Corner-\/Distance\ vectors\ are\ (\%.2f,\ \%.2f)\ @\ \%.2f,\ (\%.2f,\ \%.2f)\ @\ \%.2f,\ (\%.2f,\ \%.2f)\ @\ \%.2f\(\backslash\)n"{},\ Uvec.x,\ Uvec.y,\ u,\ Vvec.x,\ Vvec.y,\ v,\ Wvec.x,\ Wvec.y,\ w);}}
+\DoxyCodeLine{00686\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Randomly\ Assigned\ vectors\ are\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f),\ (\%.2f,\ \%.2f)\(\backslash\)n"{},\ vx.x,\ vx.y,\ vy.x,\ vy.y,\ vz.x,\ vz.y);}}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ dot\ product\ of\ the\ vector\ pointing\ from\ each\ corner\ toward\ the\ point,\ and\ the\ corner's\ randomly\ assigned\ vector.\ Then\ multiply\ that\ contribution\ by\ this\ point's\ influence.}}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u\ *=\ \mbox{\hyperlink{classutil_1_1vec2_add6b6777325289ed8457c6468a10aea8}{vec2<float>::dot}}(Uvec,\ vx);}
+\DoxyCodeLine{00690\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ *=\ \mbox{\hyperlink{classutil_1_1vec2_add6b6777325289ed8457c6468a10aea8}{vec2<float>::dot}}(Vvec,\ vy);}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ *=\ \mbox{\hyperlink{classutil_1_1vec2_add6b6777325289ed8457c6468a10aea8}{vec2<float>::dot}}(Wvec,\ vz);}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p.data[x\ +\ y*p.width]\ =\ (u\ +\ v\ +\ w\ +\ 1)\ /\ 2;}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00695\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Final\ weights\ are\ \%.2f,\ \%.2f,\ \%.2f\ for\ a\ value\ of\ \%f\(\backslash\)n"{},\ u,\ v,\ w,\ p.data[x+y*p.width]);}}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ buffer1;}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_cols;\ i++)\ \{}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ buffer2[i];}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ buffer2;}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00706\ \ \ \ \ \}}
+\DoxyCodeLine{00707\ \ \ \ \ }
+\DoxyCodeLine{00708\ \ \ \ \ pattern2\&\ procedural::worley(pattern2\&\ p,\ \textcolor{keywordtype}{float}\ maxX,\ \textcolor{keywordtype}{float}\ maxY,\ \textcolor{keywordtype}{float}\ minX,\ \textcolor{keywordtype}{float}\ minY)\ \{}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sd\ =\ rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a1143150b5265eb7bba4df337c1746ede}{random\_int}}();}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ the\ min/max\ values\ are\ in\ the\ right\ order}}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s;}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (minX\ >\ maxX)\ \{}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ minX;}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \ \ \ \ minX\ =\ maxX;}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \ \ \ \ maxX\ =\ s;}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (minY\ >\ maxY)\ \{}
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ minY;}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \ \ \ \ minY\ =\ maxY;}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \ \ \ \ maxY\ =\ s;}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00723\ }
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Store\ original\ specified\ region}}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mx\ =\ minX;}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ Mx\ =\ maxX;}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ my\ =\ minY;}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ My\ =\ maxY;}
+\DoxyCodeLine{00729\ }
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adjust\ region\ outward}}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ minX\ =\ floor(minX)\ -\/\ 1;}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ maxX\ =\ ceil(maxX)\ +\ 1;}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ minY\ =\ floor(minY)\ -\/\ 1;}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ maxY\ =\ ceil(maxY)\ +\ 1;}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Populate\ a\ 2D\ buffer\ with\ a\ random\ Vector\ between\ (0,\ 0)\ and\ (1,\ 1)\ for\ each\ square\ in\ the\ region.}}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ vec\_w\ =\ (int)\ (maxX\ -\/\ minX);}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ vec\_h\ =\ (int)\ (maxY\ -\/\ minY);}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ vec2<float>*\ pb\ =\ \textcolor{keyword}{new}\ vec2<float>[\ vec\_w*vec\_h\ ];}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ vec2<float>*\ pbr;}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ uint64\_t\ row\_seed;}
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ix;\ \textcolor{keywordtype}{int}\ iy;}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ (\textcolor{keywordtype}{int})\ minX;\ y\ <\ My;\ y++)\ \{}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ row\_seed\ =\ y\ \string^\ sd;}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ row\_seed\ <<=\ 32;}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ iy\ =\ (int)\ (y\ -\/\ minY);}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \ pbr\ =\ pb\ +\ iy*vec\_w;}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ (\textcolor{keywordtype}{int})\ minX;\ x\ <\ Mx;\ x++)\ \{}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_addc00c18102593815482ec48178a9e7f}{init}}(\mbox{\hyperlink{classutil_1_1hashing_a3b4362802dbedb1615fe6ae1ed46e690}{hashing::FNV\_32}}(row\_seed\ |\ (x\ \string^\ sd)));}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ix\ =\ (int)\ (x\ -\/\ minX);}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pbr[ix]\ =\ vec2<float>(rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a0e98c970cff661849de1b1730ff6db79}{random\_val}}(),\ rng.\mbox{\hyperlink{classutil_1_1rng__xoshiro__starstar_a0e98c970cff661849de1b1730ff6db79}{random\_val}}());}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00758\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}Assigned\ (\%.2f,\ \%.2f)\ to\ (\%d,\ \%d)\(\backslash\)n"{},\ pbr[ix].x,\ pbr[ix].y,\ x,\ y);}}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ X;\ \textcolor{keywordtype}{float}\ Y;}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ A;\ \textcolor{keywordtype}{float}\ B;}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m;}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ searchMinX;\ \textcolor{keywordtype}{float}\ searchMinY;\ \textcolor{keywordtype}{float}\ searchMaxX;\ \textcolor{keywordtype}{float}\ searchMaxY;}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ tempVecX;\ \textcolor{keywordtype}{float}\ tempVecY;}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ p.height;\ y++)\ \{}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ p.width;\ x++)\ \{}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ position\ of\ this\ point\ in\ worley-\/space}}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X\ =\ (float)\ x\ /\ p.width\ \ *\ (Mx\ -\/\ mx)\ +\ mx;}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Y\ =\ (float)\ y\ /\ p.height\ *\ (My\ -\/\ my)\ +\ my;}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00775\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}(\%d,\ \%d)\ -\/>\ (\%.2f,\ \%.2f)\ -\/>\ "{},\ x,\ y,\ X,\ Y);}}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ coordinates\ of\ upper\ right\ and\ lower\ left\ grid\ squares\ to\ search.}}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchMinX\ =\ floor(X)\ -\/\ 1;}
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchMinY\ =\ floor(Y)\ -\/\ 1;}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchMaxX\ =\ searchMinX\ +\ 3;}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchMaxY\ =\ searchMinY\ +\ 3;}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Modify\ X\ and\ Y\ to\ be\ in\ terms\ of\ the\ 3x3\ grid\ square\ space;}}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X\ -\/=\ searchMinX;}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Y\ -\/=\ searchMinY;}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00787\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf("{}(\%.2f,\ \%.2f)\ searches\ (\%.1f,\ \%.1f)\ -\/\ (\%.1f,\ \%.1f)\(\backslash\)n"{},\ X,\ Y,\ searchMinX,\ searchMinY,\ searchMaxX,\ searchMaxY);}}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ 2;}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ 9\ relevant\ points\ to\ find\ which\ is\ the\ closest\ to\ the\ current\ point.}}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ b\ =\ searchMinY;\ b\ <\ searchMaxY;\ b++)\ \{}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pbr\ =\ pb\ +\ (b\ -\/\ (int)\ minY)*vec\_w;}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ a\ =\ searchMinX;\ a\ <\ searchMaxX;\ a++)\ \{}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ A\ =\ a\ -\/\ searchMinX;}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ B\ =\ b\ -\/\ searchMinY;}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tempVecX\ =\ pbr[a\ -\/\ (int)\ minX].x\ +\ A\ -\/\ X;}
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tempVecY\ =\ pbr[a\ -\/\ (int)\ minX].y\ +\ B\ -\/\ Y;}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\ =\ tempVecX\ *\ tempVecX\ +\ tempVecY\ *\ tempVecY;}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\ <\ s)\ \{}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ m;}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Now\ s\ should\ contain\ the\ square\ distance\ from\ this\ point\ to\ the\ nearest\ point.}}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p.data[x+y*p.width]\ =\ sqrt(s)\ /\ 1.41;}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ pb;}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00816\ \ \ \ \ \}}
+\DoxyCodeLine{00817\ \ \ \ \ }
+\DoxyCodeLine{00818\ \ \ \ \ pattern2\&\ procedural::band(pattern2\&\ p,\ \textcolor{keywordtype}{float}\ inc)\ \{}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ p.width*p.height;\ i++)\ \{}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ p.data[i]\ =\ round(p.data[i]\ /\ inc)\ *\ inc;}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00824\ \ \ \ \ \}}
+\DoxyCodeLine{00825\ \}}
+\DoxyCodeLine{00826\ }
+
+\end{DoxyCode}
